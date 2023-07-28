@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ApiController;
+use App\Http\Controllers\API\PowerCloudSoapController;
+use App\Http\Controllers\API\PowerCloudRestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +32,15 @@ Route::middleware([
 
 Route::get('/hi', function () {
     return view('hi');
+});
+
+
+Route::controller(PowerCloudRestController::class)->group(function () {
+    Route::get('/getContract', 'test')->name('getContract'); 
+    Route::get('/orderTest', 'newOrderTest')->name('newOrderTest'); 
+});
+
+Route::controller(PowerCloudSoapController::class)->group(function () {
+    Route::get('/getTariffs', 'getTariffs')->name('getTariffs');  
+    Route::get('/getInfo/{zip}/{usage?}/{business?}', 'getInfo')->name('getInfo');  
 });
