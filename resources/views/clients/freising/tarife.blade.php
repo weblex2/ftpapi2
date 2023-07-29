@@ -21,23 +21,23 @@
                             
                             <div class="tariff-details">
                                 <div class="flex mb-5">
-                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/4">Reduzierte Grundgebühr</div>
+                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/3">Reduzierte Grundgebühr</div>
                                     <div class="text-black text-sm"><strong>Nur 11<sup>35</sup> Euro monatlich</strong></div>
                                 </div>    
                                 <div class="flex mb-5">
-                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/4">Förderung</div>
+                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/3">Förderung</div>
                                     <div class="text-black text-sm">Förderung mit 050 netto / 060 brutto Cent / kWh</div>
                                 </div>  
                                 <div class="flex mb-5">
-                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/4">Verbrauchskosten</div>
+                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/3">Verbrauchskosten</div>
                                     <div class="text-black text-sm">{{$_POST['usage']}} kWh × <span id="t1_wpb"></span><sup id="t1_wpb_dec"></sup> Cent / kWh = 1.265<sup>40</sup> Euro im Jahr</div>
                                 </div> 
                                 <div class="flex mb-5">
-                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/4">Laufzeit</div>
+                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/3">Laufzeit</div>
                                     <div class="text-black text-sm">Mindestlaufzeit: 1 Monat</div>
                                 </div> 
                                 <div class="flex mb-5">
-                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/4">Abschlag & Jahresenergiekosten</div>
+                                    <div class="text-[#0ac] text-sm text-bold mr-10 w-1/3">Abschlag & Jahresenergiekosten</div>
                                     <div class="text-black text-sm">119<sup>30</sup> Euro pro Monat / 1.431<sup>60</sup> Euro im Jahr</div>
                                 </div> 
                             </div>

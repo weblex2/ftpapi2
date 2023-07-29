@@ -13,12 +13,16 @@ html{
     line-height: 1.5;
 }
 
+.nav-item{
+    @apply px-5  font-bold
+}
+
 .content-wrapper{
     @apply w-full p-20 flex justify-center
 }
 
 .content {
-    @apply w-[70%] p-20 
+    @apply w-full md:w-[70%] lg:p-20 
 }
 
 .content-odd{
