@@ -6,6 +6,27 @@
     display: none;
 }
 
-.dropdown{
-    @apply px-10 py-3 bg-slate-100 border border-slate-400 rounded-3xl
+
+html{
+    @apply bg-[#0ac] text-2xl text-white;
+}
+
+.content {
+    @apply w-full p-20 text-white
+}
+
+h1{
+    @apply text-6xl text-white font-extrabold mb-10
+}
+
+input[type="text"], input[type="password"], input[type="search"], input[type="number"],select{
+    @apply px-8 py-2 bg-slate-100 border border-slate-400 rounded-3xl font-extrabold text-xl text-black
+}
+
+select {
+    @apply w-72
+}
+
+.btn-primary{
+    @apply font-extrabold text-xl text-white  px-8 py-2 border-[3px] border-white rounded-3xl hover:text-[#0ac] hover:bg-white
 }

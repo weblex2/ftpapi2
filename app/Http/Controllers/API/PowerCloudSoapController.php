@@ -35,7 +35,11 @@ class PowerCloudSoapController extends Controller
         return($res);
     }
 
-    public function getInfo($zip,$usage=2000, $business=0){
+    public function getInfo(Request $request){
+        $req = $request->all();
+        $zip  = $req['zip'];
+        $business  = $req['business'];
+        $usage  = $req['usage'];
         #$url="https://ww24pjl1v6.execute-api.eu-central-1.amazonaws.com/prod/tariffs?postcode=82024&usage=3500&business=false&energy=electricity";
         #$res = file_get_contents($url);
         //dump($res);
