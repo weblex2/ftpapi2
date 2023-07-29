@@ -5,3 +5,7 @@
 [x-cloak] {
     display: none;
 }
+
+.dropdown{
+    @apply px-10 py-3 bg-slate-100 border border-slate-400 rounded-3xl
+}
