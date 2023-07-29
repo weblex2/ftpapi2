@@ -35,6 +35,13 @@ class PowerCloudSoapController extends Controller
         return($res);
     }
 
+    public function getAllProvider(){
+        $url="https://ww24pjl1v6.execute-api.eu-central-1.amazonaws.com/prod/getAllProviders";
+        $res = file_get_contents($url);
+        $res = json_decode($res,1)['data'];
+        return $res;
+    }    
+
     public function getInfo(Request $request){
         $req = $request->all();
         $zip  = $req['zip'];
@@ -45,7 +52,16 @@ class PowerCloudSoapController extends Controller
         //dump($res);
         $cities = $this->getCities($zip);
         $streets = $this->getStreetsInZipCode($zip);
-        return view('clients.freising.checkout', compact('cities', 'streets'));
+        $provider = $this->getAllProvider();
+        //$tariffs = $this->getTariffs($zip,$usage,$business);
+        return view('clients.freising.tarife', compact('cities', 'streets','provider'));
+    }
+
+    public function getTariffs($zip,$usage,$business){
+        $url = "https://ww24pjl1v6.execute-api.eu-central-1.amazonaws.com/prod/tariffs?postcode=".$zip."&usage=".$usage."&business=".$business."&energy=electricity";
+        $res = file_get_contents($url);
+        $res = json_decode($res,1)['data'];
+        return $res;
     }
  
     public function getTariffs2(){

@@ -1,6 +1,7 @@
 <x-guest-layout>
     <div class="content">
-    <h1>Hallo Freising</h1>
+    <h1>Echter Ökostrom.</h1>
+    <h2>& neue Erzeugungsanlagen in Verantwortungseigentum!</h2>
    
     <form method="POST" action="{{route("getInfo")}}">
         @csrf
@@ -8,6 +9,8 @@
             <div class="grid col-span-2">
                 <div>Ihre PLZ </div><div><input pattern="[0-9]{5}" type="text"  name="zip" value="82024"></div>
                 <div>Ihr Jahresverbrauch (in kWh)</div><div><input  min="0" max="9999999" type="number" name="usage" value="2000"></div>
+                
+
                 <div class="col-span-2">
                     <br>
                     <span class="float-left mr-10"><strong>oder</strong> Personen im Haushalt</span>
@@ -56,7 +59,7 @@
                             </g>
                         </g>
                     </svg>
-                    <input type="number" name="persons" class="w-5 -mt-2 ml-5">
+                    <input type="text" name="persons" class=" -mt-2 ml-5">
                 </div>    
                 <div class="col-span-2">    
                 <button class="btn-primary" type="submit">Abschicken</button>

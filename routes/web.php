@@ -44,7 +44,7 @@ Route::controller(PowerCloudRestController::class)->group(function () {
 Route::controller(PowerCloudSoapController::class)->group(function () {
      
     Route::get('/getTariffs', 'getTariffs')->name('getTariffs');  
-    Route::post('/getInfo', 'getInfo')->name('getInfo');  
+    Route::post('/client/tarife', 'getInfo')->name('getInfo');  
 });
 
 Route::controller(DispatcherController::class)->group(function () {
