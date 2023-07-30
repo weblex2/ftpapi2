@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\ApiController;
 use App\Http\Controllers\API\PowerCloudSoapController;
 use App\Http\Controllers\API\PowerCloudRestController;
 use App\Http\Controllers\DispatcherController;
@@ -45,8 +44,11 @@ Route::controller(PowerCloudSoapController::class)->group(function () {
      
     Route::get('/getTariffs', 'getTariffs')->name('getTariffs');  
     Route::post('/client/tarife', 'getInfo')->name('getInfo');  
+    Route::post('/client/checkout', 'checkout')->name('checkout');  
+    Route::get('/client/getCityDropdown/{zip}', 'getCityDropdown')->name('getCityDropdown');  
 });
 
 Route::controller(DispatcherController::class)->group(function () {
     Route::get('/client/freising', 'start')->name('start'); 
+    Route::post('/client/submitForm', 'start')->name('submitForm'); 
 });
