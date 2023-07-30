@@ -25,6 +25,11 @@ class PowerCloudSoapController extends Controller
         return(json_decode($res,1));
     }
 
+    public function getCityDropdown($zip){
+        $cities = json_encode($this->getCities($zip)['data']);
+        return $cities;
+    }    
+
     public function getStreetsInZipCode($zip){
         $url="https://ww24pjl1v6.execute-api.eu-central-1.amazonaws.com/prod/getStreetsInZipCode?zip=".$zip;
         $res = file_get_contents($url);
@@ -64,6 +69,16 @@ class PowerCloudSoapController extends Controller
         return $res;
     }
  
+    public function checkout(Request $request){
+        $req = $request->all();
+        $zip  = $req['zip'];
+        $business  = isset($req['business']) ? $req['business'] : 0;
+        $usage  = $req['usage'];
+        $cities = $this->getCities($zip);
+        $streets = $this->getStreetsInZipCode($zip);
+        return view('clients.freising.checkout', compact('cities','streets'));
+    }
+
     public function getTariffs2(){
         $zip = "82024";
         $this->getCities("82008");
