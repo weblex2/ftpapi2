@@ -1,8 +1,15 @@
 <x-guest-layout>
+    <div class="calculator content-wrapper ">
+        <div class="content flex items-center ">
+            <div class="mr-5">Ihre PLZ</div>
+            <div ><input class="w-20" type="text" name="plz"></div>
+        </div>
+    </div>
     <div id="tariffs w-full">
         <div class="content-wrapper content-odd fair">
             <div class="content tariff relative">
-                    <div>
+                    <form id="frmT1" method="POST" action="{{route("checkout")}}">
+                        @csrf
                         <div class="headline mb-5">
                             <div><img class="w-12 h-auto mt-3 mr-4" src="{{asset('img/ckj13utoq0015ntxqoughe2ek-ckewz14od001kzsxq2b3nhal5-fair-ic.svg')}}"></div>
                             <div class="w-1/2">
@@ -14,6 +21,16 @@
                             </div>  
                         </div>    
                         <div class="text-black text-2xl mb-8">Einfach viele Vorteile</div>  
+                        <div class="options"> 
+                            <div class="flex items-center mr-4">
+                                <input checked id="student1" name="student" value="1" type="checkbox"  class="w-5 h-5 text-[#0ac] bg-gray-100 border-gray-300 rounded focus:ring-[#0ac] dark:focus:ring-[#0ac] dark:ring-offset-gray-800 focus:ring-2 dark:bg-white dark:border-gray-600">
+                                <label for="red-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Red</label>
+                            </div>
+                            <div class="flex items-center mr-4">
+                                <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Inline 2</label>
+                            </div>
+                        </div>
                         <div class="relative">
                             <div id="loader1" class="absolute z-10 w-full h-full flex bg-white bg-opacity-100 items-center justify-center">
                                 <img class="w-20 h-auto" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
@@ -45,7 +62,10 @@
                                     <button class="btn-primary-odd">Jetzt bestellen</button>
                             </div>    
                         </div>
-                    </div>      
+                        <input type="hidden" name="zip" value="<?php echo $_POST['zip']; ?>" />
+                        <input type="hidden" name="usage" value="<?php echo $_POST['usage']; ?>" />
+                        <input type="hidden" name="tariff" value="21_ftp_fair-ez" id="tarrif1" />
+                    </form>      
             </div>     
         </div>    
         <div class="content-wrapper content-even fair-auto-student">
@@ -81,7 +101,7 @@
             $('#t1_wpb').html(wpb[0]);
             $('#t1_wpb_dec').html(wpb[1]);
             $('#loader1').hide(200);
-            console.log(resp.data['21_ftp_fair-ez']['workingPriceBrutto']);
+            console.log(resp.data['21_ftp_fair-ez']);
             $('#tariffs').html(resp);
         },'json'); 
     });
