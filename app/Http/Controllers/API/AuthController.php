@@ -12,7 +12,7 @@ class AuthController extends BaseController
 {
     public function signin(Request $request)
     {
-        if(Auth::attempt(['name' => $request->name, 'password' => $request->password])){
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $authUser = Auth::user();
             $success['token'] =  $authUser->createToken('token')->plainTextToken;
             $success['name'] =  $authUser->name;
