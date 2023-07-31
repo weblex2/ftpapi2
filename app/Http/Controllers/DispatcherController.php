@@ -9,4 +9,7 @@ class DispatcherController extends Controller
     public function start(){
         return view('clients.freising.start');
     }
+    public function submitForm(Request $request){
+        dump($request);
+    }
 }
