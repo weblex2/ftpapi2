@@ -266,6 +266,12 @@ $(document).ready(function(){
         updateBillingCities();
     });
 
+    $('#billingAlternativeAddress').change(function(){
+
+        if ($(this).is(':checked')) {
+            $('#billingFirstname').prop('required',true);
+        }
+    })
 
     $(document).on("keypress", function(e) {
             if (e.which == 115) { //s
