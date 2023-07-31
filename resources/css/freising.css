@@ -14,7 +14,7 @@ html{
 }
 
 .nav-item{
-    @apply px-5  font-bold
+    @apply px-5  font-bold text-base
 }
 
 .content-wrapper{
@@ -67,7 +67,7 @@ html{
 
 
 h1{
-    @apply text-5xl  font-bold mb-10
+    @apply text-4xl  font-bold mb-10
 }
 
 h2{
@@ -102,7 +102,7 @@ input[type="checkbox"]{
     @apply ml-2 text-sm font-medium
 }
 
-input:disabled{
+input:read-only{
     @apply bg-gray-300
 }
 
