@@ -12,10 +12,12 @@ class dropdown extends Component
      * Create a new component instance.
      */
 
-    public $mydata;  
-      
-    public function __construct($mydata)
+    public $name;
+    public $mydata;
+
+    public function __construct($mydata,$name)
     {
+        $this->name = $name;
         $this->mydata = $mydata;
     }
 

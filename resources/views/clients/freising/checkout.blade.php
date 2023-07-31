@@ -54,36 +54,36 @@
          <h2>Lieferanschrift</h2>
          <div class="flex mb-5">
             <div class="flex items-center mr-4">
-                <input id="inline-2-radio" type="radio" value="2" name="inline-radio-group" class="">
-                <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Frau</label>
+                <input id="salutation" type="radio" value="2" name="salutation" >
+                <label for="salutation1" class="ml-2 text-sm font-medium text-black">Frau</label>
             </div>
             <div class="flex items-center mr-4">
-                <input id="inline-2-radio" type="radio" value="1" name="inline-radio-group" class="">
-                <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Herr</label>
+                <input id="salutation2" type="radio" value="1" name="salutation" >
+                <label for="salutation2" class="ml-2 text-sm font-medium text-black">Herr</label>
             </div>
             <div class="flex items-center mr-4">
-                <input id="inline-2-radio" type="radio" value="3" name="inline-radio-group" class="">
-                <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Familie</label>
+                <input id="salutation2" type="radio" value="3" name="salutation" >
+                <label for="salutation2" class="ml-2 text-sm font-medium text-black">Familie</label>
             </div>
             <div class="flex items-center mr-4">
-                <input id="inline-2-radio" type="radio" value="8" name="inline-radio-group" class="">
-                <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Firma</label>
+                <input id="salutation3" type="radio" value="8" name="salutation" >
+                <label for="salutation3" class="ml-2 text-sm font-medium text-black">Firma</label>
             </div>
             <div class="flex items-center mr-4">
-                <input id="inline-2-radio" type="radio" value="9" name="inline-radio-group" class="">
-                <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Keine Angabe</label>
+                <input id="salutation4" type="radio" value="9" name="salutation" >
+                <label for="salutation4" class="ml-2 text-sm font-medium text-black">Keine Angabe</label>
             </div>
          </div>
 
          <!-- lastname / firstname -->
          <div class="form-line">
             <div>Vorname <br/><input  type="text" name="firstName" id="firstName"></div>
-            <div>Nachname <br/><input type="text" name="surName" id="surName"></div>
+            <div>Nachname <br/><input type="text" name="surname" id="surname"></div>
          </div>
 
          <div class="form-line">
-            <div>PLZ<br/><input type="text" name="zip" id="zip" value="{{$_POST['zip']}}" disabled></div>
-            <div>Ort<br/><x-web.dropdown :mydata="$cities['data']" class="dropdown"/></div>
+            <div>PLZ<br/><input type="text" name="zip" id="zip" value="{{$_POST['zip']}}" readonly ></div>
+            <div>Ort<br/><x-web.dropdown name="city" :mydata="$cities['data']"  class="dropdown"/></div>
          </div>
 
          <div class="form-line">
@@ -93,7 +93,7 @@
          <!-- Rechnungsadresse -->
          <div class="form-line">
             <div class="flex items-center mr-4">
-                <input id="billingAlternativeAddress" name="billingAlternativeAddress" value="" type="checkbox">
+                <input id="billingAlternativeAddress" name="billingAlternativeAddress" value="0" type="checkbox">
                 <label for="billingAlternativeAddress" class="checkbox-label">Rechnungsadresse weicht von Lieferanschrift ab</label>
             </div>
          </div>
@@ -101,27 +101,27 @@
 
          <h2>Rechnungsadresse</h2>
 
-         <div class="">
+         <div >
             <div class="flex mb-5">
                 <div class="flex items-center mr-4">
-                    <input id="inline-2-radio" type="radio" value="2" name="billingSalutation" class="">
-                    <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Frau</label>
+                    <input id="billingSalutation1" type="radio" value="2" name="billingSalutation" >
+                    <label for="billingSalutation1" class="ml-2 text-sm font-medium text-black">Frau</label>
                 </div>
                 <div class="flex items-center mr-4">
-                    <input id="inline-2-radio" type="radio" value="1" name="billingSalutation" class="">
-                    <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Herr</label>
+                    <input id="billingSalutation2" type="radio" value="1" name="billingSalutation" >
+                    <label for="billingSalutation2" class="ml-2 text-sm font-medium text-black">Herr</label>
                 </div>
                 <div class="flex items-center mr-4">
-                    <input id="inline-2-radio" type="radio" value="3" name="billingSalutation" class="">
-                    <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Familie</label>
+                    <input id="billingSalutation3" type="radio" value="3" name="billingSalutation" >
+                    <label for="billingSalutation3" class="ml-2 text-sm font-medium text-black">Familie</label>
                 </div>
                 <div class="flex items-center mr-4">
-                    <input id="inline-2-radio" type="radio" value="8" name="billingSalutation" class="">
-                    <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Firma</label>
+                    <input id="billingSalutation4" type="radio" value="8" name="billingSalutation" >
+                    <label for="billingSalutation4" class="ml-2 text-sm font-medium text-black">Firma</label>
                 </div>
                 <div class="flex items-center mr-4">
-                    <input id="inline-2-radio" type="radio" value="9" name="billingSalutation" class="">
-                    <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Keine Angabe</label>
+                    <input id="billingSalutation5" type="radio" value="9" name="billingSalutation" >
+                    <label for="billingSalutation5" class="ml-2 text-sm font-medium text-black">Keine Angabe</label>
                 </div>
              </div>
          </div>
@@ -134,7 +134,7 @@
 
          <div class="form-line">
             <div>PLZ<br/><input type="text" name="billingZip" id="billingZip"></div>
-            <div>Ort<br/><x-web.dropdown :mydata="$cities['data']" :emptyRow=true name="billingCity" class="dropdown"/></div>
+            <div>Ort<br/><x-web.dropdown :mydata="$cities['data']" :emptyRow=true name="billingCity"  class="dropdown"/></div>
          </div>
 
          <div class="form-line">
@@ -245,8 +245,10 @@
                 </select>
             </div>
          </div>
+         <input type="hidden" name="business" value="{{$_POST['business']}}">
          <input type="hidden" name="usage" value="{{$_POST['usage']}}">
-         <input type="hidden" name="tartiff" value="{{$_POST['tariff']}}">
+         <input type="hidden" name="productCode" value="{{$_POST['tariff']}}">
+         <input type="hidden" name="energy" value="electricity">
          <div class="form-line justify-end">
             <button  class="btn-primary-odd mt-5 mr-10">Weiter</button>
          </div>
@@ -267,6 +269,7 @@ $(document).ready(function(){
 
     $(document).on("keypress", function(e) {
             if (e.which == 115) { //s
+                $('input:radio[name="salutation"]').filter('[value="1"]').attr('checked', true);
                 $('[name="surName"]').val('API Test AN');
                 $('[name="firstName"]').val('Do not confirm!!!');
                 $('[name="zip"]').val('82024');

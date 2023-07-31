@@ -66,6 +66,7 @@
                         <input type="hidden" name="zip" value="<?php echo $_POST['zip']; ?>" />
                         <input type="hidden" name="usage" value="<?php echo $_POST['usage']; ?>" />
                         <input type="hidden" name="tariff" value="21_ftp_fair-ez" id="tarrif1" />
+                        <input type="hidden" name="business" value="0" id="business1" />
                     </form>
             </div>
         </div>
@@ -84,9 +85,7 @@
         <div class="content-wrapper fair-wp-student">
         </div>
     </div>
-    <x-web.dropdown :mydata="$cities['data']" class="dropdown"/>
-    <x-web.dropdown :mydata="$streets" class="dropdown"/>
-    <x-web.dropdown :mydata="$provider" class="dropdown"/>
+
 
 
 <script>
