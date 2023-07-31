@@ -1,5 +1,5 @@
 <div class="bg-white w-full flex justify-center">
-    <div class="w-[70%] p-5 flex">
+    <div class="w-[80%] p-3 flex">
     <div><img class="h-10 w-auto" src="{{ asset('img/logo.svg') }}" alt="logo" /></div>
     <div class="w-auto flex w-full text-black justify-end items-center">
     <div class="nav-item"><a href="#">Ökostrom</a></div>
