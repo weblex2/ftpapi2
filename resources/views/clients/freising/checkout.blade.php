@@ -1,4 +1,4 @@
-<x-guest-layout>
+@extends('layouts.freisinglayout')
     <div class="content-wrapper content-blue">
         <div class="content tariff relative">
                 <form id="frmT1" method="POST" action="{{route("checkout")}}">
@@ -11,47 +11,47 @@
                         </div>
                         <div class="flex items-center justify-center text-2xl">
                             <div>Student</div>
-                        </div>  
-                    </div>    
-                    
+                        </div>
+                    </div>
+
                     <div class="relative">
                         <div id="loader1" class="absolute hidden z-10 w-full h-full flex bg-white bg-opacity-50 items-center justify-center">
                             <img class="w-20 h-auto" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
                         </div>
-                        
+
                         <div class="tariff-details">
                             <div class="flex mb-5">
                                 <div class="tariff-details-key">Reduzierte Grundgebühr</div>
                                 <div class="tariff-details-value"><strong>Nur 11<sup>35</sup> Euro monatlich</strong></div>
-                            </div>    
+                            </div>
                             <div class="flex mb-5">
                                 <div class="tariff-details-key">Förderung</div>
                                 <div class="tariff-details-value">Förderung mit 050 netto / 060 brutto Cent / kWh</div>
-                            </div>  
+                            </div>
                             <div class="flex mb-5">
                                 <div class="tariff-details-key">Verbrauchskosten</div>
                                 <div class="tariff-details-value">{{$_POST['usage']}} kWh × <span id="t1_wpb"></span><sup id="t1_wpb_dec"></sup> Cent / kWh = 1.265<sup>40</sup> Euro im Jahr</div>
-                            </div> 
+                            </div>
                             <div class="flex mb-5">
                                 <div class="tariff-details-key">Laufzeit</div>
                                 <div class="tariff-details-value">Mindestlaufzeit: 1 Monat</div>
-                            </div> 
+                            </div>
                             <div class="flex mb-5">
                                 <div class="tariff-details-key">Abschlag & Jahresenergiekosten</div>
                                 <div class="tariff-details-value">119<sup>30</sup> Euro pro Monat / 1.431<sup>60</sup> Euro im Jahr</div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
-                </form>      
-        </div>   
-    </div>      
+                </form>
+        </div>
+    </div>
     <!-- User Data -->
     <div class="content-wrapper content-white">
         <div class="content">
-         <form id="frmChkout" action="/client/submitForm" method="POST">   
+         <form id="frmChkout" action="/client/submitForm" method="POST">
             @csrf
-         <h2>Lieferanschrift</h2>  
-         <div class="flex mb-5"> 
+         <h2>Lieferanschrift</h2>
+         <div class="flex mb-5">
             <div class="flex items-center mr-4">
                 <input id="inline-2-radio" type="radio" value="2" name="inline-radio-group" class="">
                 <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Frau</label>
@@ -78,12 +78,12 @@
          <div class="form-line">
             <div>Vorname <br/><input  type="text" name="firstName" id="firstName"></div>
             <div>Nachname <br/><input type="text" name="surName" id="surName"></div>
-         </div>   
+         </div>
 
          <div class="form-line">
             <div>PLZ<br/><input type="text" name="zip" id="zip" value="{{$_POST['zip']}}" disabled></div>
             <div>Ort<br/><x-web.dropdown :mydata="$cities['data']" class="dropdown"/></div>
-         </div> 
+         </div>
 
          <div class="form-line">
             <div>Straße<br/><x-web.dropdown :mydata="$streets" name="street" id="street" class="dropdown"/></div>
@@ -95,13 +95,13 @@
                 <input id="billingAlternativeAddress" name="billingAlternativeAddress" value="" type="checkbox">
                 <label for="billingAlternativeAddress" class="checkbox-label">Rechnungsadresse weicht von Lieferanschrift ab</label>
             </div>
-         </div>   
-         
-         
-         <h2>Rechnungsadresse</h2> 
-         
-         <div class="">    
-            <div class="flex mb-5"> 
+         </div>
+
+
+         <h2>Rechnungsadresse</h2>
+
+         <div class="">
+            <div class="flex mb-5">
                 <div class="flex items-center mr-4">
                     <input id="inline-2-radio" type="radio" value="2" name="billingSalutation" class="">
                     <label for="inline-2-radio" class="ml-2 text-sm font-medium text-black">Frau</label>
@@ -129,12 +129,12 @@
          <div class="form-line">
             <div>Vorname<br/><input  type="text" name="billingFirstname" id="billingFirstname"></div>
             <div>Nachname<br/><input type="text" name="billingsurname" id="billingSurname"></div>
-         </div>   
+         </div>
 
          <div class="form-line">
             <div>PLZ<br/><input type="text" name="billingZip" id="billingZip"></div>
             <div>Ort<br/><x-web.dropdown :mydata="$cities['data']" :emptyRow=true name="billingCity" class="dropdown"/></div>
-         </div> 
+         </div>
 
          <div class="form-line">
             <div>Straße<br/><x-web.dropdown :mydata="$streets" :emptyRow=true name="billingStreet" class="dropdown"/></div>
@@ -142,7 +142,7 @@
          </div>
 
          <h2>Kontaktdaten</h2>
-         
+
          <div class="form-line">
             <div>Geburtsdatum<br/><input type="date" name="birthday" placehoder="TT.MM.JJJJ"></div>
             <div></div>
@@ -164,7 +164,7 @@
          </div>
 
 
-         <h2>Stromversorgung</h2> 
+         <h2>Stromversorgung</h2>
          <!-- Customer Moved -->
          <div class="form-line">
             <div class="flex items-center mr-4">
@@ -197,13 +197,13 @@
             </div>
          </div>
 
-         <h2>Zahlung</h2> 
+         <h2>Zahlung</h2>
          <div class="form-line">
             <div class="flex items-center mr-4 mt-4">
                 <input id="noSEPA" name="noSEPA" value="" type="checkbox">
                 <label for="noSEPA" class="checkbox-label">Ich überweise die fälligen Abschläge zum ersten Werktag des Monats selbst.</label>
-            </div>   
-         </div>   
+            </div>
+         </div>
 
 
          <div class="form-line">
@@ -214,7 +214,7 @@
             <div>Abweichender Kontoinhaber (Vor- und Nachname)<br/><input type="text" name="alternativeAccountHolder" placeholder="optional"></div>
          </div>
 
-         <h2>Aktionscode</h2> 
+         <h2>Aktionscode</h2>
          <div class="form-line">
             <div><input type="text" name="campaignIdentifier" placeholder="optional"></div>
             <div> </div>
@@ -232,7 +232,7 @@
                     <option value="5">Wohngebäude</option>
                     <option value="6">Bürogebäude</option>
                     <option value="7">Altenheim</option>
-                </select>    
+                </select>
             </div>
             <div>
                 Wohngebäude<br/>
@@ -241,19 +241,19 @@
                     <option value="1">Einfamilienhaus</option>
                     <option value="2">Mehrfamilienhaus</option>
                     <option value="3">Pfarrhaus</option>
-                </select>    
+                </select>
             </div>
          </div>
          <input type="hidden" name="usage" value="{{$_POST['usage']}}">
          <input type="hidden" name="tartiff" value="{{$_POST['tariff']}}">
          <div class="form-line justify-end">
             <button  class="btn-primary-odd mt-5 mr-10">Weiter</button>
-         </div>   
+         </div>
 
-        </form> 
+        </form>
         </div>
-        
-    </div>    
+
+    </div>
 
     <script>
 
@@ -264,7 +264,7 @@ $(document).ready(function(){
     });
 
 
-    $(document).on("keypress", function(e) {   
+    $(document).on("keypress", function(e) {
             if (e.which == 115) { //s
                 $('[name="surName"]').val('API Test AN');
                 $('[name="firstName"]').val('Do not confirm!!!');
@@ -287,8 +287,8 @@ $(document).ready(function(){
                 $('[name="phoneHomeAreaCode"]').val('000');
                 $('[name="phoneHome"]').val('1111111');
                 $('[name="desiredDate"]').val('2030-01-01');
-            }  
-        });    
+            }
+        });
         /*
         $("#frmChkout").submit(function (event) {
             event.preventDefault();
@@ -315,9 +315,9 @@ $(document).ready(function(){
                     console.log(error);
                 }
             },'json');
-        });   
+        });
         */
-    });    
+    });
 
     function updateBillingCities() {
         var zip = $('#billingZip').val();
@@ -342,10 +342,10 @@ $(document).ready(function(){
                     console.log(error);
                 }
             });
-    }    
+    }
 
     </script>
     @php
         dump($_POST);
     @endphp
-</x-guest-layout>
+</x-freisinglayout>

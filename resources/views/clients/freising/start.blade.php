@@ -1,15 +1,16 @@
-<x-guest-layout>
+@extends('layouts.freisinglayout')
+@section('content')
     <div class="content">
     <h1>Echter Ökostrom.</h1>
     <h2>& neue Erzeugungsanlagen in Verantwortungseigentum!</h2>
-   
+
     <form method="POST" action="{{route("getInfo")}}">
         @csrf
         <div class="plz-content">
             <div class="grid col-span-2">
                 <div>Ihre PLZ </div><div><input pattern="[0-9]{5}" type="text"  name="zip" value="82024"></div>
                 <div>Ihr Jahresverbrauch (in kWh)</div><div><input  min="0" max="9999999" type="number" name="usage" value="2000"></div>
-                
+
 
                 <div class="col-span-2">
                     <br>
@@ -60,15 +61,15 @@
                         </g>
                     </svg>
                     <input type="text" name="persons" class=" -mt-2 ml-5">
-                </div>    
-                <div class="col-span-2">    
+                </div>
+                <div class="col-span-2">
                 <button class="btn-primary" type="submit">Abschicken</button>
                 </div>
             </div>
             <input type="hidden" name="business" value="0">
-        </form> 
+        </form>
 
-    </div>    
+    </div>
 
-    </div>   
-</x-guest-layout>
+    </div>
+@endsection
