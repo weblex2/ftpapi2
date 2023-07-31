@@ -1,4 +1,5 @@
 @extends('layouts.freisinglayout')
+@section('content')
     <div class="content-wrapper content-blue">
         <div class="content tariff relative">
                 <form id="frmT1" method="POST" action="{{route("checkout")}}">
@@ -348,4 +349,4 @@ $(document).ready(function(){
     @php
         dump($_POST);
     @endphp
-</x-freisinglayout>
+@endsection
