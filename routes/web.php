@@ -36,19 +36,20 @@ Route::get('/hi', function () {
 
 
 Route::controller(PowerCloudRestController::class)->group(function () {
-    Route::get('/getContract', 'test')->name('getContract'); 
-    Route::get('/orderTest', 'newOrderTest')->name('newOrderTest'); 
+    Route::get('/getContract', 'test')->name('getContract');
+    Route::get('/orderTest', 'newOrderTest')->name('newOrderTest');
 });
 
+
 Route::controller(PowerCloudSoapController::class)->group(function () {
-     
-    Route::get('/getTariffs', 'getTariffs')->name('getTariffs');  
-    Route::post('/client/tarife', 'getInfo')->name('getInfo');  
-    Route::post('/client/checkout', 'checkout')->name('checkout');  
-    Route::get('/client/getCityDropdown/{zip}', 'getCityDropdown')->name('getCityDropdown');  
+
+    Route::get('/getTariffs', 'getTariffs')->name('getTariffs');
+    Route::post('/client/tarife', 'getInfo')->name('getInfo');
+    Route::post('/client/checkout', 'checkout')->name('checkout');
+    Route::get('/client/getCityDropdown/{zip}', 'getCityDropdown')->name('getCityDropdown');
 });
 
 Route::controller(DispatcherController::class)->group(function () {
-    Route::get('/client/freising', 'start')->name('start'); 
-    Route::post('/client/submitForm', 'start')->name('submitForm'); 
+    Route::get('/client/freising', 'start')->name('start');
+    Route::post('/client/submitForm', 'submitForm')->name('submitForm');
 });
