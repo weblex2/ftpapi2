@@ -22,7 +22,7 @@ html{
 }
 
 .content {
-    @apply w-full md:w-[70%] lg:p-20
+    @apply w-full md:w-[80%] lg:p-20
 }
 
 .content-white{

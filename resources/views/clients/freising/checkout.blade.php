@@ -54,31 +54,31 @@
          <h2>Lieferanschrift</h2>
          <div class="flex mb-5">
             <div class="flex items-center mr-4">
-                <input id="salutation" type="radio" value="2" name="salutation" >
+                <input id="salutation" type="radio" value="2" name="salutation" required >
                 <label for="salutation1" class="ml-2 text-sm font-medium text-black">Frau</label>
             </div>
             <div class="flex items-center mr-4">
-                <input id="salutation2" type="radio" value="1" name="salutation" >
+                <input id="salutation2" type="radio" value="1" name="salutation"  required>
                 <label for="salutation2" class="ml-2 text-sm font-medium text-black">Herr</label>
             </div>
             <div class="flex items-center mr-4">
-                <input id="salutation2" type="radio" value="3" name="salutation" >
+                <input id="salutation2" type="radio" value="3" name="salutation"  required>
                 <label for="salutation2" class="ml-2 text-sm font-medium text-black">Familie</label>
             </div>
             <div class="flex items-center mr-4">
-                <input id="salutation3" type="radio" value="8" name="salutation" >
+                <input id="salutation3" type="radio" value="8" name="salutation"  required>
                 <label for="salutation3" class="ml-2 text-sm font-medium text-black">Firma</label>
             </div>
             <div class="flex items-center mr-4">
-                <input id="salutation4" type="radio" value="9" name="salutation" >
+                <input id="salutation4" type="radio" value="9" name="salutation" required >
                 <label for="salutation4" class="ml-2 text-sm font-medium text-black">Keine Angabe</label>
             </div>
          </div>
 
          <!-- lastname / firstname -->
          <div class="form-line">
-            <div>Vorname <br/><input  type="text" name="firstName" id="firstName"></div>
-            <div>Nachname <br/><input type="text" name="surname" id="surname"></div>
+            <div>Vorname <br/><input  type="text" name="firstName" id="firstName" required/></div>
+            <div>Nachname <br/><input type="text" name="surname" id="surname" required/></div>
          </div>
 
          <div class="form-line">
@@ -250,7 +250,7 @@
          <input type="hidden" name="productCode" value="{{$_POST['tariff']}}">
          <input type="hidden" name="energy" value="electricity">
          <div class="form-line justify-end">
-            <button  class="btn-primary-odd mt-5 mr-10">Weiter</button>
+            <input type="submit"  class="btn-primary-odd mt-5 mr-10" name="Weiter"></input>
          </div>
 
         </form>
