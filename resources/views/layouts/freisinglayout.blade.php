@@ -22,5 +22,6 @@
 <div class="font-sans text-gray-900 antialiased">
     @yield('content')
 </div>
+@include('clients.freising.footer')
 </body>
 </html>

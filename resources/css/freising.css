@@ -25,6 +25,10 @@ html{
     @apply w-full md:w-[80%] lg:px-20 lg:py-10
 }
 
+.content-small {
+    @apply w-full md:max-w-[1200px] lg:px-20 lg:py-10
+}
+
 .content-white{
     @apply text-[#0ac] bg-white
 }
@@ -119,3 +123,6 @@ input:read-only{
     @apply cursor-pointer font-extrabold text-xl text-[#0ac]  bg-[#0ac] text-white px-8 py-2 border-[3px] border-[#0ac] rounded-3xl hover:text-[#0ac] hover:bg-white
 }
 
+#footer h3{
+    @apply mb-5
+}

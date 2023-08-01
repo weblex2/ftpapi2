@@ -91,7 +91,7 @@
                     </form>
             </div>
         </div>
-        <div class="content-wrapper content-even fair-auto-student">
+        <!--div class="content-wrapper content-even fair-auto-student">
             <div class="content ">
                 <h1 class="tariff-h1">Fair</h1>
                 <div>Von ÖKO-TEST 04/2022 mit "sehr gut" bewertet</div>
@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="content-wrapper fair-wp-student">
-        </div>
+        </div-->
     </div>
 
 
