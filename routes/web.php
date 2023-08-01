@@ -42,7 +42,6 @@ Route::controller(PowerCloudRestController::class)->group(function () {
 
 
 Route::controller(PowerCloudSoapController::class)->group(function () {
-
     Route::get('/getTariffs', 'getTariffs')->name('getTariffs');
     Route::post('/client/tarife', 'getInfo')->name('getInfo');
     Route::post('/client/checkout', 'checkout')->name('checkout');
@@ -52,4 +51,5 @@ Route::controller(PowerCloudSoapController::class)->group(function () {
 Route::controller(DispatcherController::class)->group(function () {
     Route::get('/client/freising', 'start')->name('start');
     Route::post('/client/submitForm', 'submitForm')->name('submitForm');
+    Route::get('/client/checkout/success', 'checkoutSuccess')->name('checkoutSuccess');
 });

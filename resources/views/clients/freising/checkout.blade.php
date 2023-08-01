@@ -250,7 +250,7 @@
          <input type="hidden" name="productCode" value="{{$_POST['tariff']}}">
          <input type="hidden" name="energy" value="electricity">
          <div class="form-line justify-end">
-            <input type="submit"  class="btn-primary-odd mt-5 mr-10" name="Weiter"></input>
+            <input type="submit"  class="btn-primary-odd mt-5 mr-10" value="Weiter"></input>
          </div>
 
         </form>
@@ -353,9 +353,5 @@ $(document).ready(function(){
                 }
             });
     }
-
     </script>
-    @php
-        dump($_POST);
-    @endphp
 @endsection

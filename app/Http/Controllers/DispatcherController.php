@@ -28,7 +28,6 @@ class DispatcherController extends Controller
 
         dump($data);
         $pc = new PowerCloudRestController();
-        dump();
         $res = $pc->createOrder($data);
         print_r($res);
 
@@ -41,6 +40,10 @@ class DispatcherController extends Controller
         $res = $this->sendApiRequest("createOrder",$data, $token);
         #print_r($res);
         */
+    }
+
+    public function checkoutSuccess(){
+        return view('clients.freising.checkoutsuccess');
     }
 
     public function sendApiRequest($endpoint, $data, $token){
