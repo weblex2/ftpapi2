@@ -8,7 +8,7 @@
 
 
 html{
-    @apply  text-white;
+    @apply text-lg text-white;
     font-family: SourceSansPro,Helvetica,sans-serif;
     line-height: 1.5;
 }

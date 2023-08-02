@@ -83,7 +83,7 @@
 
          <div class="form-line">
             <div>PLZ<br/><input type="text" name="zip" id="zip" value="{{$_POST['zip']}}" readonly ></div>
-            <div>Ort<br/><x-web.dropdown name="city" :mydata="$cities['data']"  class="dropdown"/></div>
+            <div>Ort<br/><x-web.dropdown name="city" :mydata="$cities['data']" emptyOption="1" class="dropdown"/></div>
          </div>
 
          <div class="form-line">
