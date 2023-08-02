@@ -50,8 +50,12 @@ Route::controller(PowerCloudSoapController::class)->group(function () {
 Route::controller(DispatcherController::class)->group(function () {
     Route::get('/client/{client}', 'start')->name('start');
     Route::get('/client/{client}/about', 'about')->name('about');
+
     Route::post('/client/{client}/tariff', 'getTariffsPage')->name('getTariff');
     Route::post('/client/submitForm', 'submitForm')->name('submitForm');
     Route::get('/client/{client}/checkout/success', 'checkoutSuccess')->name('checkoutSuccess');
 
+
+    //Nur für die Kirche
+    Route::get('/client/{client}/registrierung', 'register')->name('registerclient');
 });

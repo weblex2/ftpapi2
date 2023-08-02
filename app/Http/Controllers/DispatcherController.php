@@ -25,6 +25,10 @@ class DispatcherController extends Controller
         return view('clients.'.$client.'.about',compact('client'));
     }
 
+    public function register($client){
+        return view('clients.'.$client.'.register',compact('client'));
+    }
+
     public function getTariffsPage(Request $request){
         $client = $this->getClient();
         $req = $request->all();
