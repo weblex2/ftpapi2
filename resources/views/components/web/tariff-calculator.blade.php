@@ -11,7 +11,7 @@
         <div id="doing-stuff" class="hidden  w-full h-full">
             <div class="flex bg-red-500 p-10 bg-opacity-60  justify-center items-center">    
                 <img class="w-[20%]" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
-            </div>
+            </div> 
         </div>    
         <div id="result" class="hidden">
             <div id="result1">
