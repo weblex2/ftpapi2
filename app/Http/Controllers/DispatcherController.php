@@ -27,6 +27,8 @@ class DispatcherController extends Controller
 
     public function register($client, Request $request){
         $req = $request->all();
+        $req['zip'] = isset($req['zip']) ? $req['zip'] : "";
+        $req['usage'] = isset($req['usage']) ? $req['usage'] : "2000";
         return view('clients.'.$client.'.register',compact('client','req'));
     }
 
