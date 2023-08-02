@@ -96,7 +96,9 @@
             <div class="w-1/2 p-5">
                 <div class="mb-5 relative text-xl text-4xl text-center lg:text-left">„Wenn die Politik nicht<br/>
                     &nbsp;handelt, handeln wir!“</div>
-                <span><strong>Christian Spitzner</strong></span>, Gründer FAIR TRADE POWER
+                <span><strong>&nbsp;Christian Spitzner</strong></span>, Gründer FAIR TRADE POWER
+                <br><br>
+                <button class="btn-primary-odd">Über Uns</button>
             </div>
         </div>
     </div>

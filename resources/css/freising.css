@@ -6,6 +6,16 @@
     display: none;
 }
 
+/*
+@font-face {
+    font-family: 'SourceSansProExtraLight';
+    src: url('source-sans-pro.extralight.ttf');
+}
+@font-face {
+    font-family: 'SourceSansPro';
+    src: url('source-sans-pro.regular.ttf');
+}
+*/
 
 html{
     @apply text-lg text-white;
@@ -14,11 +24,17 @@ html{
 }
 
 .nav-item{
-    @apply px-5  font-bold text-base hover:text-[#0ac]
+    line-height:1.5;
+    @apply px-5  font-bold text-xl  hover:text-[#0ac]
 }
 
 .content-wrapper{
-    @apply w-full  flex justify-center
+    font-family: SourceSansPro,Helvetica,sans-serif; font-weight: 300;
+    @apply w-full  flex justify-center leading-9 font-light
+}
+
+.content-wrapper p{
+    @apply font-light
 }
 
 .content {
