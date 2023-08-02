@@ -89,7 +89,17 @@
             </div>
         </div>
     </div>
-
-
+    <div class="content-wrapper">
+    <div class="content justify-center">
+        <div class="flex  px-20 py-5 items-center justify-center">
+            <div class="w-1/2"><img class="ml-10 w-[80%] max-w-full py-5" src="{{asset('img/cl2szy3ew04arucz1l1fxhx72-old-portrait.full.png')}}"></div>
+            <div class="w-1/2 p-5">
+                <div class="mb-5 relative text-xl text-4xl text-center lg:text-left">„Wenn die Politik nicht<br/>
+                    &nbsp;handelt, handeln wir!“</div>
+                <span><strong>Christian Spitzner</strong></span>, Gründer FAIR TRADE POWER
+            </div>
+        </div>
+    </div>
+    </div>
     </div>
 @endsection
