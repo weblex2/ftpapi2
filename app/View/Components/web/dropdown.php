@@ -19,7 +19,7 @@ class dropdown extends Component
     public function __construct($mydata,$name,$emptyOption=false)
     {
         $this->name = $name;
-        $this->mydata = $mydata;
+        $this->mydata = $mydata; 
         $this->emptyOption = $emptyOption;
     }
 
