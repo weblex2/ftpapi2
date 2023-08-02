@@ -35,17 +35,7 @@
             <div>
                 <h3>Fair Trade Power Deutschland GmbH</h3>
                 <div class="xl:flex space-y-2 xl:space-y-0 xl:space-x-2 justify-between">
-                    <p class="text-sm xs:text-base flex space-x-2">
-                                <span class="block mt-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18">
-                                        <path fill="#FFF" d="M6.75 18c.305 0 .54-.117.703-.352l2.356-3.375c1.171-1.687 1.945-2.824 2.32-3.41.539-.843.902-1.552 1.09-2.127.187-.574.281-1.236.281-1.986 0-1.219-.305-2.344-.914-3.375-.61-1.031-1.43-1.852-2.461-2.46C9.094.304 7.969 0 6.75 0 5.531 0 4.406.305 3.375.914c-1.031.61-1.852 1.43-2.46 2.461C.304 4.406 0 5.531 0 6.75c0 .75.094 1.412.281 1.986.188.575.551 1.284 1.09 2.127.375.586 1.149 1.723 2.32 3.41.961 1.36 1.747 2.485 2.356 3.375.164.235.398.352.703.352zm0-8.438c-.773 0-1.436-.275-1.986-.826-.551-.55-.827-1.213-.827-1.986 0-.773.276-1.436.827-1.986.55-.551 1.213-.827 1.986-.827.773 0 1.436.276 1.986.827.551.55.826 1.213.826 1.986 0 .773-.275 1.436-.826 1.986-.55.551-1.213.826-1.986.826z"></path>
-                                    </svg>
-                                </span>
-                        <span>
-                                    Inselstr. 1<br>
-                                    10179 Berlin
-                                </span>
-                    </p>
+
                     <p class="text-sm xs:text-base flex space-x-2">
                                 <span class="block mt-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18">
@@ -59,15 +49,13 @@
                     </p>
                 </div>
             </div>
-            <div>
-                <h3>Entdecken</h3>
+            <div >
+                <h3>Downloads</h3>
                 <p class="text-sm xs:text-base">
-                    <a href="/energiewende/" target="_blank" class="underline">Energiewende</a> <br>
-                    <a href="/unser-ökostrom/" target="_blank" class="underline">Unser Ökostrom</a><br>
-                    <a href="/unser-biogas/" target="_blank" class="underline">Unser Biogas</a><br>
-                    <a href="/company/" target="_blank" class="underline">Firmendetails</a><br>
-                    <a href="/faq/" target="_blank" class="underline">FAQ</a><br>
-                    <a href="/jobs/" target="_blank" class="underline">Jobs</a>
+                    <a href="/energiewende/" target="_blank" class="underline"><img class="w-3 mr-1 mt-0.5  float-left" src="{{asset('img/kirche/Icon_pdf_20px.png')}}">Infoschreiben</a> <br>
+                    <a href="/unser-ökostrom/" target="_blank" class="underline"><img class="w-3 mr-1 mt-0.5  float-left" src="{{asset('img/kirche/Icon_pdf_20px.png')}}">Auftrag SLP</a><br>
+                    <a href="/unser-biogas/" target="_blank" class="underline"><img class="w-3 mr-1 mt-0.5  float-left" src="{{asset('img/kirche/Icon_pdf_20px.png')}}">Auftrag RLM</a><br>
+                    <a href="/company/" target="_blank" class="underline"><img class="w-3 mr-1 mt-0.5  float-left" src="{{asset('img/kirche/Icon_pdf_20px.png')}}">Widerrufsformular</a><br>
                 </p>
             </div>
             <div>

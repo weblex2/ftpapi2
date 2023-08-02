@@ -22,6 +22,15 @@ html{
     font-family: SourceSansPro,Helvetica,sans-serif;
     line-height: 1.5;
 }
+#footer .content a:link, #copyright .content a:link{
+    @apply text-white;
+}
+
+.content a:link{
+    @apply text-[#0ac];
+}
+
+
 
 .nav-item{
     line-height:1.5;
@@ -38,7 +47,11 @@ html{
 }
 
 .content {
-    @apply w-full md:w-[80%] lg:px-20 lg:py-10
+    @apply w-full md:w-[70%] lg:px-20 lg:py-10
+}
+
+.content p{
+    @apply mb-4
 }
 
 .content-small {
