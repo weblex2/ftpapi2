@@ -11,14 +11,13 @@
         <div id="doing-stuff" class="hidden  w-full h-full  ">
             <div class="flex p-10 bg-opacity-60  justify-center items-center">      
                 <img class="w-[20%]" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
-                blubb
             </div> 
         </div>    
         <div id="result" class="hidden"> 
             <div id="result1">
                 <div class="tariff-details">
                     <div class="flex mb-5">
-                        <div class="text-[#0ac] text-sm text-bold mr-10 w-[40%]">Reduzierte Grundgebühr</div>
+                        <div class="text-[#0ac] text-sm text-bold mr-10 w-[40%]">Grundgebühr</div>
                         <div class="text-black text-sm"><strong>Nur <span id="euro_month1">0.00</span> Euro monatlich</strong></div>
                     </div>
                     <div class="flex mb-5">
@@ -62,10 +61,11 @@
             axios.get('/getTariffs/'+zip+"/"+usage+"/"+business)
                 .then(response => {
                     $('#doing-stuff').hide();
-                    
-                    $('#euro_month1').html(response.data['23_sondertarif12']['basePriceNetto']);
+                    var basePriceBrutto = response.data['21_ftp_fair-ez']['basePriceBrutto'];
+                    basePriceBrutto = Math.round(basePriceBrutto/12 * 100) / 100;
+                    $('#euro_month1').html(basePriceBrutto);
                     $('#result').show();
-                    console.log(response.data['23_sondertarif12']);
+                    console.log(response.data['21_ftp_fair-ez']);
             })
             .catch(error => {
                 console.log(error);
