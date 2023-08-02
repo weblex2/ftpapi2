@@ -12,7 +12,7 @@
                 Deshalb wurden wir u.a. von Grüner-Strom-Label, Utopia und Robin Wood ausgezeichnet. Diese erhalten nur Unternehmen, die wirklich Ökostrom vertreiben und den Ausbau erneuerbarer Energien fördern.
             </p>
                 {{$client}}
-            <form method="POST" action="/client/ftp/tariff">
+            <form method="POST" action="/client/freising/tariff">
                 @csrf
                 <div class="plz-content">
                     <div class="flex justify-items items-center justify-between w-[70%] my-10">
