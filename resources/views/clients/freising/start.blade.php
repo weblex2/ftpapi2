@@ -1,4 +1,5 @@
 @extends('layouts.freisinglayout')
+@section('title', 'Garantiert reine Energie')
 @section('content')
     <div class="content-wrapper content-blue bg-no-repeat bg-right-top bg-contain bg-auto bg-[url('../../public/img/cke8uyxoe00d67txqmbi3vuo9-headerbild-unsplash.full.png')]">
         <div class="content">
