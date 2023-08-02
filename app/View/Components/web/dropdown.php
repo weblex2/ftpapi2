@@ -20,7 +20,7 @@ class dropdown extends Component
     {
         $this->name = $name;
         $this->mydata = $mydata;
-        $this->emptyOption = $emptyOption;
+        $this->emptyOption = isset($emptyOption) ? $emptyOption : false;
     }
 
     /**

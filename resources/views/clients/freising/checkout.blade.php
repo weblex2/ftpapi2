@@ -87,7 +87,7 @@
          </div>
 
          <div class="form-line">
-            <div>Straße<br/><x-web.dropdown :mydata="$streets" name="street" id="street" class="dropdown"/></div>
+            <div>Straße<br/><x-web.dropdown :mydata="$streets" name="street" id="street" emptyOption="1" class="dropdown"/></div>
             <div>Hausnummer<br/><input type="text" name="houseNumber"></div>
          </div>
          <!-- Rechnungsadresse -->
@@ -134,11 +134,11 @@
 
          <div class="form-line">
             <div>PLZ<br/><input type="text" name="billingZip" id="billingZip"></div>
-            <div>Ort<br/><x-web.dropdown :mydata="$cities['data']" :emptyRow=true name="billingCity"  class="dropdown"/></div>
+            <div>Ort<br/><x-web.dropdown :mydata="$cities['data']" emptyOption="1"  name="billingCity"  class="dropdown"/></div>
          </div>
 
          <div class="form-line">
-            <div>Straße<br/><x-web.dropdown :mydata="$streets" :emptyRow=true name="billingStreet" class="dropdown"/></div>
+            <div>Straße<br/><x-web.dropdown :mydata="$streets" emptyOption="1" name="billingStreet" class="dropdown"/></div>
             <div>Hausnummer<br/><input type="text" name="billingHousenumber"></div>
          </div>
 
