@@ -34,7 +34,7 @@ html{
 
 .nav-item{
     line-height:1.5;
-    @apply px-5  font-bold text-xl  hover:text-[#0ac]
+    @apply px-5  font-bold lg:text-xl  hover:text-[#0ac]
 }
 
 .content-wrapper{
@@ -47,7 +47,7 @@ html{
 }
 
 .content {
-    @apply w-full md:w-[70%] lg:px-20 lg:py-10
+    @apply w-full lg:w-[70%] p-8 text-justify lg:px-20 lg:py-10
 }
 
 .content p{
@@ -173,5 +173,5 @@ input[type="text"]:read-only{
 }
 
 #footer h3{
-    @apply mb-5
+    @apply leading-4 mb-5
 }

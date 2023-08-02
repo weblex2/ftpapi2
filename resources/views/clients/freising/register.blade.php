@@ -11,7 +11,7 @@
 
 <div class="content-wrapper">
     <div class="content leading-7">
-        <h2 class="mb-10 text-[#0ac]">Der Tarifrechner und das Anmeldeformular für Ihren Stromtarif ab 2024 befinden sich gerade im Aufbau.</h2>
+        <h2 class="mb-10 text-[#0ac]">Anmeldung Fair Trade Power</h2>
         <p>
             Möchten Sie sich bereits jetzt vorregistrieren, können Sie die über das folgende Formular erledigen.
         </p>
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="form-line">
-                    <div>PLZ<br/><input type="text" name="zip" id="zip" value="{{$req['zip']}}" readonly ></div>
+                    <div>PLZ<br/><input type="text" name="zip" id="zip" value="{{$req['zip']}}" {{$req['zip'] !="" ? "readonly" :""}} ></div>
                     <div>Ort<br/><input type="text" name="city" id="city" value=""  ></div>
                 </div>
 
@@ -235,4 +235,111 @@
     </div>
 
 </div>
+<script type="text/javascript">
+
+    
+$(document).ready(function(){
+
+    document.querySelectorAll("#sample-form input").forEach(function(element) {
+        element.addEventListener('blur', function() {
+            // if input field passes validation remove the error class, else add it
+            if(this.checkValidity())
+                this.classList.remove('error-input');
+            else
+                this.classList.add('error-input');
+        });
+    });
+
+    $('#billingZip').change(function(){
+        updateBillingCities();
+    });
+
+    $('#billingAlternativeAddress').change(function(){
+
+        if ($(this).is(':checked')) {
+            $('#billingFirstname').prop('required',true);
+        }
+    })
+
+    $(document).on("keypress", function(e) {
+            if (e.which == 115) { //s
+                $('input:radio[name="salutation"]').filter('[value="1"]').attr('checked', true);
+                $('[name="surName"]').val('API Test AN');
+                $('[name="firstName"]').val('Do not confirm!!!');
+                $('[name="zip"]').val('82024');
+                $('[name="street"]').val('Rosenstr.');
+                $('[name="houseNumber"]').val('100');
+                $('[name="city"]').val('Taufkirchen');
+                $('[name="birthday"]').val('1976-12-31');
+                $('[name="emailPrivate"]').val('alex@noppenberger.org');
+                $('[name="emailPrivateRepeat"]').val('alex@noppenberger.org');
+                $('[name="customerAuthPassword"]').val('12345');
+                $('[name="customerAuthPasswordRepeat"]').val('12345');
+                $('[name="productCode"]').val('21_ftp_fair_ez');
+                $('[name="usage"]').val('10');
+                $('[name="business"]').val('0');
+                $('[name="salutation"]').val('1');
+                $('[name="customerSpecification"]').val('desired_date');
+                $('[name="phoneMobileAreaCode"]').val('1279');
+                $('[name="phoneMobile"]').val('111111');
+                $('[name="phoneHomeAreaCode"]').val('000');
+                $('[name="phoneHome"]').val('1111111');
+                $('[name="desiredDate"]').val('2030-01-01');
+            }
+        });
+        /*
+        $("#frmChkout").submit(function (event) {
+            event.preventDefault();
+            var formData = $("#frmChkout").serialize();
+            $.ajax({
+                type: "POST",
+                url: "ajax.php",
+                data: formData,
+                cache: false,
+                encode: true,
+                success: function (data) {
+                    var resp = JSON.parse(data);
+                    $('#response').html("<pre>"+JSON.stringify(JSON.parse(data), null, 2)+"</pre>");
+                    if (resp.success=="true") {
+                        $('#pic').show();
+                    }
+                    else{
+                        $('#pic').hide();
+                    }
+                    console.log(resp);
+                    $('#modalOverlay').show().addClass('modal-open');
+                },
+                error: function(request, status, error) {
+                    console.log(error);
+                }
+            },'json');
+        });
+        */
+    });
+
+    function updateBillingCities() {
+        var zip = $('#billingZip').val();
+        var url = "{{ route('getCityDropdown', ":zip") }}";
+        url = url.replace(':zip', zip);
+        $.ajax({
+                type: "GET",
+                url: url,
+                cache: false,
+                success: function (data) {
+                    var data = JSON.parse(data);
+                    console.log(data.length);
+
+                    $('#billingZip').empty();
+                    $.each(data, function(key,value) {
+                        console.log(key+" "+value);
+                        $('#billingZip').append($("<option></option>")
+                            .attr("value", value).text(key));
+                    },'json');
+                },
+                error: function(request, status, error) {
+                    console.log(error);
+                }
+            });
+    }
+    </script>
 @endsection

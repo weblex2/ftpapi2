@@ -42,7 +42,7 @@ Route::controller(PowerCloudRestController::class)->group(function () {
 
 
 Route::controller(PowerCloudSoapController::class)->group(function () {
-    Route::get('/getTariffs', 'getTariffs')->name('getTariffs');
+    Route::get('/getTariffs/{zip}/{usage}/{business}', 'getTariffs')->name('getTariffs');
     Route::post('/client/checkout', 'checkout')->name('checkout');
     Route::get('/client/getCityDropdown/{zip}', 'getCityDropdown')->name('getCityDropdown');
 });

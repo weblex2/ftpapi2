@@ -24,9 +24,18 @@
 </head>
 <body>
 @include('clients.freising.navigation')
-<div class="font-sans text-gray-900 antialiased">
-    @yield('content')
+<div class="font-sans text-gray-900 antialiased w-full">
+    @yield('content');
 </div>
-@include('clients.freising.footer')
+@include('clients.freising.footer');
+
+<script>
+    $(function() {
+        $('#burger').click(function(){
+            $('.nav-container').toggle(200);
+        })
+    });
+</script>
+
 </body>
 </html>

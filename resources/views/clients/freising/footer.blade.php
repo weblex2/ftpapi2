@@ -1,7 +1,7 @@
 <div id="footer" class="content-wrapper bg-[#333]">
     <div class="content">
-        <div class="mb-5"><img class="h-10 w-auto" src="{{asset('img/logo.svg')}}"></div>
-        <div class="flex w-full justify-between">
+        <div class="p-5 lg:p-0 lg:mb-5"><img class="h-10 w-auto" src="{{asset('img/logo.svg')}}"></div>
+        <div class="md:flex p-5 w-full justify-between">
             <div>
                 <h3>Kontakt</h3>
                 <p class="text-sm xs:text-base">
@@ -52,10 +52,10 @@
             <div >
                 <h3>Downloads</h3>
                 <p class="text-sm xs:text-base">
-                    <a href="/energiewende/" target="_blank" class="underline"><img class="w-3 mr-1 mt-0.5  float-left" src="{{asset('img/kirche/Icon_pdf_20px.png')}}">Infoschreiben</a> <br>
-                    <a href="/unser-ökostrom/" target="_blank" class="underline"><img class="w-3 mr-1 mt-0.5  float-left" src="{{asset('img/kirche/Icon_pdf_20px.png')}}">Auftrag SLP</a><br>
-                    <a href="/unser-biogas/" target="_blank" class="underline"><img class="w-3 mr-1 mt-0.5  float-left" src="{{asset('img/kirche/Icon_pdf_20px.png')}}">Auftrag RLM</a><br>
-                    <a href="/company/" target="_blank" class="underline"><img class="w-3 mr-1 mt-0.5  float-left" src="{{asset('img/kirche/Icon_pdf_20px.png')}}">Widerrufsformular</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/energiewende/" target="_blank" class="underline"> Infoschreiben</a> <br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/unser-ökostrom/" target="_blank" class="underline">Auftrag SLP</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/unser-biogas/" target="_blank" class="underline">Auftrag RLM</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/company/" target="_blank" class="underline">Widerrufsformular</a><br>
                 </p>
             </div>
             <div>
@@ -83,11 +83,11 @@
 </div>
 <div id="copyright" class="content-wrapper bg-black">
     <div class="content">
-            <div class="mb-2 text-xs">
-                <a href="/impressum" target="_blank">Impressum</a> &nbsp; | &nbsp;
-                <a href="/datenschutz" target="_blank">Datenschutz</a> &nbsp; | &nbsp;
-                <a href="/agb-ökostrom" target="_blank">AGB Ökostrom</a> &nbsp; | &nbsp;
-                <a href="/agb-gas" target="_blank">AGB Gas</a> &nbsp; | &nbsp;
+            <div class="lg:flex mb-2 text-xs">
+                <div><a href="/impressum" target="_blank">Impressum</a> &nbsp; | &nbsp;</div>
+                <div><a href="/datenschutz" target="_blank">Datenschutz</a> &nbsp; | &nbsp;</div>
+                <div><a href="/agb-ökostrom" target="_blank">AGB Ökostrom</a> &nbsp; | &nbsp;</div>
+                <div><a href="/agb-gas" target="_blank">AGB Gas</a> &nbsp; | &nbsp;</div>
             </div>
             <div class="text-xs">
                 © Copyright 2023 by Fair Trade Power Deutschland GmbH. All Rights Reserved.
