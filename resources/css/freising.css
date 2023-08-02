@@ -8,7 +8,7 @@
 
 
 html{
-    @apply text-2xl text-white;
+    @apply  text-white;
     font-family: SourceSansPro,Helvetica,sans-serif;
     line-height: 1.5;
 }
@@ -82,9 +82,7 @@ input[type="text"], input[type="password"], input[type="search"], input[type="nu
     @apply px-3 py-2 bg-[#f6f6f6] border text-sm border-[#e0e0e0] rounded-3xl text-black w-full  focus:ring-offset-[#0ac]
 }
 
-input:invalid{
-    @apply border-red-400 bg-red-100
-}
+
 
 #frmChkout{
     @apply w-full
@@ -107,20 +105,42 @@ input[type="checkbox"]{
     @apply w-5 h-5 text-[#0ac] bg-gray-100 border-gray-300 rounded focus:ring-[#0ac] dark:focus:ring-[#0ac] dark:ring-offset-gray-800 focus:ring-2 dark:bg-white dark:border-gray-600
 }
 
+
+
+/* normal */
+form input {
+    border: 1px solid black;
+}
+
+/* normal */
+form input:not(:focus):invalid {
+
+}
+
+/* normal */
+form input:focus:invalid {
+    @apply border-red-400 bg-red-100
+}
+
+/* error */
+form input.error-input:invalid {
+    @apply border-red-400 bg-red-100
+}
+
 .checkbox-label{
     @apply ml-2 text-sm font-medium
 }
 
-input:read-only{
+input[type="text"]:read-only{
     @apply bg-gray-300
 }
 
 .btn-primary{
-    @apply cursor-pointer font-extrabold text-xl text-white  px-8 py-2 border-[3px] border-white rounded-3xl hover:text-[#0ac] hover:bg-white
+    @apply cursor-pointer font-bold text-base text-white  px-6 py-1 border-[3px] border-white rounded-3xl hover:text-[#0ac] hover:bg-white
 }
 
 .btn-primary-odd{
-    @apply cursor-pointer font-extrabold text-xl text-[#0ac]  bg-[#0ac] text-white px-8 py-2 border-[3px] border-[#0ac] rounded-3xl hover:text-[#0ac] hover:bg-white
+    @apply cursor-pointer font-bold text-base text-[#0ac]  bg-[#0ac] text-white px-6 py-1 border-[3px] border-[#0ac] rounded-3xl hover:text-[#0ac] hover:bg-white
 }
 
 #footer h3{
