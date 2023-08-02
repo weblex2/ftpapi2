@@ -69,10 +69,19 @@
 
                 <div class="content-blue flex justify-start  items-center p-10 mb-10">
                     <div class="mr-5">Ihre PLZ</div>
-                    <div class="w-20 mr-5"><input type="text"></div>
+                    <div class="w-20 mr-5"><input type="text" name="calc_zip"></div>
                     <div class="mr-5">Ihr Jahresverbrauch (in kWh)</div>
-                    <div class="w-20 mr-5"><input type="text"></div>
-                    <div class="w-max"><button class="btn-primary">Berechnen</button></div>
+                    <div class="w-20 mr-5"><input type="text" name="calc_usage"></div>
+                    <div class="w-max"><button class="btn-primary" onclick="calc()">Berechnen</button></div>
+                </div>
+                <div class="result mb-10">
+                    Ergebnis
+                    <form method="GET" action="/client/freising/registrierung">
+                        <input type="hidden" name="zip" value="82024">
+                        <input type="hidden" name="usage" value="2300">
+                        <button class="btn-primary-odd">Registrieren</button>
+                    </form>
+
                 </div>
                 <p>
                 Nach Eingabe Ihrer Postleitzahl und Ihres Jahresverbrauchs werden wir Ihnen die jeweiligen Preisoptionen zur Auswahl anzeigen.

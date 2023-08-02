@@ -57,5 +57,5 @@ Route::controller(DispatcherController::class)->group(function () {
 
 
     //Nur für die Kirche
-    Route::get('/client/{client}/registrierung', 'register')->name('registerclient');
+    Route::get('/client/{client}/registrierung/{zip?}/{usage?}', 'register')->name('registerclient');
 });
