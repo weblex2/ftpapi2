@@ -8,7 +8,7 @@
         <div class="w-max"><button class="btn-primary" onclick="calculateTariff()">Berechnen</button></div>
     </div>
     <div id="result-wrapper" class=" relative mb-10">  
-        <div id="doing-stuff" class="hidden  w-full h-full">
+        <div id="doing-stuff" class="hidden  w-full h-full  ">
             <div class="flex p-10 bg-opacity-60  justify-center items-center">      
                 <img class="w-[20%]" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
             </div> 
