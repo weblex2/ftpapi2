@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+/*
+@font-face {
+    font-family: 'SourceSansProExtraLight';
+    src: url('source-sans-pro.extralight.ttf');
+}
+@font-face {
+    font-family: 'SourceSansPro';
+    src: url('source-sans-pro.regular.ttf');
+}
+*/
+
+html{
+    @apply text-lg text-white;
+    font-family: SourceSansPro,Helvetica,sans-serif;
+    line-height: 1.5;
+}
+
+.nav-item{
+    line-height:1.5;
+    @apply px-5  font-bold text-xl  hover:text-[#0ac]
+}
+
+.content-wrapper{
+    font-family: SourceSansPro,Helvetica,sans-serif; font-weight: 300;
+    @apply w-full  flex justify-center leading-9 font-light
+}
+
+.content-wrapper p{
+    @apply font-light
+}
+
+.content {
+    @apply w-full md:w-[80%] lg:px-20 lg:py-10
+}
+
+.content-small {
+    @apply w-full md:max-w-[1200px] lg:px-20 lg:py-10
+}
+
+.content-white{
+    @apply text-[#0ac] bg-white
+}
+
+.content-even{
+    @apply text-[#0ac] bg-[#f6f6f6]
+}
+
+.content-blue{
+    @apply bg-[#0ac] text-white
+}
+
+.content .headline h3{
+    @apply font-bold text-4xl mb-2
+}
+
+.content .headline h4{
+    @apply  text-sm
+}
+
+.calculator{
+    @apply bg-[#0ac] w-full
+}
+
+.headline{
+    @apply flex
+}
+
+.tariff-details-key{
+    @apply text-white text-sm font-bold mr-10 w-1/3
+}
+
+.tariff-details-value{
+    @apply text-white text-sm
+}
+
+.tariff-details sup{
+    @apply font-extrabold
+}
+
+
+h1{
+    @apply text-4xl  font-bold mb-10
+}
+
+h2{
+    @apply text-3xl font-bold mb-4
+}
+
+input[type="text"], input[type="password"], input[type="search"], input[type="number"],input[type="date"],select{
+    @apply px-3 py-2 bg-[#f6f6f6] border text-sm border-[#e0e0e0] rounded-3xl text-black w-full  focus:ring-offset-[#0ac]
+}
+
+
+
+#frmChkout{
+    @apply w-full
+}
+.form{
+}
+.form-line{
+    @apply flex mb-5 w-full
+}
+
+.form-line div{
+    @apply mr-10 w-full text-black text-sm
+}
+
+input[type="radio"]{
+    @apply w-4 h-4 text-[#0ac] bg-gray-100 border-gray-300 focus:ring-[#0ac] dark:focus:ring-[#0ac] dark:ring-offset-gray-800 focus:ring-2 dark:bg-white dark:border-gray-600
+}
+
+input[type="checkbox"]{
+    @apply w-5 h-5 text-[#0ac] bg-gray-100 border-gray-300 rounded focus:ring-[#0ac] dark:focus:ring-[#0ac] dark:ring-offset-gray-800 focus:ring-2 dark:bg-white dark:border-gray-600
+}
+
+
+
+/* normal */
+form input {
+    border: 1px solid black;
+}
+
+/* normal */
+form input:not(:focus):invalid {
+
+}
+
+/* normal */
+form input:focus:invalid {
+    @apply border-red-400 bg-red-100
+}
+
+/* error */
+form input.error-input:invalid {
+    @apply border-red-400 bg-red-100
+}
+
+.checkbox-label{
+    @apply ml-2 text-sm font-medium
+}
+
+input[type="text"]:read-only{
+    @apply bg-gray-300
+}
+
+.btn-primary{
+    @apply cursor-pointer font-bold text-base text-white  px-6 py-1 border-[3px] border-white rounded-3xl hover:text-[#0ac] hover:bg-white
+}
+
+.btn-primary-odd{
+    @apply cursor-pointer font-bold text-base text-[#0ac]  bg-[#0ac] text-white px-6 py-1 border-[3px] border-[#0ac] rounded-3xl hover:text-[#0ac] hover:bg-white
+}
+
+#footer h3{
+    @apply mb-5
+}

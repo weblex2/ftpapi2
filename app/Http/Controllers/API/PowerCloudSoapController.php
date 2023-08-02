@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 class PowerCloudSoapController extends Controller
 {
     function __construct() {
-        //parent::__construct();   
-        
+        //parent::__construct();
+
     }
 
     public function getHeader(){
         $auth = new \stdClass();
-        $auth->username = 'FairTrade'; 
+        $auth->username = 'FairTrade';
         $auth->password = 'ca14ad604f16c133f7f3aaa94cd0f3b109390f2c';
         return new \SoapHeader('http://electricity.enet.service.ws.crmi.de/', 'Authorization', $auth);
-    }    
+    }
 
     public function getCities($zip){
         $url = "https://ww24pjl1v6.execute-api.eu-central-1.amazonaws.com/prod/getCitiesInZipCode?zip=".$zip;
@@ -28,7 +28,7 @@ class PowerCloudSoapController extends Controller
     public function getCityDropdown($zip){
         $cities = json_encode($this->getCities($zip)['data']);
         return $cities;
-    }    
+    }
 
     public function getStreetsInZipCode($zip){
         $url="https://ww24pjl1v6.execute-api.eu-central-1.amazonaws.com/prod/getStreetsInZipCode?zip=".$zip;
@@ -45,21 +45,10 @@ class PowerCloudSoapController extends Controller
         $res = file_get_contents($url);
         $res = json_decode($res,1)['data'];
         return $res;
-    }    
+    }
 
     public function getInfo(Request $request){
-        $req = $request->all();
-        $zip  = $req['zip'];
-        $business  = $req['business'];
-        $usage  = $req['usage'];
-        #$url="https://ww24pjl1v6.execute-api.eu-central-1.amazonaws.com/prod/tariffs?postcode=82024&usage=3500&business=false&energy=electricity";
-        #$res = file_get_contents($url);
-        //dump($res);
-        $cities = $this->getCities($zip);
-        $streets = $this->getStreetsInZipCode($zip);
-        $provider = $this->getAllProvider();
-        //$tariffs = $this->getTariffs($zip,$usage,$business);
-        return view('clients.freising.tarife', compact('cities', 'streets','provider'));
+
     }
 
     public function getTariffs($zip,$usage,$business){
@@ -68,7 +57,7 @@ class PowerCloudSoapController extends Controller
         $res = json_decode($res,1)['data'];
         return $res;
     }
- 
+
     public function checkout(Request $request){
         $req = $request->all();
         $zip  = $req['zip'];
@@ -89,12 +78,12 @@ class PowerCloudSoapController extends Controller
             'trace' => true,
             //'cache_wsdl' => WSDL_CACHE_NONE,
             'pm_process_idle_timeout' => 3,
-            'exceptions' => true, 
+            'exceptions' => true,
             'connection_timeout' => 5,
             'soap_version'=> SOAP_1_1,
             'Content-Type' => 'application/soap+xml; charset="utf-8""'
         ];
-        
+
         $credentials = [
             'username' => 'FairTrade',
             'password' => 'ca14ad604f16c133f7f3aaa94cd0f3b109390f2c'
@@ -103,10 +92,10 @@ class PowerCloudSoapController extends Controller
         $wdsl = 'https://energy.service-nodes.powercloud.de/service/Electricity?wsdl';
         $url ="https://app.powercloud.de/service:gateway?key=00cf99e4150aeed6def3f9f403f24754&energy=electricity";
         $header = new SoapHeader($NAMESPACE, 'Authorization', $credentials);
-        
+
         $client = new SoapClient($wdsl, $options); // null for non-wsdl mode
-        
-        
+
+
         $client->__setSoapHeaders($this->getHeader());
         $client->__setLocation($url);
         $params = [
@@ -137,7 +126,7 @@ class PowerCloudSoapController extends Controller
             //"netNumber" => 0,
             //"customerAuthUserName" => 102,
         ];
-        echo "<pre>"; 
+        echo "<pre>";
         print_r($client);
         try{
             //$response = $client->__soapCall("getModuleInformation", $params);
@@ -147,8 +136,8 @@ class PowerCloudSoapController extends Controller
             //$result = $client->getModuleInformation($params);
             dump($client->__getLastRequest());
             dump($e);
-        }    
-           
+        }
+
         // 'GetResult' being the name of the soap method
         //print_r($result);
     }

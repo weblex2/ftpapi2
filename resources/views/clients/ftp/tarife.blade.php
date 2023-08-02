@@ -26,7 +26,7 @@
                         <div class="headline mb-5">
                             <div><img class="w-12 h-auto mt-3 mr-4" src="{{asset('img/ckj13utoq0015ntxqoughe2ek-ckewz14od001kzsxq2b3nhal5-fair-ic.svg')}}"></div>
                             <div class="w-1/2">
-                                <h3 class=" tariff-h1">Fair (Freising)</h3>
+                                <h3 class=" tariff-h1">Fair</h3>
                                 <h4>Von ÖKO-TEST 04/2022 mit "sehr gut" bewertet</h4>
                             </div>
                             <div class="flex items-center justify-center text-2xl">

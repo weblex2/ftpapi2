@@ -2,55 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\API\PowerCloudSoapController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\PowerCloudRestController;
+use Route;
 
 class DispatcherController extends Controller
 {
     #const BASEURL = 'aws.noppenberger.net/api/';
     const BASEURL = 'http://127.0.0.1:8000/api/';
 
-    public function start(){
-        return view('clients.freising.start');
+    public function getClient(){
+        $client =  \Route::current()->parameters['client'];
+        return $client;
     }
+
+    public function start($client){
+        return view('clients.'.$client.'.start',compact('client'));
+    }
+
+    public function getTariffsPage(Request $request){
+        $client = $this->getClient();
+        $req = $request->all();
+        $zip  = $req['zip'];
+        $business  = $req['business'];
+        $usage  = $req['usage'];
+        #$url="https://ww24pjl1v6.execute-api.eu-central-1.amazonaws.com/prod/tariffs?postcode=82024&usage=3500&business=false&energy=electricity";
+        #$res = file_get_contents($url);
+        //dump($res);
+        $pcs = new PowerCloudSoapController();
+        $cities = $pcs->getCities($zip);
+        $streets = $pcs->getStreetsInZipCode($zip);
+        $provider = $pcs->getAllProvider();
+        //$tariffs = $this->getTariffs($zip,$usage,$business);
+        return view("clients.".$client.".tarife", compact('cities', 'streets','provider','client'));
+    }
+
+
+
     public function submitForm(Request $request){
         $data = $request->all();
-
         if (!isset($data['billingAlternativeAddress'])){
             $data['billingAlternativeAddress']=false;
         }
-
         if ($data['campaignIdentifier']==""){
             $data['campaignIdentifier']="FTPDEFAULT";
         }
-
-
-
         dump($data);
+        // Send Data to PowerCloud
         $pc = new PowerCloudRestController();
         $res = $pc->createOrder($data);
         print_r($res);
-
-        /*
-        echo "<pre>";
-        $data = $request->all();
-        print_r($data);
-        $token = $this->getToken();
-        echo $token;
-        $res = $this->sendApiRequest("createOrder",$data, $token);
-        #print_r($res);
-        */
     }
 
     public function checkoutSuccess(){
-        return view('clients.freising.checkoutsuccess');
+        $client = $this->getClient();
+        return view('clients.'.$client.'.checkoutsuccess');
     }
+
+
 
     public function sendApiRequest($endpoint, $data, $token){
         $url= self::BASEURL.$endpoint;
-
         echo"<br>" .$url."<br>";
-
         $headers = 'Accept: application/json';
         $ch = curl_init($url); // Initialise cURL
         $post = $data; // Encode the data array into a JSON string

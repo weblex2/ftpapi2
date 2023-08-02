@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-wrapper bg-[#1fc8a9]">
         <div class="content flex items-center pt-5">
-            <h1 class="mt-4">(Freising) Willkommen bei Fair Trade Power</h1>
+            <h1 class="mt-4">(FTP) Willkommen bei Fair Trade Power</h1>
         </div>
     </div>
 
