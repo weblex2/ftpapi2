@@ -148,7 +148,7 @@ form input:not(:focus):invalid {
 
 /* normal */
 form input:focus:invalid {
-    @apply border-red-400 bg-red-100
+    @apply border-red-400 bg-red-100  
 }
 
 /* error */
