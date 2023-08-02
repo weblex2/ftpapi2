@@ -21,6 +21,6 @@ class tariffCalculator extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.web.tariff-calculator');
+        return view('components.web.tariffcalculator');
     }
 }
