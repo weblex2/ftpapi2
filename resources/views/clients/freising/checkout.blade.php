@@ -101,7 +101,7 @@
 
          <h2>Rechnungsadresse</h2>
 
-         <div >
+         <div>
             <div class="flex mb-5">
                 <div class="flex items-center mr-4">
                     <input id="billingSalutation1" type="radio" value="2" name="billingSalutation" >
@@ -261,6 +261,16 @@
     <script>
 
 $(document).ready(function(){
+
+    document.querySelectorAll("#sample-form input").forEach(function(element) {
+        element.addEventListener('blur', function() {
+            // if input field passes validation remove the error class, else add it
+            if(this.checkValidity())
+                this.classList.remove('error-input');
+            else
+                this.classList.add('error-input');
+        });
+    });
 
     $('#billingZip').change(function(){
         updateBillingCities();

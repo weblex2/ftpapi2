@@ -40,21 +40,21 @@
 
                         <div class="flex mb-5">
                             <div class="flex items-center mr-4">
-                                <input id="billingSalutation1" checked type="radio" value="2" name="billingSalutation" >
-                                <label for="billingSalutation1" class="ml-2 text-sm font-medium text-black">Einzählertarif</label>
+                                <input id="ez1" checked type="radio" value="2" name="billingSalutation" >
+                                <label for="ez1" class="ml-2 text-sm font-medium text-black">Einzählertarif</label>
                             </div>
                             <div class="flex items-center mr-4">
-                                <input id="billingSalutation2" type="radio" value="1" name="billingSalutation" >
-                                <label for="billingSalutation2" class="ml-2 text-sm font-medium text-black">Zweizählertarif</label>
+                                <input id="dz1" type="radio" value="1" name="billingSalutation" >
+                                <label for="dz1" class="ml-2 text-sm font-medium text-black">Zweizählertarif</label>
                             </div>
                             <div class="flex items-center mr-4">
-                                <input id="billingSalutation3" type="checkbox" value="3" name="billingSalutation" >
-                                <label for="billingSalutation3" class="ml-2 text-sm font-medium text-black">Ich bin Student(in)*</label>
+                                <input id="student1" type="checkbox" value="3" name="billingSalutation" >
+                                <label for="student1" class="ml-2 text-sm font-medium text-black">Ich bin Student(in)*</label>
                             </div>
                         </div>
 
                         <div class="relative">
-                            <div id="loader1" class="absolute z-10 w-full h-full flex bg-white bg-opacity-50 items-center justify-center">
+                            <div id="loader1" class="absolute z-10 w-full h-full flex bg-white bg-opacity-100 items-center justify-center">
                                 <img class="w-20 h-auto" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
                             </div>
 
@@ -91,20 +91,6 @@
                     </form>
             </div>
         </div>
-        <!--div class="content-wrapper content-even fair-auto-student">
-            <div class="content ">
-                <h1 class="tariff-h1">Fair</h1>
-                <div>Von ÖKO-TEST 04/2022 mit "sehr gut" bewertet</div>
-                <div>Einfach viele Vorteile</div>
-                <div class="tariff-details">
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>Reduzierte Grundgebühr</div><div> Nur 11<sup>35</sup> Euro monatlich bei Vorlage einer gültigen Immatrikulationsbescheinigung</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content-wrapper fair-wp-student">
-        </div-->
     </div>
 
 
