@@ -1,0 +1,2 @@
+RewriteCond %{HTTP_HOST} ^kirche.noppenberger.net
+RewriteRule ^(.*) http://aws.noppenberger.net/client/freising [P]

@@ -68,7 +68,8 @@
                 </p>
 
                 <x-web.tariffCalculator />
-                
+
+
                 <p>
                 Nach Eingabe Ihrer Postleitzahl und Ihres Jahresverbrauchs werden wir Ihnen die jeweiligen Preisoptionen zur Auswahl anzeigen.
                 </p>

@@ -11,6 +11,9 @@ class tariffCalculator extends Component
     /**
      * Create a new component instance.
      */
+
+    public $workingPriceBrutto;
+
     public function __construct()
     {
         //

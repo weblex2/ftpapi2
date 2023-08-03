@@ -85,7 +85,7 @@ html{
 .headline{
     @apply flex
 }
-
+/*
 .tariff-details-key{
     @apply text-white text-sm font-bold mr-10 w-1/3
 }
@@ -93,10 +93,32 @@ html{
 .tariff-details-value{
     @apply text-white text-sm
 }
+*/
+.tc-detail{
+    @apply mr-10 w-[40%]  font-bold text-xl
+}
 
+.tc-detail-values{
+    @apply text-black text-lg
+}
+
+.tc-strong{
+    @apply font-bold
+}
+
+.subbold{
+    @apply font-bold
+}
+
+.blue{
+    @apply text-[#0ac]
+}
+
+/*
 .tariff-details sup{
     @apply font-extrabold
 }
+ */
 
 
 h1{
@@ -148,7 +170,7 @@ form input:not(:focus):invalid {
 
 /* normal */
 form input:focus:invalid {
-    @apply border-red-400 bg-red-100  
+    @apply border-red-400 bg-red-100
 }
 
 /* error */

@@ -24,7 +24,7 @@
 </head>
 <body>
 @include('clients.freising.navigation')
-<div class="font-sans text-gray-900 antialiased w-full">
+<div class="font-sans text-gray-900  w-full">
     @yield('content');
 </div>
 @include('clients.freising.footer');
