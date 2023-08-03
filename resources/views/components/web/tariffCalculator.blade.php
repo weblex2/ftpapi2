@@ -10,12 +10,12 @@
 
 
     <div id="result-wrapper" class=" relative my-20">
-        <div id="doing-stuff" class="bg-red-500 bg-opacity-20 hidden pb-20 w-full h-full  ">
+        <div id="doing-stuff" class=" bg-opacity-20 hidden pb-20 w-full h-full">
             <div class="flex p-10   justify-center items-center">
                 <img class="w-[20%]" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
             </div>
         </div>
-        <div id="result" class="">
+        <div id="result" class="hidden">
             <div id="result1">
                 <div class="tariff-details">
                     <div class="flex mb-5">
