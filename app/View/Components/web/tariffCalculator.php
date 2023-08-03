@@ -12,11 +12,19 @@ class tariffCalculator extends Component
      * Create a new component instance.
      */
 
+    public $basePriceBrutto;
     public $workingPriceBrutto;
+    public $workingPriceTotal;
+    public $total;
+    public $advancedPayment;
+    public $energyUsage;
+    public $data;
 
-    public function __construct()
+
+    public function __construct($data, $energyUsage)
     {
-        //
+        $this->energyUsage = $energyUsage;
+        $this->data = $data;
     }
 
     /**

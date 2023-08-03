@@ -99,11 +99,15 @@ html{
 }
 
 .tc-detail-values{
-    @apply text-black text-lg
+    @apply text-black text-lg font-thin
 }
 
 .tc-strong{
     @apply font-bold
+}
+
+.tc-result-line{
+    @apply flex my-6
 }
 
 .subbold{

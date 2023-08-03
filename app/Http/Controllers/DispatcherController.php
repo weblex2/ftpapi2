@@ -49,6 +49,34 @@ class DispatcherController extends Controller
         return view("clients.".$client.".tarife", compact('cities', 'streets','provider','client'));
     }
 
+    public function getTarifHtml($client, $usage){
+        dump($usage);
+        $tariff_normal = '21_ftp_fair-ez';
+        $tariff_plus = '21_ftp_fair_plus_ez';
+        $tariff_student = '21_ftp_fair_plus_S_ez';
+        $tariffs = file_get_contents('tariff.json');
+        $tariffs = json_decode($tariffs, 1);
+        $data[0] = $tariffs[$tariff_normal];
+        $data[1] = $tariffs[$tariff_plus];
+        $data[2] = $tariffs[$tariff_student];
+        foreach($data as $i => $row) {
+            $workingPriceBrutto = round($data[$i]['workingPriceBrutto'],2);
+            $basePriceBrutto = round($data[$i]['basePriceBrutto']/12,2);
+            $workingPriceTotal = round($workingPriceBrutto * $usage/100, 2);
+            $totalPriceBrutto = $workingPriceTotal + $row['basePriceBrutto'];
+            $abschlag = number_format(round($totalPriceBrutto/12, 2),2,'.','');
+            $data[$i]['basePriceBrutto'] = $basePriceBrutto;
+            $data[$i]['workingPriceBrutto'] = $workingPriceBrutto;
+            $data[$i]['totalWorkingPrice'] = number_format($workingPriceTotal,2,'.','');
+            $data[$i]['totalPriceBrutto'] = number_format(round($totalPriceBrutto, 2),2,'.','');
+            $data[$i]['abschlag'] = $abschlag;
+            $data[$i]['pstring'] = $basePriceBrutto."|".$workingPriceBrutto."|".$workingPriceTotal."|".$totalPriceBrutto."|".$abschlag;
+        }
+        $html = view('components.web.tariffCalculator', ['data' => $data, 'energyUsage' => $usage]);
+        return $html;
+        #dump($data);
+        #dump($tariffs);
+    }
 
 
     public function submitForm(Request $request){

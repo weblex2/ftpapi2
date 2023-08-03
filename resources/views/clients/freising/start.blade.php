@@ -67,8 +67,20 @@
                 Option 2: Fixpreis: Dieser beruht auf direkten Stromabnahmeverträgen mit bayerischen Ökokraftwerken.
                 </p>
 
-                <x-web.tariffCalculator />
+                {{--
+                <x-web.tariffCalculator/>
+                --}}
 
+                <div class="content-blue lg:flex justify-start  items-center p-10">
+                    <div class="mr-5">Ihre PLZ</div>
+                    <div class="w-20 mr-5"><input type="text" name="calc_zip" id="calc_zip" value="82024"></div>
+                    <div class="mr-5">Ihr Jahresverbrauch (in kWh)</div>
+                    <div class="w-20 mr-5"><input type="text" name="calc_usage" id="calc_usage" value="2000"></div>
+                    <div class="w-max"><button class="btn-primary" onclick="calc()">Berechnen</button></div>
+                </div>
+
+                <div id="calculator"></div>
+                <button onclick="calc()">los</button>
 
                 <p>
                 Nach Eingabe Ihrer Postleitzahl und Ihres Jahresverbrauchs werden wir Ihnen die jeweiligen Preisoptionen zur Auswahl anzeigen.
@@ -79,4 +91,51 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function calc() {
+            axios.get('/client/freising/getTarifHtml/2000' )
+                .then(response => {
+                    console.log(response);
+                    $('#calculator').html(response.data);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+
+        $(function (){
+            $('body').on('click', '#show_normal1', function(){
+                var prices = $('#normal').val().split("|");
+                $('#basePrice1').html(formatPrice(prices[0]));
+                $('#workingPrice1').html(formatPrice(prices[1]));
+                $('#workingTotal1').html(formatPrice(prices[2]));
+                $('#total1').html(formatPrice(prices[3]));
+                $('#abschlag1').html(formatPrice(prices[4]));
+            });
+
+            $('body').on('click' , '#show_plus1' , function(){
+                var prices = $('#plus').val().split("|");
+                $('#basePrice1').html(formatPrice(prices[0]));
+                $('#workingPrice1').html(formatPrice(prices[1]));
+                $('#workingTotal1').html(formatPrice(prices[2]));
+                $('#total1').html(formatPrice(prices[3]));
+                $('#abschlag1').html(formatPrice(prices[4]));
+            });
+
+            function formatPrice(price, subbold=false){
+                p = price.toString().split('.');
+                if (p[1]==undefined) {
+                    p[1]="00";
+                }
+                if (subbold){
+                    return p[0]+"<sup class='subbold'>"+p[1]+"</sup>";
+                }
+                else {
+                    return p[0] + "<sup>" + p[1] + "</sup>";
+                }
+            }
+        });
+    </script>
+
 @endsection
