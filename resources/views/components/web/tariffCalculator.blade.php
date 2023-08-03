@@ -17,6 +17,18 @@
         </div>
         <div id="result" class="hidden">
             <div id="result1">
+                <input type="hidden" id="bp1" name="basePrice" value="">
+                <input type="hidden" id="wp1" name="workingPrice" value="">
+                <input type="hidden" id="wto1" name="total" value="">
+                <input type="hidden" id="ab1" name="abschlag" value="">
+                <input type="hidden" id="to1" name="abschlag" value="">
+
+                <input type="hidden" id="bpp1" name="basePricePlus" value="">
+                <input type="hidden" id="wpp1" name="workingPricePlus" value="">
+                <input type="hidden" id="wtop1" name="totalPlus" value="">
+                <input type="hidden" id="abp1" name="abschlagPlus" value="">
+                <input type="hidden" id="top1" name="abschlagPlus" value="">
+
                 <div class="tariff-details">
                     <div class="flex mb-5">
                         <div class="tc-detail blue">Grundgebühr</div>
@@ -31,8 +43,8 @@
                         <div class="tc-detail-values">
                             <div class="w-full flex pl-24">
                                 <div class="flex items-center w-1/2 px-8  leading-5">
-                                    <input id="show_plus" class="mr-2" type="radio" value="normal" name="show_plus" >
-                                    <label for="show_plus">Förderung mit 0<sup>50</sup> netto / 0<sup>60</sup> brutto Cent / kWh</label>
+                                    <input id="show_normal1" checked class="mr-2" type="radio" value="normal" name="show_plus" >
+                                    <label for="show_normal1">Förderung mit 0<sup>50</sup> netto / 0<sup>60</sup> brutto Cent / kWh</label>
                                 </div>
                                 <div class="flex items-center w-1/2 px-5 leading-5">
                                     <input id="show_plus1" class="mr-2" type="radio" value="normal" name="show_plus" >
@@ -81,15 +93,14 @@
             var usage = $('#calc_usage').val();
             $('#zip').val(zip);
             $('#usage').val(usage);
-
             var business = 0;
             axios.get('/getTariffs/'+zip+"/"+usage+"/"+business)
                 .then(response => {
                     $('#doing-stuff').hide();
                     console.log(response.data);
-                    var t1 = '21_ftp_fair-ez';
-                    var t2 ='21_ftp_auto_S_dz';
-                    var tariff = t1;
+                    var tariff = '21_ftp_fair-ez';
+                    var tariffplus ='21_ftp_fair_plus_ez';
+
                     console.log(response.data[tariff]);
                     var basePriceBrutto = response.data[tariff]['basePriceBrutto'];
                     var workingPriceBrutto = response.data[tariff]['workingPriceBrutto'];
@@ -97,13 +108,13 @@
                     workingPriceBrutto = (Math.round(workingPriceBrutto * 100) / 100).toFixed(2);
                     var workingPriceTotal = (parseFloat(workingPriceBrutto)*parseFloat(usage)/100).toFixed(2);
                     var total = (parseFloat(basePriceBrutto)*12+parseFloat(workingPriceTotal)).toFixed(2);
-
                     var abschlag = (parseFloat(total)/12).toFixed(2);
                     console.log("BasePrice" +basePriceBrutto);
                     console.log("WorkingPrice" +workingPriceBrutto);
                     console.log("WorkingPriceTotal" +workingPriceTotal);
                     console.log("Total" +total);
                     console.log("Abschlag" +abschlag);
+
                     $('#basePrice1').html(formatPrice(basePriceBrutto));
                     $('#workingPrice1').html(formatPrice(workingPriceBrutto));
                     $('#workingTotal1').html(formatPrice(workingPriceTotal));
@@ -112,7 +123,27 @@
                     $('#abschlag1').html(formatPrice(abschlag));
                     $('#result').show();
 
-            })
+                    $('#bp1').val(basePriceBrutto);
+                    $('#wp1').val(workingPriceBrutto);
+                    $('#wto1').val(workingPriceTotal);
+                    $('#ab1').val(abschlag);
+                    $('#to1').val(total);
+
+                    var basePriceBruttoPlus = response.data[tariffplus]['basePriceBrutto'];
+                    var workingPriceBruttoPlus = response.data[tariffplus]['workingPriceBrutto'];
+                    basePriceBruttoPlus = (Math.round(basePriceBruttoPlus/12 * 100) / 100).toFixed(2);
+                    workingPriceBruttoPlus = (Math.round(workingPriceBruttoPlus * 100) / 100).toFixed(2);
+                    var workingPriceTotalPlus = (parseFloat(workingPriceBruttoPlus)*parseFloat(usage)/100).toFixed(2);
+                    var totalPlus = (parseFloat(basePriceBruttoPlus)*12+parseFloat(workingPriceTotalPlus)).toFixed(2);
+                    var abschlagPlus = (parseFloat(totalPlus)/12).toFixed(2);
+
+                    $('#bpp1').val(basePriceBruttoPlus);
+                    $('#wpp1').val(workingPriceBruttoPlus);
+                    $('#wtop1').val(workingPriceTotalPlus);
+                    $('#abp1').val(abschlagPlus);
+                    $('#top1').val(totalPlus);
+
+                })
             .catch(error => {
                 console.log(error);
             });
@@ -129,6 +160,23 @@
                     return p[0] + "<sup>" + p[1] + "</sup>";
                 }
             }
+
+            $('#show_normal1').click(function(){
+                $('#basePrice1').html(formatPrice($('#bp1').val()));
+                $('#workingPrice1').html(formatPrice($('#wp1').val()));
+                $('#workingTotal1').html(formatPrice($('#wto1').val()));
+                $('#total1').html(formatPrice($('#to1').val()));
+                $('#abschlag1').html(formatPrice($('#ab1').val()));
+            });
+
+            $('#show_plus1').click(function(){
+                $('#basePrice1').html(formatPrice($('#bpp1').val()));
+                $('#workingPrice1').html(formatPrice($('#wpp1').val()));
+                $('#workingTotal1').html(formatPrice($('#wtop1').val()));
+                $('#total1').html(formatPrice($('#top1').val()));
+                $('#abschlag1').html(formatPrice($('#abp1').val()));
+            });
+
         }
         </script>
 </div>
