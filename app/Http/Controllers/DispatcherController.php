@@ -49,33 +49,42 @@ class DispatcherController extends Controller
         return view("clients.".$client.".tarife", compact('cities', 'streets','provider','client'));
     }
 
-    public function getTarifHtml($client, $usage){
-        dump($usage);
-        $tariff_normal = '21_ftp_fair-ez';
-        $tariff_plus = '21_ftp_fair_plus_ez';
-        $tariff_student = '21_ftp_fair_plus_S_ez';
-        $tariffs = file_get_contents('tariff.json');
+    public function getTarifHtml($client, $zip, $usage){
+        #$zip = $request->zip;
+        #$usage = $request->usage;
+        #$x = $request->all();
+        $tariffs = file_get_contents("http://tc.noppenberger.net?zip=". $zip."&usage=".$usage);
         $tariffs = json_decode($tariffs, 1);
-        $data[0] = $tariffs[$tariff_normal];
-        $data[1] = $tariffs[$tariff_plus];
-        $data[2] = $tariffs[$tariff_student];
-        foreach($data as $i => $row) {
-            $workingPriceBrutto = round($data[$i]['workingPriceBrutto'],2);
-            $basePriceBrutto = round($data[$i]['basePriceBrutto']/12,2);
-            $workingPriceTotal = round($workingPriceBrutto * $usage/100, 2);
-            $totalPriceBrutto = $workingPriceTotal + $row['basePriceBrutto'];
+        $tariff1 = '24_ftp_kirche_bayern';
+        $tariff2 = '24_ftp_kirche_bayern_fp';
+        $tariff3 = '24_ftp_kirche_bayern_nacht';
+        $tariff_student = '24_ftp_kirche_bayern_nacht';
+        $data  = [];    
+        foreach($tariffs as $i => $row) {
+            $workingPriceBrutto = number_format(round($tariffs[$i]['workingPriceBrutto'],2),2,'.','');
+            $basePriceBrutto = number_format(round($tariffs[$i]['basePriceBrutto']/12,2),2,'.','');
+            $workingPriceTotal = number_format(round($workingPriceBrutto * $usage/100, 2),2,'.','');
+            $totalPriceBrutto = number_format($workingPriceTotal + $row['basePriceBrutto'],2,'.','');
+            $totalWorkingPrice = number_format($workingPriceTotal,2,'.','');
             $abschlag = number_format(round($totalPriceBrutto/12, 2),2,'.','');
             $data[$i]['basePriceBrutto'] = $basePriceBrutto;
             $data[$i]['workingPriceBrutto'] = $workingPriceBrutto;
-            $data[$i]['totalWorkingPrice'] = number_format($workingPriceTotal,2,'.','');
+            $data[$i]['totalWorkingPrice'] = $totalWorkingPrice;
             $data[$i]['totalPriceBrutto'] = number_format(round($totalPriceBrutto, 2),2,'.','');
             $data[$i]['abschlag'] = $abschlag;
             $data[$i]['pstring'] = $basePriceBrutto."|".$workingPriceBrutto."|".$workingPriceTotal."|".$totalPriceBrutto."|".$abschlag;
+            $data[$i]['basePriceBruttoHtml'] = explode(".",$basePriceBrutto)[0]."<sup>".explode(".",$basePriceBrutto)[1]."</sup>";
+            $data[$i]['workingPriceBruttoHtml'] = explode(".",$workingPriceBrutto)[0]."<sup>".explode(".",$workingPriceBrutto)[1]."</sup>";
+            $data[$i]['totalWorkingPriceHtml'] = explode(".",$totalWorkingPrice)[0]."<sup>".explode(".",$totalWorkingPrice)[1]."</sup>";
+            $data[$i]['totalPriceBruttoHtml'] = explode(".",$totalPriceBrutto)[0]."<sup>".explode(".",$totalPriceBrutto)[1]."</sup>";
+            $data[$i]['abschlagHtml'] = explode(".",$abschlag)[0]."<sup>".explode(".",$abschlag)[1]."</sup>";
+            $data[$i]['code'] = $i;
+            $data[$i]['name'] = $tariffs[$i]['productName'];
+            $data[$i]['zip'] = $zip;
+            $data[$i]['usage'] = $usage;
         }
         $html = view('components.web.tariffCalculator', ['data' => $data, 'energyUsage' => $usage]);
         return $html;
-        #dump($data);
-        #dump($tariffs);
     }
 
 
@@ -87,7 +96,7 @@ class DispatcherController extends Controller
         if ($data['campaignIdentifier']==""){
             $data['campaignIdentifier']="FTPDEFAULT";
         }
-        dump($data);
+        dd($data);
         // Send Data to PowerCloud
         $pc = new PowerCloudRestController();
         $res = $pc->createOrder($data);

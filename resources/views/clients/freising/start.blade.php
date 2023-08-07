@@ -78,26 +78,34 @@
                     <div class="w-20 mr-5"><input type="text" name="calc_usage" id="calc_usage" value="2000"></div>
                     <div class="w-max"><button class="btn-primary" onclick="calc()">Berechnen</button></div>
                 </div>
-
-                <div id="calculator"></div>
-                <button onclick="calc()">los</button>
-
+            </div>
+        </div>   
+    </div> 
+    <div class="content-wrapper">        
+        <div id="calculator"></div>
+    </div>   
+    <div class="content-wrapper">
+        <div class="content">
                 <p>
                 Nach Eingabe Ihrer Postleitzahl und Ihres Jahresverbrauchs werden wir Ihnen die jeweiligen Preisoptionen zur Auswahl anzeigen.
                 </p>
                 <p>
                 Mit Ihrem Wechsel zu Fair Trade Power können Sie aktiv an der Beschleunigung der Energiewende mitwirken und gleichzeitig unsere Schöpfung bewahren.
                 </p>
-            </div>
         </div>
+
     </div>
 
     <script>
         function calc() {
-            axios.get('/client/freising/getTarifHtml/2000' )
+            $('#doing-stuff').show();
+            var zip = $('#calc_zip').val();
+            var usage= $('#calc_usage').val();
+            axios.get('/client/freising/getTarifHtml/'+zip+"/"+usage)
                 .then(response => {
                     console.log(response);
                     $('#calculator').html(response.data);
+                    $('#doing-stuff').hide();
                 })
                 .catch(error => {
                     console.log(error);

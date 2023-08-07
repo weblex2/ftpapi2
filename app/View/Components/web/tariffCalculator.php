@@ -17,13 +17,15 @@ class tariffCalculator extends Component
     public $workingPriceTotal;
     public $total;
     public $advancedPayment;
+    public $zip;
     public $energyUsage;
     public $data;
 
 
-    public function __construct($data, $energyUsage)
+    public function __construct($data, $zip, $energyUsage)
     {
         $this->energyUsage = $energyUsage;
+        $this->zip = $zip;
         $this->data = $data;
     }
 

@@ -197,34 +197,44 @@
                     <div> </div>
                 </div>
 
-                <h2>Kirche</h2>
-                <div class="form-line">
-                    <div>
-                        Gebäudekategorie:<br/>
-                        <select name="buildingCategory" >
-                            <option value="1">Kirche</option>
-                            <option value="2">Kapelle</option>
-                            <option value="3">Pfarrheim/-zentrum</option>
-                            <option value="4">Schwesternhaus</option>
-                            <option value="5">Wohngebäude</option>
-                            <option value="6">Bürogebäude</option>
-                            <option value="7">Altenheim</option>
-                        </select>
-                    </div>
-                    <div>
-                        Wohngebäude<br/>
-                        <select name="residentialBuilding">
-                            <option value=""></option>
-                            <option value="1">Einfamilienhaus</option>
-                            <option value="2">Mehrfamilienhaus</option>
-                            <option value="3">Pfarrhaus</option>
-                        </select>
-                    </div>
-                </div>
+                <h2>Kirche1</h2>
+         <div class="form-line">
+            <div>
+                Gebäudekategorie:<br/>
+                <select name="[GB_ZO][KIRCHE_GEBAEUDE]" >
+                    <option value="Organisationsspezifische Einrichtung">Organisationsspezifische Einrichtung</option>
+                    <option value="Wohngebäude">Wohngebäude</option>
+                    <option value="Verwaltungseinrichtung">Verwaltungseinrichtung</option>
+                    <option value="Pflegeeinrichtungen">Pflegeeinrichtungen</option>
+                </select>
+            </div>
+            <div>
+                Gebäudetyp<br/>
+                <select name="[GB_ZO][GEB_AUS_LISTE]">
+                    <option value=""></option>
+                    <option value="Kirche">Kirche</option>
+                    <option value="Kapelle">Kapelle</option>
+                    <option value="Schwesternhaus">Schwesternhaus</option>
+                    <option value="Einfamilienhaus">Einfamilienhaus</option>
+                    <option value="Mehrfamilienhaus">Mehrfamilienhaus</option>
+                    <option value="Pfarrhaus">Pfarrhaus</option>
+                    <option value="Bürogebäude">Bürogebäude</option>
+                    <option value="Altenheim">Altenheim</option>
+                    <option value="Pfarrheim">Pfarrheim</option>
+                    <option value="Pfarrzentrum">Pfarrzentrum</option>
+                </select>
+            </div>
+
+         </div>
+         
                 <input type="hidden" name="business" value="0">
                 <input type="hidden" name="usage" value="2000">
+                <input type="hidden" name="[GSL][gsl_abgabe]" value="0.2">
+                <input type="hidden" name="[GB_ZO][ZO]" value="BISTUM_LANDESKIRCHE">
                 <input type="hidden" name="productCode" value="ftp_fair-ez">
                 <input type="hidden" name="energy" value="electricity">
+                <input type="hidden" name="customerSpecification" value="desiredDate">
+                
                 <div class="form-line justify-end">
                     <input type="submit"  class="btn-primary-odd mt-5 mr-10" value="Weiter"></input>
                 </div>
@@ -264,7 +274,7 @@ $(document).ready(function(){
     $(document).on("keypress", function(e) {
             if (e.which == 115) { //s
                 $('input:radio[name="salutation"]').filter('[value="1"]').attr('checked', true);
-                $('[name="surName"]').val('API Test AN');
+                $('[name="surname"]').val('API Test AN');
                 $('[name="firstName"]').val('Do not confirm!!!');
                 $('[name="zip"]').val('82024');
                 $('[name="street"]').val('Rosenstr.');
@@ -275,7 +285,7 @@ $(document).ready(function(){
                 $('[name="emailPrivateRepeat"]').val('alex@noppenberger.org');
                 $('[name="customerAuthPassword"]').val('12345');
                 $('[name="customerAuthPasswordRepeat"]').val('12345');
-                $('[name="productCode"]').val('21_ftp_fair_ez');
+                $('[name="productCode"]').val('21_ftp_fair-ez');
                 $('[name="usage"]').val('10');
                 $('[name="business"]').val('0');
                 $('[name="salutation"]').val('1');

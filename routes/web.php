@@ -38,6 +38,9 @@ Route::get('/hi', function () {
 Route::controller(PowerCloudRestController::class)->group(function () {
     Route::get('/getContract', 'test')->name('getContract');
     Route::get('/orderTest', 'newOrderTest')->name('newOrderTest');
+    Route::get('/getTariffsByCampaign/{campaign}', 'getTariffsByCampaign')->name('getTariffsByCampaign');
+    Route::get('/getProducts', 'getProducts')->name('getProducts');
+    Route::get('/getProductsById', 'getProductsById')->name('getProductsByID');
 });
 
 
@@ -53,7 +56,7 @@ Route::controller(DispatcherController::class)->group(function () {
     Route::post('/client/{client}/tariff', 'getTariffsPage')->name('getTariff');
     Route::post('/client/submitForm', 'submitForm')->name('submitForm');
     Route::get('/client/{client}/checkout/success', 'checkoutSuccess')->name('checkoutSuccess');
-    Route::get('/client/{client}/getTarifHtml/{tariff}', 'getTarifHtml')->name('getTarifHtml');
+    Route::get('/client/{client}/getTarifHtml/{zip}/{usage}', 'getTarifHtml')->name('getTarifHtml');
 
     //Nur für die Kirche
     Route::get('/client/{client}/registrierung/{zip?}/{usage?}', 'register')->name('registerclient');

@@ -19,7 +19,7 @@ class PowerCloudRestController extends Controller
         $pw="vQxKgfWgsvAY7Tp7E9FG";
         $hash="9d4da1fe24e7da45dfc5c242af40d913";
 
-        $context=$type.$user.":".$pw;
+        $context=$type."#".$user.":".$pw;
         $credentials = $type."#".$user.":".$pw;
         $headers = array(
             "Content-type: application/json",
@@ -65,6 +65,25 @@ class PowerCloudRestController extends Controller
         return $res;
     }
 
+    public function getProducts(){
+        $res = $this->doRequest('client','getProducts','GET',['limit'=>100, 'offset' => 0]);
+        $res = json_decode($res,1);
+        dump($res);
+    }
+
+    public function getTariffsByCampaign($campaign){
+        $res = $this->doRequest('client','getProductsByCampaign','GET',['campaignIdentifier' => $campaign, 'limit'=>100, 'offset' => 0]);
+        $res = json_decode($res,1);
+        dump($res['data']);
+    }
+
+    public function getProductsById(){
+        $res = $this->doRequest('contract','getTariffById','GET',['id' => 'C18429', 'limit'=>100, 'offset' => 0]);
+        dump($res);
+        ##$res = json_decode($res,1);
+        #dump($res['data']);
+    }
+    
 
     public function test(){
         $res['message'] = $this->doRequest('client','getContractById','GET',['id'=>752543]);
@@ -72,9 +91,8 @@ class PowerCloudRestController extends Controller
     }
 
 
-    public function createOrder($dataIn){
-        $dataOut = $dataIn;
-        $res['message'] = $this->doRequest('client','createOrder','POST',$dataOut);
+    public function createOrder($data){
+        $res['message'] = $this->doRequest('client','createOrder','POST',$data);
         return $res;
     }
 

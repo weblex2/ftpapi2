@@ -78,8 +78,8 @@ html{
     @apply  text-sm
 }
 
-.calculator{
-    @apply bg-[#0ac] w-full
+#calculator{
+    @apply w-full 
 }
 
 .headline{
