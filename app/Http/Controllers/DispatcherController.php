@@ -96,7 +96,7 @@ class DispatcherController extends Controller
         if ($data['campaignIdentifier']==""){
             $data['campaignIdentifier']="FTPDEFAULT";
         }
-        dd($data);
+        dump($data);
         // Send Data to PowerCloud
         $pc = new PowerCloudRestController();
         $res = $pc->createOrder($data);

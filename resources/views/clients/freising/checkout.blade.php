@@ -221,7 +221,7 @@
             <div> </div>
          </div>
 
-         <h2>Kirche1</h2>
+         <h2>Kirche</h2>
          <div class="form-line">
             <div>
                 Gebäudekategorie:<br/>

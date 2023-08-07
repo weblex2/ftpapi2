@@ -197,11 +197,11 @@
                     <div> </div>
                 </div>
 
-                <h2>Kirche1</h2>
+                <h2>Kirche</h2>
          <div class="form-line">
             <div>
                 Gebäudekategorie:<br/>
-                <select name="[GB_ZO][KIRCHE_GEBAEUDE]" >
+                <select name="GB_ZO[KIRCHE_GEBAEUDE]" >
                     <option value="Organisationsspezifische Einrichtung">Organisationsspezifische Einrichtung</option>
                     <option value="Wohngebäude">Wohngebäude</option>
                     <option value="Verwaltungseinrichtung">Verwaltungseinrichtung</option>
@@ -210,7 +210,7 @@
             </div>
             <div>
                 Gebäudetyp<br/>
-                <select name="[GB_ZO][GEB_AUS_LISTE]">
+                <select name="GB_ZO[GEB_AUS_LISTE]">
                     <option value=""></option>
                     <option value="Kirche">Kirche</option>
                     <option value="Kapelle">Kapelle</option>
@@ -229,9 +229,9 @@
          
                 <input type="hidden" name="business" value="0">
                 <input type="hidden" name="usage" value="2000">
-                <input type="hidden" name="[GSL][gsl_abgabe]" value="0.2">
-                <input type="hidden" name="[GB_ZO][ZO]" value="BISTUM_LANDESKIRCHE">
-                <input type="hidden" name="productCode" value="ftp_fair-ez">
+                <input type="hidden" name="GSL[gsl_abgabe]" value="0.2">
+                <input type="hidden" name="GB_ZO[ZO]" value="BISTUM_LANDESKIRCHE">
+                <input type="hidden" name="productCode" value="{{$_GET['tariff']}}">
                 <input type="hidden" name="energy" value="electricity">
                 <input type="hidden" name="customerSpecification" value="desiredDate">
                 
