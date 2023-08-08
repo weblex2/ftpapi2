@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PowerCloudSoapController;
 use App\Http\Controllers\API\PowerCloudRestController;
 use App\Http\Controllers\DispatcherController;
+use App\Http\Controllers\BackendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +62,8 @@ Route::controller(DispatcherController::class)->group(function () {
     //Nur für die Kirche
     Route::get('/client/{client}/registrierung/{zip?}/{usage?}', 'register')->name('registerclient');
 });
+
+Route::controller(BackendController::class)->group(function () {
+    Route::get('/kirche', 'getOrders')->name('getOrders');
+});
+

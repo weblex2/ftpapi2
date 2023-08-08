@@ -5,6 +5,11 @@
             <h1 class="mt-4">Willkommen bei Fair Trade Power</h1>
         </div>
     </div>
+    @if ($success === true) 
+        all Good
+    @else    
+        not good
+    @endif
 
     <div class="content-wrapper">
         <div class="content ">
