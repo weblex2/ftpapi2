@@ -110,6 +110,7 @@ class DispatcherController extends Controller
         // Send Data to PowerCloud
         $pc = new PowerCloudRestController();
         $result = $pc->createOrder($data);
+        dump($result);
         $co->result = $result;
         $co->update();
 
