@@ -62,7 +62,7 @@ class PowerCloudRestController extends Controller
             return $result;
         }
         else{
-            return false;
+            return $res;
         }
     }
 
