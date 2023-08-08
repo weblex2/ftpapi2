@@ -1,6 +1,6 @@
 <select name="{{$name}}" {{$required}}>
 
-    @if (isses($emptyOption) && $emptyOption==1)
+    @if (isset($emptyOption) && $emptyOption==1)
         <option class="dropdown-option" value=""></option>
     @endif
 
