@@ -60,8 +60,8 @@
                 <div class="form-line">
                     <div>PLZ<br/><input type="text" name="zip" id="zip" value="{{$req['zip']}}" {{$req['zip'] !="" ? "readonly" :""}} required></div>
                     <div>Ort<br/>
-                        <x-web.dropdown name="city" :mydata=$cities required="required"/>
-                        {{-- <input type="text" name="city" id="city" value=""  > --}}
+                       {{--  <x-web.dropdown name="city" :mydata=$cities required="required"/> --}}
+                        <input type="text" name="city" id="city" value=""  >
                     </div>
                 </div>
 
