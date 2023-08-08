@@ -1,11 +1,7 @@
 <div>
     <!-- I begin to speak only when I am certain what I will say is not better left unsaid. - Cato the Younger -->
     <div id="result-wrapper" class=" relative m-20">
-        <div id="doing-stuff" class="content-wrapper bg-opacity-20 hidden pb-20 w-full h-full">
-            <div class="flex p-10   justify-center items-center">
-                <img class="w-[20%]" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
-            </div>
-        </div>
+        
     </div>    
     @php
         $i=0;
@@ -26,7 +22,7 @@
 
                     <div class="tariff-details">
                         <div class="tc-result-line">
-                            <div class="w-3/4"><h1>{{$tariff['name']}}</h1></div>
+                            <div class="w-3/4"><h2>{{$tariff['name']}}</h2></div>
                             <div><img class="h-[70%] w-auto" src="{{asset('img/kirche/Gruener_Strom_empfohlen_RGB_web_1181-300x209.jpg')}}"></div>
                         </div>
                         <div class="tc-result-line">

@@ -6,6 +6,7 @@ use App\Http\Controllers\API\PowerCloudSoapController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\PowerCloudRestController;
 use Route;
+use App\Models\CustomerOrders;
 
 class DispatcherController extends Controller
 {
@@ -29,7 +30,9 @@ class DispatcherController extends Controller
         $req = $request->all();
         $req['zip'] = isset($req['zip']) ? $req['zip'] : "";
         $req['usage'] = isset($req['usage']) ? $req['usage'] : "2000";
-        return view('clients.'.$client.'.register',compact('client','req'));
+        $pc = new PowerCloudSoapController();
+        $cities = $pc->getCities($req['zip'])['data'];
+        return view('clients.'.$client.'.register',compact('client','req','cities'));
     }
 
     public function getTariffsPage(Request $request){
@@ -96,11 +99,28 @@ class DispatcherController extends Controller
         if ($data['campaignIdentifier']==""){
             $data['campaignIdentifier']="KIRCHE";
         }
-        dump($data);
+        $data['extendedData']['GSL']['gsl_abgabe'] = "0.2";
+        #unset($data['extendedData']['GP_ZO']);
+        $data['extendedData'] = json_encode($data['extendedData']);
+        // Save Data to DB
+        $co  = new CustomerOrders();
+        $co->order_detail = json_encode($data);
+        $co->result = "";
+        $co->save();
         // Send Data to PowerCloud
         $pc = new PowerCloudRestController();
-        $res = $pc->createOrder($data);
-        print_r($res);
+        $result = $pc->createOrder($data);
+        $co->result = $result;
+        $co->update();
+
+        if (isset($result['success']) &&  $result['success']=="true"){
+            $success=true;
+        }
+        else{
+            $success=false;
+        }
+        return view('clients.freising.checkoutsuccess', compact('success')); 
+
     }
 
     public function checkoutSuccess(){

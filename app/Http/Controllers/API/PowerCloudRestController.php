@@ -48,8 +48,6 @@ class PowerCloudRestController extends Controller
         $streamVerboseHandle = fopen('php://temp', 'w+');
         curl_setopt($ch, CURLOPT_STDERR, $streamVerboseHandle);
         $res = curl_exec($ch);
-
-
         if ($res === FALSE) {
             printf("cUrl error (#%d): %s<br>\n",
                 curl_errno($ch),
@@ -59,10 +57,13 @@ class PowerCloudRestController extends Controller
 
         rewind($streamVerboseHandle);
         $verboseLog = stream_get_contents($streamVerboseHandle);
-
-        //file_put_contents('../../public/log.txt', $verboseLog);
-        //file_put_contents('../../public/log2.txt', $res);
-        return $res;
+        $result = (json_decode($res,1)!=false) ? json_decode($res,1) : $res;
+        if (isset($result['success']) &&  $result['success']=="true"){
+            return $result;
+        }
+        else{
+            return false;
+        }
     }
 
     public function getProducts(){
@@ -92,7 +93,7 @@ class PowerCloudRestController extends Controller
 
 
     public function createOrder($data){
-        $res['message'] = $this->doRequest('client','createOrder','POST',$data);
+        $res = $this->doRequest('client','createOrder','POST',$data);
         return $res;
     }
 

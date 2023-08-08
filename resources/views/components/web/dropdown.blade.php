@@ -1,4 +1,4 @@
-<select name="{{$name}}">
+<select name="{{$name}}" {{$required}}>
 
     @if ($emptyOption==1)
         <option class="dropdown-option" value=""></option>

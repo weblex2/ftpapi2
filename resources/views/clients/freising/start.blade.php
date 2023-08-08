@@ -73,15 +73,24 @@
 
                 <div class="content-blue lg:flex justify-start  items-center p-10">
                     <div class="mr-5">Ihre PLZ</div>
-                    <div class="w-20 mr-5"><input type="text" name="calc_zip" id="calc_zip" value="82024"></div>
+                    <div class="w-20 mr-5"><input class="text-center text-bold" type="text" name="calc_zip" id="calc_zip" value="82024"></div>
                     <div class="mr-5">Ihr Jahresverbrauch (in kWh)</div>
-                    <div class="w-20 mr-5"><input type="text" name="calc_usage" id="calc_usage" value="2000"></div>
+                    <div class="w-20 mr-5"><input class="text-center text-extrabold" type="text" name="calc_usage" id="calc_usage" value="2000"></div>
                     <div class="w-max"><button class="btn-primary" onclick="calc()">Berechnen</button></div>
                 </div>
             </div>
         </div>   
     </div> 
-    <div class="content-wrapper">        
+    <div class="content-wrapper ">
+        <div id="doing-stuff" class="hidden">  
+            <div class="content flex justify-center">
+                <div> 
+                    <img class="w-[50%]" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
+                </div>
+            </div>   
+        </div> 
+    </div>
+    <div class="content-wrapper">  
         <div id="calculator"></div>
     </div>   
     <div class="content-wrapper">
@@ -99,12 +108,14 @@
     <script>
         function calc() {
             $('#doing-stuff').show();
+            $('#calculator').hide();
             var zip = $('#calc_zip').val();
             var usage= $('#calc_usage').val();
             axios.get('/client/freising/getTarifHtml/'+zip+"/"+usage)
                 .then(response => {
                     console.log(response);
                     $('#calculator').html(response.data);
+                    $('#calculator').show();
                     $('#doing-stuff').hide();
                 })
                 .catch(error => {

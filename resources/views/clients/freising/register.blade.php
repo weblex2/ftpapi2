@@ -58,8 +58,11 @@
                 </div>
 
                 <div class="form-line">
-                    <div>PLZ<br/><input type="text" name="zip" id="zip" value="{{$req['zip']}}" {{$req['zip'] !="" ? "readonly" :""}} ></div>
-                    <div>Ort<br/><input type="text" name="city" id="city" value=""  ></div>
+                    <div>PLZ<br/><input type="text" name="zip" id="zip" value="{{$req['zip']}}" {{$req['zip'] !="" ? "readonly" :""}} required></div>
+                    <div>Ort<br/>
+                        <x-web.dropdown name="city" :mydata=$cities required="required"/>
+                        {{-- <input type="text" name="city" id="city" value=""  > --}}
+                    </div>
                 </div>
 
                 <div class="form-line">
@@ -126,37 +129,37 @@
                 </div>
 
                 <div class="form-line">
-                    <div>Vorwahl<br/><input type="text" name="phoneHomeAreaCode"></div>
-                    <div>Telefonnummer<br/><input type="text" name="phoneHome"></div>
+                    <div>Vorwahl<br/><input type="text" name="phoneHomeAreaCode" required></div>
+                    <div>Telefonnummer<br/><input type="text" name="phoneHome" required></div>
                 </div>
 
                 <div class="form-line">
-                    <div>Email<br/><input type="text" name="emailPrivate"></div>
-                    <div>E-Mail wiederholen<br/><input type="text" name="emailPrivateRepeat"></div>
+                    <div>Email<br/><input type="email" name="emailPrivate" required></div>
+                    <div>E-Mail wiederholen<br/><input type="email" name="emailPrivateRepeat" required></div>
                 </div>
 
                 <div class="form-line">
-                    <div>Passwort<br/><input type="text" name="customerAuthPassword"></div>
-                    <div>Passwort Wiederholung<br/><input type="text" name="customerAuthPasswordRepeat"></div>
+                    <div>Passwort<br/><input type="text" name="customerAuthPassword" required></div>
+                    <div>Passwort Wiederholung<br/><input type="text" name="customerAuthPasswordRepeat" required></div>
                 </div>
 
 
                 <h2>Stromversorgung</h2>
                 <!-- Customer Moved -->
-                <div class="form-line">
+                {{-- <div class="form-line">
                     <div class="flex items-center mr-4">
                         <input id="customerMoved" name="customerMoved" value="" type="checkbox">
                         <label for="customerMoved" class="checkbox-label">Ich bin in den letzten sechs Wochen umgezogen oder ziehe demnächst um.</label>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="form-line">
                     <div>Derzeitiger Versorger<br/><input type="text" name="previousProviderCodeNumber" placeholder="optional"></div>
                     <div></div>
                 </div>
                 <div class="form-line">
-                    <div>Zählernummer<br/><input type="text" name="counterNumber"></div>
-                    <div>Marktlokationsnummer<br/><input type="text" name="marketLocationIdentifier"></div>
+                    <div>Zählernummer<br/><input type="text" name="counterNumber" required></div>
+                    <div>Marktlokationsnummer<br/><input placeholder="optional" type="text" name="marketLocationIdentifier"></div>
                 </div>
 
                 <div class="form-line">
@@ -167,7 +170,7 @@
                 </div>
 
                 <div class="form-line">
-                    <div>Gewünschtes Lieferdatum<br/><input type="text" name="desiredDate"></div>
+                    <div>Gewünschtes Lieferdatum<br/><input type="date" id="desiredDate" name="desiredDate" reqired></div>
                     <div class="flex items-center mr-4 mt-4">
                         <input id="desiredDateAsSoonAsPossible" name="desiredDateAsSoonAsPossible" value="" type="checkbox">
                         <label for="desiredDateAsSoonAsPossible" class="checkbox-label">Sobald wie möglich</label>
@@ -175,33 +178,39 @@
                 </div>
 
                 <h2>Zahlung</h2>
-                <div class="form-line">
+                {{-- <div class="form-line">
                     <div class="flex items-center mr-4 mt-4">
                         <input id="noSEPA" name="noSEPA" value="" type="checkbox">
                         <label for="noSEPA" class="checkbox-label">Ich überweise die fälligen Abschläge zum ersten Werktag des Monats selbst.</label>
                     </div>
-                </div>
+                </div> --}}
 
 
                 <div class="form-line">
-                    <div>IBAN<br/><input type="text" name="iban"></div>
+                    <div>IBAN<br/><input type="text" name="iban" pattern="^DE\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{2}|DE\d{20}$" placeholder="IBAN" required></div>
                 </div>
 
                 <div class="form-line">
                     <div>Abweichender Kontoinhaber (Vor- und Nachname)<br/><input type="text" name="alternativeAccountHolder" placeholder="optional"></div>
                 </div>
 
-                <h2>Aktionscode</h2>
+                {{-- <h2>Aktionscode</h2>
                 <div class="form-line">
                     <div><input type="text" name="campaignIdentifier" placeholder="optional"></div>
                     <div> </div>
-                </div>
+                </div> --}}
 
-                <h2>Kirche</h2>
+         <h2>Kirche</h2>
+         <div class="form-line">
+            <div>
+            Name der Einrichtung:<br/>
+            <input type="text" placeholder="optional" name="extendedData[GP_ZO][BISTUM_LANDESKIRCHE]">
+            </div>
+         </div>   
          <div class="form-line">
             <div>
                 Gebäudekategorie:<br/>
-                <select name="GB_ZO[KIRCHE_GEBAEUDE]" >
+                <select name="extendedData[GP_ZO][KIRCHE_GEBAEUDE]" required >
                     <option value="Organisationsspezifische Einrichtung">Organisationsspezifische Einrichtung</option>
                     <option value="Wohngebäude">Wohngebäude</option>
                     <option value="Verwaltungseinrichtung">Verwaltungseinrichtung</option>
@@ -210,7 +219,7 @@
             </div>
             <div>
                 Gebäudetyp<br/>
-                <select name="GB_ZO[GEB_AUS_LISTE]">
+                <select name="extendedData[GP_ZO][GEB_AUS_LISTE]">
                     <option value=""></option>
                     <option value="Kirche">Kirche</option>
                     <option value="Kapelle">Kapelle</option>
@@ -229,8 +238,8 @@
          
                 <input type="hidden" name="business" value="0">
                 <input type="hidden" name="usage" value="2000">
-                <input type="hidden" name="GSL[gsl_abgabe]" value="0.2">
-                <input type="hidden" name="GB_ZO[ZO]" value="BISTUM_LANDESKIRCHE">
+                <input type="hidden" name="extendedData[GSL][gsl_abgabe]" value="0.2">
+                <input type="hidden" name="campaignIdentifier" value="KIRCHE">
                 <input type="hidden" name="productCode" value="{{$_GET['tariff']}}">
                 <input type="hidden" name="energy" value="electricity">
                 <input type="hidden" name="customerSpecification" value="desiredDate">
@@ -264,15 +273,40 @@ $(document).ready(function(){
         updateBillingCities();
     });
 
-    $('#billingAlternativeAddress').change(function(){
+    $('#desiredDateAsSoonAsPossible').change(function(){
+        if ($(this).is(':checked')) {
+          $('#customerHasTerminated').prop("disabled",true);      
+          $('#desiredDate').prop("disabled",true);
+        }  
+        else {
+          $('#customerHasTerminated').prop("disabled",false);  
+          $('#desiredDate').prop("disabled",false);    
+        }    
+    });
 
+    $('#billingAlternativeAddress').change(function(){
         if ($(this).is(':checked')) {
             $('#billingFirstname').prop('required',true);
+            $('#billingSurname').prop('required',true);
+            $('#billingZip').prop('required',true);
+            $('#billingCity').prop('required',true);
+            $('#billingStreet').prop('required',true);
+            $('#billingHousenumber').prop('required',true);
+        }
+        else{
+            $('#billingFirstname').prop('required',false);
+            $('#billingSurname').prop('required',false);
+            $('#billingZip').prop('required',false);
+            $('#billingCity').prop('required',false);
+            $('#billingStreet').prop('required',false);
+            $('#billingHousenumber').prop('required',false);
         }
     })
 
     $(document).on("keypress", function(e) {
-            if (e.which == 115) { //s
+        
+            if (e.ctrlKey && e.keyCode == 17) { // cntrl + q
+                e.preventDefault(); 
                 $('input:radio[name="salutation"]').filter('[value="1"]').attr('checked', true);
                 $('[name="surname"]').val('API Test AN');
                 $('[name="firstName"]').val('Do not confirm!!!');
@@ -294,7 +328,9 @@ $(document).ready(function(){
                 $('[name="phoneMobile"]').val('111111');
                 $('[name="phoneHomeAreaCode"]').val('000');
                 $('[name="phoneHome"]').val('1111111');
-                $('[name="desiredDate"]').val('2030-01-01');
+                $('[name="desiredDate"]').val('01.01.2030');
+                $('[name="iban"]').val('DE02120300000000202051');
+                
             }
         });
         /*
