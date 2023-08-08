@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="form-line">
-                    <div>Gewünschtes Lieferdatum<br/><input type="date" id="desiredDate" name="desiredDate" reqired></div>
+                    <div>Gewünschtes Lieferdatum<br/><input type="date" id="desiredDate" name="desiredDate" required></div>
                     <div class="flex items-center mr-4 mt-4">
                         <input id="desiredDateAsSoonAsPossible" name="desiredDateAsSoonAsPossible" value="" type="checkbox">
                         <label for="desiredDateAsSoonAsPossible" class="checkbox-label">Sobald wie möglich</label>
