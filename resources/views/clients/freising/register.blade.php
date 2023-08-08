@@ -285,7 +285,7 @@ $(document).ready(function(){
                 $('[name="emailPrivateRepeat"]').val('alex@noppenberger.org');
                 $('[name="customerAuthPassword"]').val('12345');
                 $('[name="customerAuthPasswordRepeat"]').val('12345');
-                $('[name="productCode"]').val('21_ftp_fair-ez');
+                //$('[name="productCode"]').val('21_ftp_fair-ez');
                 $('[name="usage"]').val('10');
                 $('[name="business"]').val('0');
                 $('[name="salutation"]').val('1');

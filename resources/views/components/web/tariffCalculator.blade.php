@@ -9,7 +9,7 @@
     </div>    
     @php
         $i=0;
-        dump($data);
+        //dump($data);
     @endphp
     <div id="result" class="hidden1">
             

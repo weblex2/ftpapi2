@@ -94,7 +94,7 @@ class DispatcherController extends Controller
             $data['billingAlternativeAddress']=false;
         }
         if ($data['campaignIdentifier']==""){
-            $data['campaignIdentifier']="FTPDEFAULT";
+            $data['campaignIdentifier']="KIRCHE";
         }
         dump($data);
         // Send Data to PowerCloud
