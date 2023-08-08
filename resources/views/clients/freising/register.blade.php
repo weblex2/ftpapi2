@@ -242,7 +242,7 @@
                 <input type="hidden" name="campaignIdentifier" value="KIRCHE">
                 <input type="hidden" name="productCode" value="{{$_GET['tariff']}}">
                 <input type="hidden" name="energy" value="electricity">
-                <input type="hidden" name="customerSpecification" value="desiredDate">
+                <input type="hidden" name="customerSpecification" value="desired_date">
                 
                 <div class="form-line justify-end">
                     <input type="submit"  class="btn-primary-odd mt-5 mr-10" value="Weiter"></input>
