@@ -21,9 +21,9 @@
                     <input type="hidden" id="student" value="{{$tariff[1]['pstring']}}"> --}}
 
                     <div class="tariff-details">
-                        <div class="tc-result-line">
+                        <div class="tc-result-line justify-start p-0 relative">
                             <div class="w-3/4"><h2>{{$tariff['name']}}</h2></div>
-                            <div><img class="h-[70%] w-auto" src="{{asset('img/kirche/Gruener_Strom_empfohlen_RGB_web_1181-300x209.jpg')}}"></div>
+                            <div><img class="absolute h-[70%] w-auto" src="{{asset('img/kirche/Gruener_Strom_empfohlen_RGB_web_1181-300x209.jpg')}}"></div>
                         </div>
                         <div class="tc-result-line">
                             <div class="tc-detail blue">Grundgebühr</div>
