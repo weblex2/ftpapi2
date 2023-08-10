@@ -8,8 +8,8 @@ use App\Models\CustomerOrders;
 class BackendController extends Controller
 {
     public function getOrders(){
-        $customerOrders  = new CustomerOrders();
-        $customerOrders->all();
+        //$customerOrders  = new CustomerOrders();
+        $customerOrders = CustomerOrders::all();
         return view('backend.index', compact('customerOrders'));
     }
 }

@@ -239,6 +239,7 @@
                 <input type="hidden" name="business" value="0">
                 <input type="hidden" name="usage" value="2000">
                 <input type="hidden" name="extendedData[GSL][gsl_abgabe]" value="0.2">
+                <input type="hidden" name="extendedData[GP_ZO][ZO]" value="Bistum und Landeskirche">
                 <input type="hidden" name="campaignIdentifier" value="KIRCHE">
                 <input type="hidden" name="productCode" value="{{$_GET['tariff']}}">
                 <input type="hidden" name="energy" value="electricity">

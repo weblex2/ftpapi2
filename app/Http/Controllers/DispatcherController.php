@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\PowerCloudRestController;
 use Route;
 use App\Models\CustomerOrders;
+use App\Http\Controllers\EMailController;
 
 class DispatcherController extends Controller
 {
@@ -19,7 +20,11 @@ class DispatcherController extends Controller
     }
 
     public function start($client){
-        return view('clients.'.$client.'.start',compact('client'));
+        //$email  = new EMailController();
+        //$mailData['title'] = "hallo";
+        //return view('mailtemplates.kirche', compact('mailData'));
+        //$email->sendMail();
+        #return view('clients.'.$client.'.start',compact('client'));
     }
 
     public function about($client){
@@ -92,7 +97,9 @@ class DispatcherController extends Controller
 
 
     public function submitForm(Request $request){
+        
         $data = $request->all();
+        dump($data);
         if (!isset($data['billingAlternativeAddress'])){
             $data['billingAlternativeAddress']=false;
         }
@@ -103,16 +110,16 @@ class DispatcherController extends Controller
         #unset($data['extendedData']['GP_ZO']);
         $data['extendedData'] = json_encode($data['extendedData']);
         // Save Data to DB
-        $co  = new CustomerOrders();
-        $co->order_detail = json_encode($data);
-        $co->result = "";
-        $co->save();
+        
+        
         // Send Data to PowerCloud
         $pc = new PowerCloudRestController();
         $result = $pc->createOrder($data);
+        $co  = new CustomerOrders();
+        $co->order_detail = json_encode($data);
+        $co->result = json_encode($result);
+        $co->save();
         dump($result);
-        $co->result = $result;
-        $co->update();
 
         if (isset($result['success']) &&  $result['success']=="true"){
             $success=true;

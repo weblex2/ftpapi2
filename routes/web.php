@@ -29,6 +29,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::controller(BackendController::class)->group(function () {
+        Route::get('/backend', 'getOrders')->name('getOrders');
+    });
 });
 
 Route::get('/hi', function () {
@@ -37,7 +40,7 @@ Route::get('/hi', function () {
 
 
 Route::controller(PowerCloudRestController::class)->group(function () {
-    Route::get('/getContract', 'test')->name('getContract');
+    Route::get('/test', 'test')->name('getContract');
     Route::get('/orderTest', 'newOrderTest')->name('newOrderTest');
     Route::get('/getTariffsByCampaign/{campaign}', 'getTariffsByCampaign')->name('getTariffsByCampaign');
     Route::get('/getProducts', 'getProducts')->name('getProducts');
@@ -63,7 +66,5 @@ Route::controller(DispatcherController::class)->group(function () {
     Route::get('/client/{client}/registrierung/{zip?}/{usage?}', 'register')->name('registerclient');
 });
 
-Route::controller(BackendController::class)->group(function () {
-    Route::get('/kirche', 'getOrders')->name('getOrders');
-});
+
 

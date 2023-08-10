@@ -87,8 +87,10 @@ class PowerCloudRestController extends Controller
     
 
     public function test(){
-        $res['message'] = $this->doRequest('client','getContractById','GET',['id'=>752543]);
-        return $res;
+        $res = $this->doRequest('customer','getContractById','GET',['id'=>752543]);
+        #$res = $this->doRequest('client','getProducts','GET',['limit'=>100,'offset'=>0]);
+        echo "<pre>";
+        print_r($res);
     }
 
 
