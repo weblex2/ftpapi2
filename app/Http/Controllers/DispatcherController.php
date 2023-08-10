@@ -24,7 +24,7 @@ class DispatcherController extends Controller
         //$mailData['title'] = "hallo";
         //return view('mailtemplates.kirche', compact('mailData'));
         //$email->sendMail();
-        #return view('clients.'.$client.'.start',compact('client'));
+        return view('clients.'.$client.'.start',compact('client'));
     }
 
     public function about($client){
