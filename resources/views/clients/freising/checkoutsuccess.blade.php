@@ -5,12 +5,6 @@
             <h1 class="mt-4">Willkommen bei Fair Trade Power</h1>
         </div>
     </div>
-    @if ($success === true) 
-        all Good
-    @else    
-        not good
-    @endif
-
     <div class="content-wrapper">
         <div class="content ">
             <p class="my-5">Herzlich willkommen bei Fair Trade Power. Sie haben sich für 100% Ökostrom entschieden und damit den ersten Schritt zur Energiewende getan.</p>

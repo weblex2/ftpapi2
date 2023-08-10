@@ -99,7 +99,7 @@ class DispatcherController extends Controller
     public function submitForm(Request $request){
         
         $data = $request->all();
-        dump($data);
+        #dump($data);
         if (!isset($data['billingAlternativeAddress'])){
             $data['billingAlternativeAddress']=false;
         }
@@ -107,19 +107,19 @@ class DispatcherController extends Controller
             $data['campaignIdentifier']="KIRCHE";
         }
         $data['extendedData']['GSL']['gsl_abgabe'] = "0.2";
-        #unset($data['extendedData']['GP_ZO']);
+       
         $data['extendedData'] = json_encode($data['extendedData']);
-        // Save Data to DB
-        
-        
+       
         // Send Data to PowerCloud
         $pc = new PowerCloudRestController();
         $result = $pc->createOrder($data);
+
+         // Save Data to DB
         $co  = new CustomerOrders();
         $co->order_detail = json_encode($data);
         $co->result = json_encode($result);
         $co->save();
-        dump($result);
+        #dump($result);
 
         if (isset($result['success']) &&  $result['success']=="true"){
             $success=true;
@@ -132,7 +132,9 @@ class DispatcherController extends Controller
     }
 
     public function checkoutSuccess(){
-        $client = $this->getClient();
+        #$email  = new EMailController();
+        #$email->sendMail();
+        #$client = $this->getClient();
         return view('clients.'.$client.'.checkoutsuccess');
     }
 
