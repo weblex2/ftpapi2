@@ -26,9 +26,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    /* Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard');
+    })->name('dashboard'); */
+    Route::controller(BackendController::class)->group(function () {
+        Route::get('/dashboard', 'getOrders')->name('dashboard');
+    });
     Route::controller(BackendController::class)->group(function () {
         Route::get('/backend', 'getOrders')->name('getOrders');
     });
