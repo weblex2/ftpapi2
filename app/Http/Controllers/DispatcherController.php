@@ -20,10 +20,14 @@ class DispatcherController extends Controller
     }
 
     public function start($client){
-        //$email  = new EMailController();
-        //$mailData['title'] = "hallo";
+        
+        $mailData['title'] = "hallo";
+        $mailData['subject'] = "hallo";
+        $email  = new EMailController();
+        $email->sendMail($mailData);
+        die();
         //return view('mailtemplates.kirche', compact('mailData'));
-        //$email->sendMail();
+        //
         return view('clients.'.$client.'.start',compact('client'));
     }
 
@@ -134,7 +138,8 @@ class DispatcherController extends Controller
     public function checkoutSuccess(){
         #$email  = new EMailController();
         #$email->sendMail();
-        #$client = $this->getClient();
+        
+        $client = $this->getClient();
         return view('clients.'.$client.'.checkoutsuccess');
     }
 

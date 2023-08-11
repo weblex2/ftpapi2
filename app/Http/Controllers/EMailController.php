@@ -6,20 +6,32 @@ use Illuminate\Http\Request;
 use App\Mail\MailController;
 class EMailController extends Controller
 {
+ 
+    public $mailData;
      /**
      * Write code on Method
      *
      * @return response()
      */
-    public function sendMail()
+
+     /* public function __construct($mailData)
+     {
+         $this->$mailData = $mailData;
+     } */
+
+    public function sendMail($mailData)
     {
-        $mailData = [
+        /* $mailData = [
             'title' => 'Grüß Gott und Willkommen bei Fair Trade Power!',
             'body' => 'This is for testing email using smtp.'
-        ];
+        ]; */
          
-        Mail::to('alex@noppenberger.org')->send(new MailController($mailData));
-           
-        dd("Email is sent successfully.");
+        $res = Mail::to('alex@noppenberger.org')->send(new MailController($mailData));
+        if ($res->messageId){       
+            dd("Email is sent successfully.");
+        }
+        else{
+            dd("Email is not sent successfully");
+        }    
     }
 }

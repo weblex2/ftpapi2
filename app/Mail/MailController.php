@@ -29,7 +29,7 @@ class MailController extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Mail Controller',
+            subject: 'Willkommen bei Fai Trade Power',
         );
     }
 
