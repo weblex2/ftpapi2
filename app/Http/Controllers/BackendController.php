@@ -9,7 +9,7 @@ class BackendController extends Controller
 {
     public function getOrders(){
         //$customerOrders  = new CustomerOrders();
-        $customerOrders = CustomerOrders::all();
+        $customerOrders = CustomerOrders::orderBy('created_at', 'desc')->get();
         return view('backend.index', compact('customerOrders'));
     }
 }
