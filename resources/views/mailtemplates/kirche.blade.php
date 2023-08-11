@@ -8,7 +8,7 @@
     {{-- <p>{{ $mailData['body'] }}</p> --}}
 Herzlichen Dank für Ihre Anmeldung! Wir freuen uns, dass Sie sich im Rahmen der mit den Diözesen in Bayern geschlossenen Rahmenvertrag für Fair Trade Power entschieden haben.
 <br>
-Der Wechselvorgang kann bis zu Tagen, manchmal ein wenig länger dauern. Sobald uns Ihr zuständiger Netzbetreibers Ihre Anmeldung bestätigt, erhalten Sie unsere Vertragsbestätigung. Ihr Kundenportal können Sie jetzt schon einsehen: https://kunden.fairtradepower.de
+Der Wechselvorgang kann bis zu Tagen, manchmal ein wenig länger dauern. Sobald uns Ihr zuständiger Netzbetreibers Ihre Anmeldung bestätigt, erhalten Sie unsere Vertragsbestätigung.
 <br>
 Bei Fragen melden Sie sich gerne! Wir sind Montag bis Freitag von 8 bis 17 Uhr für Sie da!
 <br>
