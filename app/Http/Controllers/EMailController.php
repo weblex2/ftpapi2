@@ -26,9 +26,9 @@ class EMailController extends Controller
             'body' => 'This is for testing email using smtp.'
         ]; */
          
-        $res = Mail::to('alex@noppenberger.org')->send(new MailController($mailData));
+        $res = Mail::to($mailData['to'])->send(new MailController($mailData));
         //if ($res['messageId']){       
-            dd("Email is sent successfully.");
+            //dd("Email is sent successfully.");
         //}
         //else{
         //    dd("Email is not sent successfully");
