@@ -76,7 +76,7 @@
                     <div class="w-20 mr-5"><input class="text-center text-bold" type="text" pattern="[0-9]{5}" name="calc_zip" id="calc_zip" value="" required></div>
                     <div class="mr-5">Ihr Jahresverbrauch (in kWh)</div>
                     <div class="w-20 mr-5"><input class="text-center text-extrabold" type="number"  min="1" max="99999" name="calc_usage" id="calc_usage" value="" required></div>
-                    <div class="w-max"><button class="btn-primary" onclick="calc(e)">Berechnen</button></div>
+                    <div class="w-max"><button class="btn-primary" onclick="calc()">Berechnen</button></div>
                 </div>
                 <!--/form-->
             </div>
@@ -108,7 +108,7 @@
 
     <script>
         function calc() {
-            e.preventDefault();
+            //e.preventDefault();
             var zip = $('#calc_zip').val();
             var usage= $('#calc_usage').val();
             if (zip=="" || usage=="" || usage==0) {
