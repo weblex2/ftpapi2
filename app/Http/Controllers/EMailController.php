@@ -27,7 +27,7 @@ class EMailController extends Controller
         ]; */
          
         $res = Mail::to('alex@noppenberger.org')->send(new MailController($mailData));
-        if ($res->messageId){       
+        if ($res['messageId']){       
             dd("Email is sent successfully.");
         }
         else{
