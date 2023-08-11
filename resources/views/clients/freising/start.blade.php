@@ -111,7 +111,9 @@
             
             var zip = $('#calc_zip').val();
             var usage= $('#calc_usage').val();
-            if (zip=="" || usage=="" || usage==0) return false; 
+            if (zip=="" || usage=="" || usage==0) {
+                return false;
+            }     
             $('#doing-stuff').show();
             $('#calculator').hide();   
             axios.get('/client/freising/getTarifHtml/'+zip+"/"+usage)
