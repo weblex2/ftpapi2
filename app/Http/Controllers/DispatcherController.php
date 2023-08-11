@@ -21,11 +21,11 @@ class DispatcherController extends Controller
 
     public function start($client){
         
-        $mailData['title'] = "hallo";
-        $mailData['subject'] = "hallo";
-        $email  = new EMailController();
-        $email->sendMail($mailData);
-        die();
+        #$mailData['title'] = "Grüß Gott und Willkommen bei Fair Trade Power!";
+        #$mailData['subject'] = "Willkommen bei Fairtrade Power";
+        #$email  = new EMailController();
+        #$email->sendMail($mailData);
+        #die();
         //return view('mailtemplates.kirche', compact('mailData'));
         //
         return view('clients.'.$client.'.start',compact('client'));
