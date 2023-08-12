@@ -75,6 +75,7 @@ class DispatcherController extends Controller
         $data  = [];    
         foreach($tariffs as $i => $row) {
             $workingPriceBrutto = number_format(round($tariffs[$i]['workingPriceBrutto'],2),2,'.','');
+            $workingPriceBruttoNT = number_format(round($tariffs[$i]['workingPriceNT'],2),2,'.','');
             $basePriceBrutto = number_format(round($tariffs[$i]['basePriceBrutto']/12,2),2,'.','');
             $workingPriceTotal = number_format(round($workingPriceBrutto * $usage/100, 2),2,'.','');
             $totalPriceBrutto = number_format($workingPriceTotal + $row['basePriceBrutto'],2,'.','');
@@ -82,12 +83,14 @@ class DispatcherController extends Controller
             $abschlag = number_format(round($totalPriceBrutto/12, 2),2,'.','');
             $data[$i]['basePriceBrutto'] = $basePriceBrutto;
             $data[$i]['workingPriceBrutto'] = $workingPriceBrutto;
+            $data[$i]['workingPriceBruttoNT'] = $workingPriceBruttoNT;
             $data[$i]['totalWorkingPrice'] = $totalWorkingPrice;
             $data[$i]['totalPriceBrutto'] = number_format(round($totalPriceBrutto, 2),2,'.','');
             $data[$i]['abschlag'] = $abschlag;
             $data[$i]['pstring'] = $basePriceBrutto."|".$workingPriceBrutto."|".$workingPriceTotal."|".$totalPriceBrutto."|".$abschlag;
             $data[$i]['basePriceBruttoHtml'] = explode(".",$basePriceBrutto)[0]."<sup>".explode(".",$basePriceBrutto)[1]."</sup>";
             $data[$i]['workingPriceBruttoHtml'] = explode(".",$workingPriceBrutto)[0]."<sup>".explode(".",$workingPriceBrutto)[1]."</sup>";
+            $data[$i]['workingPriceBruttoNTHtml'] = explode(".",$workingPriceBruttoNT)[0]."<sup>".explode(".",$workingPriceBruttoNT)[1]."</sup>";
             $data[$i]['totalWorkingPriceHtml'] = explode(".",$totalWorkingPrice)[0]."<sup>".explode(".",$totalWorkingPrice)[1]."</sup>";
             $data[$i]['totalPriceBruttoHtml'] = explode(".",$totalPriceBrutto)[0]."<sup>".explode(".",$totalPriceBrutto)[1]."</sup>";
             $data[$i]['abschlagHtml'] = explode(".",$abschlag)[0]."<sup>".explode(".",$abschlag)[1]."</sup>";
@@ -150,7 +153,14 @@ class DispatcherController extends Controller
     }
 
 
-
+    public function emailtest(){
+        $mailData['title'] = "Grüß Gott und Willkommen bei Fair Trade Power!";
+        $mailData['subject'] = "Willkommen bei Fairtrade Power";
+        $mailData['to'] = "alex@noppenberger.org";
+        $email  = new EMailController();
+        $email->sendMail($mailData);
+        return view('mailtemplates.kirche', compact('mailData'));
+    } 
     public function sendApiRequest($endpoint, $data, $token){
         $url= self::BASEURL.$endpoint;
         echo"<br>" .$url."<br>";
