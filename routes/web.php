@@ -35,6 +35,10 @@ Route::middleware([
     Route::controller(BackendController::class)->group(function () {
         Route::get('/backend', 'getOrders')->name('getOrders');
     });
+
+    Route::controller(DispatcherController::class)->group(function () {
+        Route::get('/emt', 'emailtest')->name('emailtest');
+    });
 });
 
 Route::get('/hi', function () {
