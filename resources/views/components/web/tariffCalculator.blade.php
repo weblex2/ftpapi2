@@ -21,8 +21,8 @@
                     <input type="hidden" id="student" value="{{$tariff[1]['pstring']}}"> --}}
 
                     <div class="tariff-details">
-                        <div class="tc-result-line justify-start text-left">
-                            <div class="w-3/4"><h2>{{$tariff['name']}}</h2></div>
+                        <div class="tc-result-line justify-start items-center text-left">
+                            <div class="w-3/4 text-[#0ac]"><h2>{{$tariff['name']}}</h2></div>
                             <div class="justify-items-end"><img class="h-[70%] w-auto" src="{{asset('img/kirche/Gruener_Strom_empfohlen_RGB_web_1181-300x209.jpg')}}"></div>
                         </div>
                         <div class="tc-result-line">
@@ -66,8 +66,18 @@
                             <div class="tc-detail-values">
                                 <span id="usage1">{{$energyUsage}}</span> kWh ×
                                 <span id="workingPrice1" class="tc-strong">{!!$tariff['workingPriceBruttoHtml']!!}</span> Cent / kWh =
-                                <span id="workingTotal1" class="tc-strong">{!!$tariff['totalWorkingPriceHtml']!!}</span> Euro im Jahr</div>
+                                <span id="workingTotal1" class="tc-strong">{!!$tariff['totalWorkingPriceHtml']!!}</span> Euro im Jahr
+                            </div>
                         </div>
+                       {{--  <div class="tc-result-line">
+                            <div class="tc-detail blue">Verbrauchskosten NT</div>
+                            <div class="tc-detail-values">
+                                <span id="usage1">{{$energyUsage}}</span> kWh ×
+                                <span id="workingPrice1" class="tc-strong">{!!$tariff['workingPriceBruttoNTHtml']!!}</span> Cent / kWh =
+                                <span id="workingTotal1" class="tc-strong">{!!$tariff['totalWorkingPriceHtml']!!}</span> Euro im Jahr
+                            </div>
+                        </div> --}}
+                        
                         <div class="tc-result-line">
                             <div class="tc-detail blue">Laufzeit</div>
                             <div class="tc-detail-values">Mindestlaufzeit: 1 Monat</div>
