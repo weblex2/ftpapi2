@@ -159,9 +159,10 @@ class DispatcherController extends Controller
         $mailData['title'] = "Grüß Gott und Willkommen bei Fair Trade Power!";
         $mailData['subject'] = "Willkommen bei Fairtrade Power";
         $mailData['to'] = "alex@noppenberger.org";
+        $mailData['view'] = "mailtemplates.kirche";
         $email  = new EMailController();
         $email->sendMail($mailData);
-        return view('mailtemplates.kirche', compact('mailData'));
+        return view($mailData['view'], compact('mailData'));
     } 
     public function sendApiRequest($endpoint, $data, $token){
         $url= self::BASEURL.$endpoint;

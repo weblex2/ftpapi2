@@ -164,16 +164,18 @@
 
                 <div class="form-line">
                     <div class="flex items-center mr-4">
-                        <input id="customerHasTerminated" name="customerHasTerminated" value="" type="checkbox">
+                        <input id="customerHasTerminated" name="customerHasTerminated" id="customerHasTerminated" value="" type="checkbox">
                         <label for="customerHasTerminated" class="checkbox-label">Ich habe meinen jetzigen Vertrag selbst gekündigt.</label>
                     </div>
                 </div>
 
                 <div class="form-line">
                     <div>Gewünschtes Lieferdatum<br/><input type="date" id="desiredDate" name="desiredDate" required></div>
-                    <div class="flex items-center mr-4 mt-4">
+                    <div  class="flex items-center mr-4 mt-4">
+                        <div id="cb_asap">
                         <input id="desiredDateAsSoonAsPossible" name="desiredDateAsSoonAsPossible" value="" type="checkbox">
                         <label for="desiredDateAsSoonAsPossible" class="checkbox-label">Sobald wie möglich</label>
+                        </div>
                     </div>
                 </div>
 
@@ -236,14 +238,14 @@
 
          </div>
          
-                <input type="hidden" name="business" value="0">
-                <input type="hidden" name="usage" value="2000">
+                <input type="hidden" name="business" id="business" value="0">
+                <input type="hidden" name="usage" id="usage" value="2000">
                 <input type="hidden" name="extendedData[GSL][gsl_abgabe]" value="0.2">
                 <input type="hidden" name="extendedData[GP_ZO][ZO]" value="Bistum und Landeskirche">
-                <input type="hidden" name="campaignIdentifier" value="KIRCHE">
-                <input type="hidden" name="productCode" value="{{$_GET['tariff']}}">
-                <input type="hidden" name="energy" value="electricity">
-                <input type="hidden" name="customerSpecification" value="desired_date">
+                <input type="hidden" name="campaignIdentifier" id="campaignIdentifier" value="KIRCHE">
+                <input type="hidden" name="productCode" id="productCode" value="{{$_GET['tariff']}}">
+                <input type="hidden" name="energy" id="energy" value="electricity">
+                <input type="hidden" name="customerSpecification" id="customerSpecification" value="desired_date">
                 
                 <div class="form-line justify-end">
                     <input type="submit"  class="btn-primary-odd mt-5 mr-10" value="Weiter"></input>
@@ -270,18 +272,35 @@ $(document).ready(function(){
         });
     });
 
+    
     $('#billingZip').change(function(){
         updateBillingCities();
     });
 
-    $('#desiredDateAsSoonAsPossible').change(function(){
+    //terminated_in_person
+    $('#customerHasTerminated').change(function(){
         if ($(this).is(':checked')) {
-          $('#customerHasTerminated').prop("disabled",true);      
-          $('#desiredDate').prop("disabled",true);
+          $('#cb_asap').hide();
+          $('#customerSpecification').val("terminated_in_person");      
+          $('#desiredDate').val("").prop('readonly', true);
         }  
         else {
-          $('#customerHasTerminated').prop("disabled",false);  
-          $('#desiredDate').prop("disabled",false);    
+          $('#cb_asap').show();
+          $('#customerSpecification').val("desired_date");  
+          $('#desiredDate').prop('readonly', false);  
+        }    
+    });
+
+    $('#desiredDateAsSoonAsPossible').change(function(){
+        if ($(this).is(':checked')) {
+          $('#customerHasTerminated').attr('readonly', true);   
+          $('#customerSpecification').val("earliest_possible_date");      
+          $('#desiredDate').val("").prop('readonly', true);
+        }  
+        else {
+          $('#customerHasTerminated').attr('readonly', false);  
+          $('#customerSpecification').val("desired_date");  
+          $('#desiredDate').closest("div").show().prop('readonly', false);  
         }    
     });
 

@@ -14,24 +14,9 @@ class EMailController extends Controller
      * @return response()
      */
 
-     /* public function __construct($mailData)
-     {
-         $this->$mailData = $mailData;
-     } */
-
     public function sendMail($mailData)
     {
-        /* $mailData = [
-            'title' => 'Grüß Gott und Willkommen bei Fair Trade Power!',
-            'body' => 'This is for testing email using smtp.'
-        ]; */
-         
-        $res = Mail::to($mailData['to'])->send(new MailController($mailData));
-        //if ($res['messageId']){       
-            //dd("Email is sent successfully.");
-        //}
-        //else{
-        //    dd("Email is not sent successfully");
-        //}    
+       $res = Mail::to($mailData['to'])->send(new MailController($mailData));
+   
     }
 }
