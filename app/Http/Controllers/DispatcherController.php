@@ -135,6 +135,7 @@ class DispatcherController extends Controller
             $mailData['title'] = "Grüß Gott und Willkommen bei Fair Trade Power!";
             $mailData['subject'] = "Willkommen bei Fairtrade Power";
             $mailData['to'] = $data['emailPrivate'];
+            $mailData['view'] = "mailtemplates.kirche";
             $email  = new EMailController();
             $email->sendMail($mailData);
             $success=true;
