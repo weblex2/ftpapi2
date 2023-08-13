@@ -19,8 +19,7 @@ class DispatcherController extends Controller
         return $client;
     }
 
-    public function start($client){
-        
+    public function start($client="freising"){
         /* $mailData['title'] = "Grüß Gott und Willkommen bei Fair Trade Power!";
         $mailData['subject'] = "Willkommen bei Fairtrade Power";
         $mailData['to'] = "alex@noppenberger.net";

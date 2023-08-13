@@ -73,9 +73,9 @@
                 <!--form id="frmCalc"-->
                 <div class="content-blue lg:flex justify-start  items-center p-10">
                     <div class="mr-5">Ihre PLZ</div>
-                    <div class="w-20 mr-5"><input class="text-center text-bold" type="text" pattern="[0-9]{5}" name="calc_zip" id="calc_zip" value="" required></div>
+                    <div class="w-20 mr-5"><input class="text-center text-bold" type="text" pattern="[0-9]{5}" name="calc_zip" id="calc_zip" value="81547" required></div>
                     <div class="mr-5">Ihr Jahresverbrauch (in kWh)</div>
-                    <div class="w-20 mr-5"><input class="text-center text-extrabold" type="number"  min="1" max="99999" name="calc_usage" id="calc_usage" value="" required></div>
+                    <div class="w-20 mr-5"><input class="text-center text-extrabold" type="number"  min="1" max="99999" name="calc_usage" id="calc_usage" value="2500" required></div>
                     <div class="w-max"><button class="btn-primary" onclick="calc()">Berechnen</button></div>
                 </div>
                 <!--/form-->

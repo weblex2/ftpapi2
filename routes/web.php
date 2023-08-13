@@ -17,9 +17,7 @@ use App\Http\Controllers\BackendController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::middleware([
     'auth:sanctum',
@@ -62,6 +60,7 @@ Route::controller(PowerCloudSoapController::class)->group(function () {
 });
 
 Route::controller(DispatcherController::class)->group(function () {
+    Route::get('/', 'start')->name('start1');
     Route::get('/client/{client}', 'start')->name('start');
     Route::get('/client/{client}/about', 'about')->name('about');
     Route::post('/client/{client}/tariff', 'getTariffsPage')->name('getTariff');
