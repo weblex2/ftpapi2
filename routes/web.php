@@ -60,7 +60,9 @@ Route::controller(PowerCloudSoapController::class)->group(function () {
 });
 
 Route::controller(DispatcherController::class)->group(function () {
-    Route::get('/', 'start')->name('start1');
+    Route::get('/', function () {
+        return to_route('start', ['freising']);
+    });
     Route::get('/client/{client}', 'start')->name('start');
     Route::get('/client/{client}/about', 'about')->name('about');
     Route::post('/client/{client}/tariff', 'getTariffsPage')->name('getTariff');
