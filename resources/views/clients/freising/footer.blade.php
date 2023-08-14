@@ -89,7 +89,7 @@
                 <div><a href="/agb-ökostrom" target="_blank">AGB Ökostrom</a> &nbsp; | &nbsp;</div>
                 <div><a href="/agb-gas" target="_blank">AGB Gas</a> &nbsp; | &nbsp;</div>
             </div>
-            <div class="text-xs">
+            <div class="text-xs text-gray-500">
                 © Copyright 2023 by Fair Trade Power Deutschland GmbH. All Rights Reserved.
             </div>
         </div>
