@@ -15,7 +15,7 @@
 <script>
     $("#link_registration").click(function() {
     $([document.documentElement, document.body]).animate({
-        scrollTop: $("#calculator_div").offset().top -100
+        scrollTop: $("#calculator_div").offset().top -200
     }, 2000);
 });
 </script>
