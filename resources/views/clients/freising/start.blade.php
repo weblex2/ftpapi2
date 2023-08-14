@@ -5,20 +5,20 @@
     <div class="w-full content-blue">
         <div class="lg:flex items-center">
             <div><img src="{{asset('img/kirche/Hand3.png')}}"></div>
-            <div class="w-7/8 p-12 text-5xl">Echter Ökostrom für die Katholische Kirche in Bayern</div>
+            <div class="w-7/8 p-12 text-5xl text-left">Echter Ökostrom für die Katholische Kirche in Bayern</div>
         </div>
     </div>
 
     <div class="content-wrapper">
         <div class="content leading-7">
-            <h2 class=" my-10  text-[#0ac]">Nicht jeder Ökostrom ist ökologisch nachhaltig</h2>
+            <h2 class=" my-10  text-[#0ac] text-left">Nicht jeder Ökostrom ist ökologisch nachhaltig</h2>
             <div class="lg:flex w-full">
                 <div class="lg:w-1/4">
                     <img src="{{asset('img/kirche/Gruener_Strom_empfohlen_RGB_web_1181-300x209.jpg')}}"></div>
                 <div class="lg:w-3/4">
-                    <p>
+                    {{-- <p>
                     Viele Ökostromtarife stammen aus fossilen Quellen und werden mit Zertifikaten grün gewaschen. Nicht so bei Fair Trade Power!
-                    </p>
+                    </p> --}}
                     <p>
                     Wir freuen uns sehr, Sie im Rahmen der zwischen den bayerischen (Erz-)Diözesen und Fair Trade Power getroffenen Rahmenvereinbarung ab 2024 mit <a href="https://gruenerstromlabel.de/" target="_blank" rel="noreferrer noopener">Grüner Strom-Label </a> zertifiziertem, also mit echtem Ökostrom aus Bayern beliefern zu dürfen.
                     </p>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="content-wrapper">
-        <div class="content leading-7">
+        <div class="content leading-7 text-left">
             <h2 class="mb-10 text-[#0ac]">Ökologische Umkehr durch Wahl des richtigen Stromanbieters</h2>
             <div>
                 <p>
@@ -52,7 +52,7 @@
 
     <div class="content-wrapper">
         <div class="content leading-7">
-            <h2 class="mb-10 text-[#0ac]">Lassen Sie uns gemeinsam für eine umweltfreundliche und nachhaltige Zukunft eintreten!</h2>
+            <h2 class="mb-10 text-[#0ac] text-left">Lassen Sie uns gemeinsam für eine umweltfreundliche und nachhaltige Zukunft eintreten!</h2>
             <div>
                 <p>
                 Hier werden wir Ihnen spätestens im 4. Quartal 2023 die Strompreise gemäß Rahmenvereinbarung Strom – Anlage A „Preisblatt und Angebotsprozess“ anzeigen.
@@ -73,9 +73,9 @@
                 <!--form id="frmCalc"-->
                 <div class="content-blue lg:flex justify-start  items-center p-10">
                     <div class="mr-5">Ihre PLZ</div>
-                    <div class="w-20 mr-5"><input class="text-center text-bold" type="text" pattern="[0-9]{5}" name="calc_zip" id="calc_zip" value="" required></div>
+                    <div class="w-20 mr-5"><input class="text-center text-bold" type="text" pattern="[0-9]{5}" name="calc_zip" id="calc_zip" value="81547" required></div>
                     <div class="mr-5">Ihr Jahresverbrauch (in kWh)</div>
-                    <div class="w-20 mr-5"><input class="text-center text-extrabold" type="number"  min="1" max="99999" name="calc_usage" id="calc_usage" value="" required></div>
+                    <div class="w-20 mr-5"><input class="text-center text-extrabold" type="number"  min="1" max="99999" name="calc_usage" id="calc_usage" value="2500" required></div>
                     <div class="w-max"><button class="btn-primary" onclick="calc()">Berechnen</button></div>
                 </div>
                 <!--/form-->
@@ -94,7 +94,7 @@
     <div class="content-wrapper">  
         <div id="calculator"></div>
     </div>   
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="calculator_div">
         <div class="content">
                 <p>
                 Nach Eingabe Ihrer Postleitzahl und Ihres Jahresverbrauchs werden wir Ihnen die jeweiligen Preisoptionen zur Auswahl anzeigen.
