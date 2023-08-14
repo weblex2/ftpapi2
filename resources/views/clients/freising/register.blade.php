@@ -171,12 +171,13 @@
 
                 <div class="form-line">
                     <div>Gewünschtes Lieferdatum<br/><input type="date" id="desiredDate" min='2024-01-01' name="desiredDate" required></div>
-                    <div  class="flex items-center mr-4 mt-4">
+                    {{-- <div  class="flex items-center mr-4 mt-4">
                         <div id="cb_asap">
                         <input id="desiredDateAsSoonAsPossible" name="desiredDateAsSoonAsPossible" value="" type="checkbox">
                         <label for="desiredDateAsSoonAsPossible" class="checkbox-label">Sobald wie möglich</label>
                         </div>
-                    </div>
+                    </div> --}}
+                    <div></div>
                 </div>
 
                 <h2>Zahlung</h2>
