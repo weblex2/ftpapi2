@@ -36,9 +36,15 @@ class DispatcherController extends Controller
     }
 
     public function register($client, Request $request){
+        
         $req = $request->all();
         $req['zip'] = isset($req['zip']) ? $req['zip'] : "";
         $req['usage'] = isset($req['usage']) ? $req['usage'] : "2000";
+
+        if ($req['zip']=="" || $req['usage']==""){
+            return redirect('/client/freising');
+        }
+
         $pc = new PowerCloudSoapController();
         $cities = $pc->getCities($req['zip'])['data'];
         return view('clients.'.$client.'.register',compact('client','req','cities'));
