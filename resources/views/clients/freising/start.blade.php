@@ -94,7 +94,8 @@
     <div class="content-wrapper">  
         <div id="calculator"></div>
     </div>   
-    <div class="content-wrapper" id="calculator_div">
+    <div id="calculator_div" class="mb-20">
+    <div class="content-wrapper" >
         <div class="content">
                 <p>
                 Nach Eingabe Ihrer Postleitzahl und Ihres Jahresverbrauchs werden wir Ihnen die jeweiligen Preisoptionen zur Auswahl anzeigen.
