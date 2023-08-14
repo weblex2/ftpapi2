@@ -34,7 +34,7 @@ html{
 
 .nav-item{
     line-height:1.5;
-    @apply px-5  font-bold lg:text-xl  hover:text-[#0ac]
+    @apply px-5  font-bold lg:text-base  hover:text-[#0ac]
 }
 
 .content-wrapper{
