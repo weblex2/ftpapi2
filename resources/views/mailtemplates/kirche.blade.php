@@ -7,10 +7,10 @@
 <h1>{{ $mailData['title'] }}</h1>
 <br>
     {{-- <p>{{ $mailData['body'] }}</p> --}}
-Herzlichen Dank für Ihre Anmeldung! Wir freuen uns, dass Sie sich im Rahmen der mit den Diözesen in Bayern geschlossenen Rahmenvertrag für Fair Trade Power entschieden haben.
+Herzlichen Dank für Ihre Anmeldung! Wir freuen uns, dass Sie sich im Rahmen des mit den Diözesen in Bayern geschlossenen Rahmenvertrags für Fair Trade Power entschieden haben.
 <br>
 <br>
-Der Wechselvorgang kann bis zu Tagen, manchmal ein wenig länger dauern. Sobald uns Ihr zuständiger Netzbetreibers Ihre Anmeldung bestätigt, erhalten Sie unsere Vertragsbestätigung.
+Der Wechselvorgang kann bis zu 14 Tagen, manchmal ein wenig länger dauern. Sobald uns Ihr zuständiger Netzbetreiber Ihre Anmeldung bestätigt, erhalten Sie unsere Vertragsbestätigung.
 <br>
 <br>
 Bei Fragen melden Sie sich gerne! Wir sind Montag bis Freitag von 8 bis 17 Uhr für Sie da!
