@@ -162,12 +162,12 @@
                     <div>Marktlokationsnummer<br/><input placeholder="optional" type="text" name="marketLocationIdentifier"></div>
                 </div>
 
-                <div class="form-line">
+                {{-- <div class="form-line">
                     <div class="flex items-center mr-4">
                         <input id="customerHasTerminated" name="customerHasTerminated" id="customerHasTerminated" value="" type="checkbox">
                         <label for="customerHasTerminated" class="checkbox-label">Ich habe meinen jetzigen Vertrag selbst gekündigt.</label>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="form-line">
                     <div>Gewünschtes Lieferdatum<br/><input type="date" id="desiredDate" min='2024-01-01' name="desiredDate" required></div>
@@ -300,7 +300,7 @@ $(document).ready(function(){
         else {
           $('#customerHasTerminated').attr('readonly', false);  
           $('#customerSpecification').val("desired_date");  
-          $('#desiredDate').closest("div").show().prop('readonly', false);  
+          $('#desiredDate').prop('readonly', false);  
         }    
     });
 
