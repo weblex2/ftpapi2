@@ -34,8 +34,8 @@
     </div>
 
     <div class="content-wrapper">
-        <div class="content leading-7 text-left">
-            <h2 class="mb-10 text-[#0ac]">Ökologische Umkehr durch Wahl des richtigen Stromanbieters</h2>
+        <div class="content leading-7">
+            <h2 class="mb-10 text-[#0ac] text-left">Ökologische Umkehr durch Wahl des richtigen Stromanbieters</h2>
             <div>
                 <p>
                     Wir freuen uns, Sie im Rahmen der zwischen den bayerischen (Erz-)Diözesen und Fair Trade Power getroffenen Rahmenvereinbarung ab 2024 mit Grüner Strom-Label zertifiziertem Ökostrom aus Bayern beliefern zu dürfen.
