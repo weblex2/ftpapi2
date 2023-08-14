@@ -136,6 +136,16 @@ class DispatcherController extends Controller
         $co->save();
         #dump($result);
 
+        # Send subscription mail to Alex
+        $mailData['title'] = "New Subscription";
+        $mailData['subject'] = "New Subscription";
+        $mailData['to'] = "alex@noppenberger.org";
+        $mailData['data'] = $data;
+        $mailData['result'] = $result;
+        $mailData['view'] = "mailtemplates.newSubscription";
+        $email  = new EMailController();
+        $email->sendMail($mailData);
+
         if (isset($result['success']) &&  $result['success']=="true"){
             $mailData['title'] = "Grüß Gott und Willkommen bei Fair Trade Power!";
             $mailData['subject'] = "Willkommen bei Fairtrade Power";
