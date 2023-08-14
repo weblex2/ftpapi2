@@ -47,7 +47,7 @@ html{
 }
 
 .content {
-    @apply w-full lg:w-[70%] p-8 text-justify lg:px-20 lg:py-10
+    @apply w-full xl:w-[70%] p-8 text-justify lg:px-20 lg:py-10
 }
 
 .content p{
