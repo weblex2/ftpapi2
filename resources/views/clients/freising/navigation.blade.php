@@ -7,7 +7,16 @@
         <div class="w-auto lg:flex w-full text-black justify-end items-center">
             <div class="nav-item"><a target="_blank" href="{{asset('img/kirche/Anschreiben-Erz-Dioezesen-in-Bayern.pdf')}}">Wichtige Information</a></div>
             <div class="nav-item"><a href="/client/freising/about">Über Fair Trade Power</a></div>
-            <div class="nav-item"><a href="/client/freising/registrierung">Registrierung</a></div>
+            <div class="nav-item"><a href="javascript:void(0)" id="link_registration">Registrierung</a></div>
         </div>
     </div>
 </div>
+
+<script>
+    $("#link_registration").click(function() {
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("#calculator_div").offset().top
+    }, 2000);
+});
+</script>
+
