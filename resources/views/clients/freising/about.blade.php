@@ -23,7 +23,7 @@
 
         <h2 class="my-10  text-[#0ac] text-left">Fair Trade Power ist der einzige Ökostromanbieter in Verantwortungseigentum. Was bedeutet das?</h2>
         <p>
-            Als Unternehmen der „Purpose Economy“ wird sichergestellt, dass der Geschäftszweck der Firma festgeschrieben bleibt, keine Spekulationsgewinne an Anteilseigner oder Investoren ausgeschüttet werden können und dass das Unternehmen nicht zu „Greenwashing“-Zwecken verkauft werden kann. Mehr zum Thema Verantwortungseigentum finden Sie auf der FTP-Webseite https://www.fairtradepower.de/purpose/
+            Als Unternehmen der „Purpose Economy“ wird sichergestellt, dass der Geschäftszweck der Firma festgeschrieben bleibt, keine Spekulationsgewinne an Anteilseigner oder Investoren ausgeschüttet werden können und dass das Unternehmen nicht zu „Greenwashing“-Zwecken verkauft werden kann. Mehr zum Thema Verantwortungseigentum finden Sie auf der FTP-Webseite <a href="https://www.fairtradepower.de/purpose/" target="_blank">https://www.fairtradepower.de/purpose/</a>
         </p>
         <p>
             Das Ziel von FTP ist es, die Einrichtungen der KIRCHE mit echtem Ökostrom aus regionalen, bayerischen Erzeugungsanlagen zu beliefern. Kurz- und mittelfristig strebt FTP an, mit bayerischen Projektierungs-Partnern für den Strombedarf der KIRCHE neue Ökokraftwerke zu initiieren, statt schon vorhanden Ökostrom umzuverteilen.
