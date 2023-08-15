@@ -46,9 +46,7 @@ Route::middleware([
     });
 });
 
-Route::get('/hi', function () {
-    return view('hi');
-});
+
 
 
 Route::controller(PowerCloudRestController::class)->group(function () {
@@ -57,6 +55,7 @@ Route::controller(PowerCloudRestController::class)->group(function () {
     Route::get('/getTariffsByCampaign/{campaign}', 'getTariffsByCampaign')->name('getTariffsByCampaign');
     Route::get('/getProducts', 'getProducts')->name('getProducts');
     Route::get('/getProductsById', 'getProductsById')->name('getProductsByID');
+    Route::get('/tc', 'getTariffsInfo')->name('getTariffsInfo');
 });
 
 
@@ -67,6 +66,16 @@ Route::controller(PowerCloudSoapController::class)->group(function () {
 });
 
 Route::controller(DispatcherController::class)->group(function () {
+    // AGBs SLM
+    Route::get('/client/freising/agb_slp', function () {
+        return view('clients.freising.agbslp');
+    })->name('kircheagbslp');
+
+    //AGBs RLM
+    Route::get('/client/freising/agb_rlm', function () {
+        return view('clients.freising.agbrlm');
+    })->name('kircheagbrlm');
+
     Route::get('/', function () {
         return to_route('start', ['freising']);
     });
@@ -76,6 +85,7 @@ Route::controller(DispatcherController::class)->group(function () {
     Route::post('/client/submitForm', 'submitForm')->name('submitForm');
     Route::get('/client/{client}/checkout/success', 'checkoutSuccess')->name('checkoutSuccess');
     Route::get('/client/{client}/getTarifHtml/{zip}/{usage}', 'getTarifHtml')->name('getTarifHtml');
+    
 
     //Nur für die Kirche
     Route::get('/client/{client}/registrierung/{zip?}/{usage?}', 'register')->name('registerclient');

@@ -66,6 +66,13 @@ class PowerCloudRestController extends Controller
         }
     }
 
+
+    public function getTariffsInfo(){
+        $data  = file_get_contents('http://tc.noppenberger.net?zip=82024&usage=2000');
+        $data = json_decode($data, 1);
+        dump($data);
+    }
+
     public function getProducts(){
         $res = $this->doRequest('client','getProducts','GET',['limit'=>100, 'offset' => 0]);
         $res = json_decode($res,1);
