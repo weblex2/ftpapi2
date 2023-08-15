@@ -58,7 +58,7 @@
                     <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Widerrufsformular.pdf')}}" target="_blank" class="underline">Widerrufsformular</a><br>
                 </p>
             </div>
-            <div>
+            {{-- <div>
                 <div class="flex space-x-3">
                     <a href="https://www.instagram.com/fairtradepower/" target="_blank" rel="noopener">
                         <img src="{{asset('img/ic-instagram.svg')}}" style="height:32px" alt="FairTradePower auf Instagram">
@@ -76,7 +76,7 @@
                         <img src="{{asset('img/ic-mastodon.svg')}}" style="height:32px" alt="FairTradePower auf Mastodon">
                     </a>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
     </div>
@@ -86,8 +86,8 @@
             <div class="lg:flex mb-2 text-xs">
                 <div><a href="/impressum" target="_blank">Impressum</a> &nbsp; | &nbsp;</div>
                 <div><a href="/datenschutz" target="_blank">Datenschutz</a> &nbsp; | &nbsp;</div>
-                <div><a href="/agb-ökostrom" target="_blank">AGB Ökostrom</a> &nbsp; | &nbsp;</div>
-                <div><a href="/agb-gas" target="_blank">AGB Gas</a> &nbsp; | &nbsp;</div>
+                <div><a href="/agb-ökostrom" target="_blank">AGB SLP</a> &nbsp; | &nbsp;</div>
+                <div><a href="/agb-gas" target="_blank">AGB RLM</a> &nbsp; | &nbsp;</div>
             </div>
             <div class="text-xs text-gray-500">
                 © Copyright 2023 by Fair Trade Power Deutschland GmbH. All Rights Reserved.
