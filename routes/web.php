@@ -75,4 +75,12 @@ Route::controller(DispatcherController::class)->group(function () {
 });
 
 
+Route::domain('test-kirchebayern.fairtradepower.de')->group(function () {
+    Route::controller(DispatcherController::class)->group(function () {
+        Route::get('/', function () {
+            return to_route('start', ['evangel']);
+        });
+    });    
+});
+
 
