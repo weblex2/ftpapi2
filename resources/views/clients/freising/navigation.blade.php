@@ -5,6 +5,7 @@
     <div class="nav-container hidden md:flex absolute lg:relative w-full bg-white xl:w-[70%] lg:px-20 py-4 flex">
         <div class="hidden lg:block"><a href="/client/freising/"><img class="h-14 w-auto" src="{{ asset('img/logo.svg') }}" alt="logo" /></a></div>
         <div class="w-auto lg:flex w-full text-black justify-end items-center">
+            <img class="w-4 h-auto -mr-4" src="{{ asset('img/pdf_icon_2blau_weiss.png') }}" alt="pdf" />
             <div class="nav-item"><a target="_blank" href="{{asset('img/kirche/Anschreiben-Erz-Dioezesen-in-Bayern.pdf')}}">Wichtige Information</a></div>
             <div class="nav-item"><a href="/client/freising/about">Über Fair Trade Power</a></div>
             {{-- <div class="nav-item"><a href="javascript:void(0)" id="link_registration">Registrierung</a></div> --}}
