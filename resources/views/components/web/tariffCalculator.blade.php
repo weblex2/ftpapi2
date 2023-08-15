@@ -5,7 +5,6 @@
     </div>    
     @php
         $i=0;
-        //dump($data);
     @endphp
     <div id="result" class="hidden1">
             
@@ -93,7 +92,7 @@
                     <input type="hidden" name="zip" id="zip" value="{{$tariff['zip']}}">
                     <input type="hidden" name="usage" id="usage" value="{{$tariff['usage']}}">
                     <input type="hidden" name="tariff" id="tariff" value="{{$tariff['code']}}">
-                    <button class="btn-primary-odd">Registrieren</button>
+                    <button class="btn-primary-odd">Jetzt bestellen</button>
                 </div>
             </div>    
             </form>
