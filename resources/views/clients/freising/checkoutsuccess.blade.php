@@ -1,8 +1,8 @@
 @extends('layouts.freisinglayout')
 @section('content')
-    <div class="content-wrapper bg-[#1fc8a9]">
+    <div class="content-wrapper bg-[#00aacc]">
         <div class="content flex items-center pt-5">
-            <h1 class="mt-4">Willkommen bei Fair Trade Power</h1>
+            <h1 class="mt-4 text-white">Willkommen bei Fair Trade Power</h1>
         </div>
     </div>
     <div class="content-wrapper">
