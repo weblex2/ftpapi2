@@ -52,10 +52,10 @@
             <div >
                 <h3  class="text-white">Downloads</h3>
                 <p class="text-sm xs:text-base">
-                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/energiewende/" target="_blank" class="underline"> Infoschreiben</a> <br>
-                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/unser-ökostrom/" target="_blank" class="underline">Auftrag SLP</a><br>
-                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/unser-biogas/" target="_blank" class="underline">Auftrag RLM</a><br>
-                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/company/" target="_blank" class="underline">Widerrufsformular</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Anschreiben-Erz-Dioezesen-in-Bayern.pdf')}}" target="_blank" class="underline"> Infoschreiben</a> <br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Auftrag SLP.pdf')}}" target="_blank" class="underline">Auftrag SLP</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Auftrag RLM.pdf')}}" target="_blank" class="underline">Auftrag RLM</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Widerrufsformular')}}" target="_blank" class="underline">Widerrufsformular</a><br>
                 </p>
             </div>
             <div>
