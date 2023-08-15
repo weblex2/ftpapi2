@@ -55,7 +55,7 @@
                     <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Anschreiben-Erz-Dioezesen-in-Bayern.pdf')}}" target="_blank" class="underline"> Infoschreiben</a> <br>
                     <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Auftrag SLP.pdf')}}" target="_blank" class="underline">Auftrag SLP</a><br>
                     <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Auftrag RLM.pdf')}}" target="_blank" class="underline">Auftrag RLM</a><br>
-                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Widerrufsformular')}}" target="_blank" class="underline">Widerrufsformular</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Widerrufsformular.pdf')}}" target="_blank" class="underline">Widerrufsformular</a><br>
                 </p>
             </div>
             <div>
