@@ -9,6 +9,11 @@
         </div>
     </div>
 
+    <div class="content-wrapper">  
+        <div id="calculator"></div>
+    </div>   
+    <div id="calculator_div" class="mb-20"></div>
+
     <div class="content-wrapper">
         <div class="content leading-7">
             <h2 class=" my-10  text-[#0ac] text-left">Nicht jeder Ökostrom ist ökologisch nachhaltig</h2>
@@ -27,13 +32,13 @@
                     </p>
                     Aus diesem Grund haben wir uns dazu verpflichtet, echten Ökostrom zu transparenten und fairen Preisen anzubieten. Unser Ansatz besteht darin, den benötigten Ökostrom aus regionalen bayerischen Ökokraftwerken zu beziehen und die Gewinne in den Ausbau neuer Ökostromanlagen zu investieren.
                     <br/><br/>
-                    Mehr Informationen finden Sie in unserem Anschreiben, welches Sie unter folgendem Link (zum Download) herunterladen können.
+                    Mehr Informationen finden Sie in unserem Anschreiben, welches Sie unter folgendem Link (<a href="{{asset('img/kirche/Anschreiben-Erz-Dioezesen-in-Bayern.pdf')}}" target="_blank">zum Download</a>) herunterladen können.
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="content-wrapper">
+    {{-- <div class="content-wrapper">
         <div class="content leading-7">
             <h2 class="mb-10 text-[#0ac] text-left">Ökologische Umkehr durch Wahl des richtigen Stromanbieters</h2>
             <div>
@@ -48,7 +53,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="content-wrapper">
         <div class="content leading-7">
@@ -91,11 +96,8 @@
             </div>   
         </div> 
     </div>
-    <div class="content-wrapper">  
-        <div id="calculator"></div>
-    </div>   
-    <div id="calculator_div" class="mb-20">
-    <div class="content-wrapper" >
+    
+    {{-- <div class="content-wrapper" >
         <div class="content">
                 <p>
                 Nach Eingabe Ihrer Postleitzahl und Ihres Jahresverbrauchs werden wir Ihnen die jeweiligen Preisoptionen zur Auswahl anzeigen.
@@ -105,7 +107,7 @@
                 </p>
         </div>
 
-    </div>
+    </div> --}}
 
     <script>
         function calc() {
