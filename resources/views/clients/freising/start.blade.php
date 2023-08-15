@@ -2,16 +2,29 @@
 @section('title', 'Garantiert reine Energie')
 @section('content')
 
-    <div class="w-full content-blue">
-        <div class="lg:flex items-center">
-            <div><img src="{{asset('img/kirche/Hand3.png')}}"></div>
-            <div class="w-7/8 p-12 text-5xl text-left">Echter Ökostrom für die Katholische Kirche in Bayern</div>
-        </div>
+<div class="w-full content-blue">
+    <div class="lg:flex items-center">
+        <div><img src="{{asset('img/kirche/Hand3.png')}}"></div>
+        <div class="w-7/8 p-12 text-5xl text-left">Echter Ökostrom</div> 
+        <div class="text-2xl mt-5">für die Katholische Kirche in Bayern</div>
     </div>
+</div>
 
     <div class="content-wrapper">  
-        <div id="calculator"></div>
-    </div>   
+        <div class="w-full content-blue lg:flex justify-center  items-center p-10">
+            <div class="mr-5">Ihre PLZ</div>
+            <div class="w-20 mr-5"><input class="text-center text-bold" type="text" pattern="[0-9]{5}" name="calc_zip" id="calc_zip" value="81547" required></div>
+            <div class="mr-5">Ihr Jahresverbrauch (in kWh)</div>
+            <div class="w-20 mr-5"><input class="text-center text-extrabold" type="number"  min="1" max="99999" name="calc_usage" id="calc_usage" value="2500" required></div>
+            <div class="w-max"><button class="btn-primary" onclick="calc()">Berechnen</button></div>
+        </div>
+    </div>  
+    <div  class="content-wrapper flex justify-center">
+        <div id="doing-stuff" class="object-center hidden"> 
+            <img class="w-[50%]" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
+        </div>
+    </div>
+    <div id="calculator"></div> 
     <div id="calculator_div" class="mb-20"></div>
 
     <div class="content-wrapper">
@@ -76,26 +89,12 @@
                 <x-web.tariffCalculator/>
                 --}}
                 <!--form id="frmCalc"-->
-                <div class="content-blue lg:flex justify-start  items-center p-10">
-                    <div class="mr-5">Ihre PLZ</div>
-                    <div class="w-20 mr-5"><input class="text-center text-bold" type="text" pattern="[0-9]{5}" name="calc_zip" id="calc_zip" value="81547" required></div>
-                    <div class="mr-5">Ihr Jahresverbrauch (in kWh)</div>
-                    <div class="w-20 mr-5"><input class="text-center text-extrabold" type="number"  min="1" max="99999" name="calc_usage" id="calc_usage" value="2500" required></div>
-                    <div class="w-max"><button class="btn-primary" onclick="calc()">Berechnen</button></div>
-                </div>
+                
                 <!--/form-->
             </div>
         </div>   
     </div> 
-    <div class="content-wrapper ">
-        <div id="doing-stuff" class="hidden">  
-            <div class="content flex justify-center">
-                <div> 
-                    <img class="w-[50%]" src="{{asset('img/buffering-animated-text-icon-loading-u1h739who8u5mtw3.gif')}}">
-                </div>
-            </div>   
-        </div> 
-    </div>
+    
     
     {{-- <div class="content-wrapper" >
         <div class="content">
