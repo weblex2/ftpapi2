@@ -225,30 +225,43 @@
          <div class="form-line">
             <div>
                 Gebäudekategorie:<br/>
-                <select name="buildingCategory" >
-                    <option value="1">Kirche</option>
-                    <option value="2">Kapelle</option>
-                    <option value="3">Pfarrheim/-zentrum</option>
-                    <option value="4">Schwesternhaus</option>
-                    <option value="5">Wohngebäude</option>
-                    <option value="6">Bürogebäude</option>
-                    <option value="7">Altenheim</option>
+                <select name="KIRCHE_GEBAEUDE" >
+                    <option value="Organisationsspezifische Einrichtung">Organisationsspezifische Einrichtung</option>
+                    <option value="Wohngebäude">Wohngebäude</option>
+                    <option value="Verwaltungseinrichtung">Verwaltungseinrichtung</option>
+                    <option value="Pflegeeinrichtungen">Pflegeeinrichtungen</option>
                 </select>
             </div>
             <div>
                 Wohngebäude<br/>
-                <select name="residentialBuilding">
+                <select name="[GB_ZO][GEB_AUS_LISTE]">
                     <option value=""></option>
-                    <option value="1">Einfamilienhaus</option>
-                    <option value="2">Mehrfamilienhaus</option>
-                    <option value="3">Pfarrhaus</option>
+                    <option value="Kirche">Kirche</option>
+                    <option value="Kapelle">Kapelle</option>
+                    <option value="Schwesternhaus">Schwesternhaus</option>
+                    <option value="Einfamilienhaus">Einfamilienhaus</option>
+                    <option value="Mehrfamilienhaus">Mehrfamilienhaus</option>
+                    <option value="Pfarrhaus">Pfarrhaus</option>
+                    <option value="Bürogebäude">Bürogebäude</option>
+                    <option value="Altenheim">Altenheim</option>
+                    <option value="Pfarrheim">Pfarrheim</option>
+                    <option value="Pfarrzentrum">Pfarrzentrum</option>
                 </select>
             </div>
          </div>
+         GEB_AUS_LISTE_SOnstiges
+
+
          <input type="hidden" name="business" value="{{$_POST['business']}}">
+         <input type="hidden" name="[GSL][gsl_abgabe]" value="0.2">
          <input type="hidden" name="usage" value="{{$_POST['usage']}}">
          <input type="hidden" name="productCode" value="{{$_POST['tariff']}}">
          <input type="hidden" name="energy" value="electricity">
+         <input type="hidden" name="[GP_ZO][BISTUM_LANDESKIRCHE]" value="Bistum_Landeskirche">
+         <input type="hidden" name="campaignIdentifier" value="KIRCHE">
+
+
+
          <div class="form-line justify-end">
             <input type="submit"  class="btn-primary-odd mt-5 mr-10" value="Weiter"></input>
          </div>

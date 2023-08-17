@@ -23,12 +23,20 @@
     @vite(['resources/css/app.css', 'resources/css/freising.css', 'resources/js/app.js'])
 </head>
 <body>
-@include('clients.freising.navigation')
-<div class="font-sans text-gray-900  w-full">
-    @yield('content');
-</div>
-@include('clients.freising.footer');
-
+    <div class="">
+        @include('clients.freising.navigation')
+        <div class="font-sans text-gray-900  w-full ">
+            @yield('content');
+        </div>
+        @include('clients.freising.footer')
+    </div> 
+    {{-- <div class="lg:hidden flex h-screen w-full items-center justify-center ">
+        <div class="bg-blue-400 text-black p-5 rounded-xl">
+        Diese Seite ist noch nicht für mobile Geräte optimiert. <br/>
+        Bitte benutzen sie einen Computer mit einem größeren Bildschirm.<br>
+        Wir arbeiten aber mit Hochdruck daran.
+        </div>
+    </div>   --}} 
 <script>
     $(function() {
         $('#burger').click(function(){

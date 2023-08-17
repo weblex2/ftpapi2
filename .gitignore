@@ -18,3 +18,5 @@ yarn-error.log
 /.idea
 /.vscode
 .env.example
+FTP_API_TEST.pem
+sssh.bat

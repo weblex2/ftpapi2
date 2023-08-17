@@ -15,12 +15,14 @@ class dropdown extends Component
     public $name;
     public $mydata;
     public $emptyOption;
+    public $required;
 
-    public function __construct($mydata,$name,$emptyOption=false)
+    public function __construct($mydata,$name,$emptyOption=false,$required=false)
     {
         $this->name = $name;
         $this->mydata = $mydata;
         $this->emptyOption = isset($emptyOption) ? $emptyOption : false;
+        $this->required =  $required;
     }
 
     /**

@@ -3,7 +3,7 @@
         <div class="p-5 lg:p-0 lg:mb-5"><img class="h-10 w-auto" src="{{asset('img/logo.svg')}}"></div>
         <div class="md:flex p-5 w-full justify-between">
             <div>
-                <h3>Kontakt</h3>
+                <h3 class="text-white">Kontakt</h3>
                 <p class="text-sm xs:text-base">
                     <a href="tel:00498921122199" class="text-white hover:underline flex items-center space-x-2">
                                 <span>
@@ -33,7 +33,7 @@
                 </p>
             </div>
             <div>
-                <h3>Fair Trade Power Deutschland GmbH</h3>
+                <h3  class="text-white">Fair Trade Power Deutschland GmbH</h3>
                 <div class="xl:flex space-y-2 xl:space-y-0 xl:space-x-2 justify-between">
 
                     <p class="text-sm xs:text-base flex space-x-2">
@@ -42,7 +42,7 @@
                                         <path fill="#FFF" d="M6.75 18c.305 0 .54-.117.703-.352l2.356-3.375c1.171-1.687 1.945-2.824 2.32-3.41.539-.843.902-1.552 1.09-2.127.187-.574.281-1.236.281-1.986 0-1.219-.305-2.344-.914-3.375-.61-1.031-1.43-1.852-2.461-2.46C9.094.304 7.969 0 6.75 0 5.531 0 4.406.305 3.375.914c-1.031.61-1.852 1.43-2.46 2.461C.304 4.406 0 5.531 0 6.75c0 .75.094 1.412.281 1.986.188.575.551 1.284 1.09 2.127.375.586 1.149 1.723 2.32 3.41.961 1.36 1.747 2.485 2.356 3.375.164.235.398.352.703.352zm0-8.438c-.773 0-1.436-.275-1.986-.826-.551-.55-.827-1.213-.827-1.986 0-.773.276-1.436.827-1.986.55-.551 1.213-.827 1.986-.827.773 0 1.436.276 1.986.827.551.55.826 1.213.826 1.986 0 .773-.275 1.436-.826 1.986-.55.551-1.213.826-1.986.826z"></path>
                                     </svg>
                                 </span>
-                        <span>
+                        <span  class="text-white">
                                     Vintschgauer Str. 5<br>
                                     81547 München
                                 </span>
@@ -50,15 +50,15 @@
                 </div>
             </div>
             <div >
-                <h3>Downloads</h3>
+                <h3  class="text-white">Downloads</h3>
                 <p class="text-sm xs:text-base">
-                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/energiewende/" target="_blank" class="underline"> Infoschreiben</a> <br>
-                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/unser-ökostrom/" target="_blank" class="underline">Auftrag SLP</a><br>
-                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/unser-biogas/" target="_blank" class="underline">Auftrag RLM</a><br>
-                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="/company/" target="_blank" class="underline">Widerrufsformular</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Anschreiben-Erz-Dioezesen-in-Bayern.pdf')}}" target="_blank" class="underline"> Infoschreiben</a> <br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Auftrag SLP.pdf')}}" target="_blank" class="underline">Auftrag SLP</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Auftrag RLM.pdf')}}" target="_blank" class="underline">Auftrag RLM</a><br>
+                    <span class="text-xs font-bold text-gray-500">[PDF]</span> <a href="{{asset('img/kirche/Widerrufsformular.pdf')}}" target="_blank" class="underline">Widerrufsformular</a><br>
                 </p>
             </div>
-            <div>
+            {{-- <div>
                 <div class="flex space-x-3">
                     <a href="https://www.instagram.com/fairtradepower/" target="_blank" rel="noopener">
                         <img src="{{asset('img/ic-instagram.svg')}}" style="height:32px" alt="FairTradePower auf Instagram">
@@ -76,7 +76,7 @@
                         <img src="{{asset('img/ic-mastodon.svg')}}" style="height:32px" alt="FairTradePower auf Mastodon">
                     </a>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
     </div>
@@ -86,10 +86,10 @@
             <div class="lg:flex mb-2 text-xs">
                 <div><a href="/impressum" target="_blank">Impressum</a> &nbsp; | &nbsp;</div>
                 <div><a href="/datenschutz" target="_blank">Datenschutz</a> &nbsp; | &nbsp;</div>
-                <div><a href="/agb-ökostrom" target="_blank">AGB Ökostrom</a> &nbsp; | &nbsp;</div>
-                <div><a href="/agb-gas" target="_blank">AGB Gas</a> &nbsp; | &nbsp;</div>
+                <div><a href="{{route('kircheagbslp')}}" target="_blank">AGB SLP</a> &nbsp; | &nbsp;</div>
+                <div><a href="{{route('kircheagbrlm')}}" target="_blank">AGB RLM</a> &nbsp;  &nbsp;</div>
             </div>
-            <div class="text-xs">
+            <div class="text-xs text-gray-500">
                 © Copyright 2023 by Fair Trade Power Deutschland GmbH. All Rights Reserved.
             </div>
         </div>

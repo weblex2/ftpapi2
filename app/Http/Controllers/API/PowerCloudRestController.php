@@ -19,7 +19,7 @@ class PowerCloudRestController extends Controller
         $pw="vQxKgfWgsvAY7Tp7E9FG";
         $hash="9d4da1fe24e7da45dfc5c242af40d913";
 
-        $context=$type.$user.":".$pw;
+        $context=$type."#".$user.":".$pw;
         $credentials = $type."#".$user.":".$pw;
         $headers = array(
             "Content-type: application/json",
@@ -48,8 +48,6 @@ class PowerCloudRestController extends Controller
         $streamVerboseHandle = fopen('php://temp', 'w+');
         curl_setopt($ch, CURLOPT_STDERR, $streamVerboseHandle);
         $res = curl_exec($ch);
-
-
         if ($res === FALSE) {
             printf("cUrl error (#%d): %s<br>\n",
                 curl_errno($ch),
@@ -59,22 +57,52 @@ class PowerCloudRestController extends Controller
 
         rewind($streamVerboseHandle);
         $verboseLog = stream_get_contents($streamVerboseHandle);
-
-        //file_put_contents('../../public/log.txt', $verboseLog);
-        //file_put_contents('../../public/log2.txt', $res);
-        return $res;
+        $result = (json_decode($res,1)!=false) ? json_decode($res,1) : $res;
+        if (isset($result['success']) &&  $result['success']=="true"){
+            return $result;
+        }
+        else{
+            return $res;
+        }
     }
 
+
+    public function getTariffsInfo(){
+        $data  = file_get_contents('http://tc.noppenberger.net?zip=82024&usage=2000');
+        $data = json_decode($data, 1);
+        dump($data);
+    }
+
+    public function getProducts(){
+        $res = $this->doRequest('client','getProducts','GET',['limit'=>100, 'offset' => 0]);
+        $res = json_decode($res,1);
+        dump($res);
+    }
+
+    public function getTariffsByCampaign($campaign){
+        $res = $this->doRequest('client','getProductsByCampaign','GET',['campaignIdentifier' => $campaign, 'limit'=>100, 'offset' => 0]);
+        $res = json_decode($res,1);
+        dump($res['data']);
+    }
+
+    public function getProductsById(){
+        $res = $this->doRequest('contract','getTariffById','GET',['id' => 'C18429', 'limit'=>100, 'offset' => 0]);
+        dump($res);
+        ##$res = json_decode($res,1);
+        #dump($res['data']);
+    }
+    
 
     public function test(){
-        $res['message'] = $this->doRequest('client','getContractById','GET',['id'=>752543]);
-        return $res;
+        $res = $this->doRequest('customer','getContractById','GET',['id'=>752543]);
+        #$res = $this->doRequest('client','getProducts','GET',['limit'=>100,'offset'=>0]);
+        echo "<pre>";
+        print_r($res);
     }
 
 
-    public function createOrder($dataIn){
-        $dataOut = $dataIn;
-        $res['message'] = $this->doRequest('client','createOrder','POST',$dataOut);
+    public function createOrder($data){
+        $res = $this->doRequest('client','createOrder','POST',$data);
         return $res;
     }
 
