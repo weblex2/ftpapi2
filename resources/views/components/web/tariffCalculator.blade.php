@@ -7,28 +7,58 @@
         $i=0;
     @endphp
     <div id="result" class="hidden1">
-            
-            @foreach ($data as $key => $tariff)
+            @php
+                //dump($data);
+            @endphp
+            @foreach ($data['tariffs'] as $productCode => $tariff)
             @php 
                 $i++;
+                if (strpos($productCode, '_fp')==false && strpos($productCode, '_dz')==false && strpos($productCode, '_ns')==false && strpos($productCode, '_nacht')==false){
+                    $hiddenTarif="";
+                }
+                else{
+                    $hiddenTarif="tarif-hidden";
+                }
             @endphp
-            <div id="result_{{$key}}" class="content-wrapper {{$class= $i%2==0 ? "content-even" : "content-odd";}}">
+            <div class="content-wrapper">
+            <div id="result_{{$productCode}}" base="24_ftp_kirche_bayern" class="{{$hiddenTarif}} tariff-result content-wrapper {{$class= $i%2==0 ? "content-even" : "content-odd";}}">
                 <div class="content">
                 <form method="GET" action="/client/freising/registrierung">
-                    {{-- <input type="hidden" id="normal"  value="{{$tariff[0]['pstring']}}">
-                    <input type="hidden" id="plus"    value="{{$tariff[1]['pstring']}}">
-                    <input type="hidden" id="student" value="{{$tariff[1]['pstring']}}"> --}}
-
-                    <div class="tariff-details">
+                    <div class="tariff-details {{$tariff['productName']}}">
                         <div class="tc-result-line justify-start items-center text-left">
-                            <div class="w-3/4 text-[#0ac]"><h2>{{$tariff['name']}}</h2></div>
+                            <div class="w-3/4 text-[#0ac]"><h2>{{$tariff['productName']}}</h2></div>
                             <div class="justify-items-end"><img class="h-[70%] w-auto" src="{{asset('img/kirche/Gruener_Strom_empfohlen_RGB_web_1181-300x209.jpg')}}"></div>
                         </div>
+
+                        <div class="tc-result-line">
+                            <div class="flex items-center mr-4">
+                                <input class="float" type="radio" name="ff" value="" {{strpos($productCode, '_fp')==false ? "checked" : ""}} onclick="selectTariff($(this))">
+                                <label for="billingSalutation1" class="ml-2 text-sm font-medium text-black">Floating Preis</label>
+                            </div>
+                            <div class="flex items-center mr-4">
+                                <input class="fix" type="radio" name="ff" value="_fp" {{strpos($productCode, '_fp')==true ? "checked" : ""}} onclick="selectTariff($(this))">
+                                <label for="billingSalutation1" class="ml-2 text-sm font-medium text-black">Festpreis</label>
+                            </div>
+                        </div>
+
+                        <div class="tc-result-line">
+                            <div class="flex items-center mr-4">
+                                <input class="ez" type="radio" name="ez_dz" value="" {{strpos($productCode, '_dz')==false ? "checked" : ""}} onclick="selectTariff($(this))">
+                                <label for="billingSalutation1" class="ml-2 text-sm font-medium text-black">Einzählertarif</label>
+                            </div>
+                            <div class="flex items-center mr-4">
+                                <input class="dz" type="radio" name="ez_dz" value="_dz" {{strpos($productCode, '_dz')==true ? "checked" : ""}} onclick="selectTariff($(this))">
+                                <label for="billingSalutation1" class="ml-2 text-sm font-medium text-black">Zweizählertarif</label>
+                            </div>
+                        </div>    
+
+                        
+
                         <div class="tc-result-line">
                             <div class="tc-detail blue">Grundgebühr</div>
                             <div class="tc-detail-values">
                                 Nur <span class="tc-strong">
-                                <span id="basePrice1">{!!$tariff['basePriceBruttoHtml']!!}</span> Euro monatlich</span>
+                                <span class="basePrice">{!!$tariff['bp']!!}</span> Euro monatlich</span>
                             </div>
                         </div>
 
@@ -49,7 +79,7 @@
                         </div>
 
                         <div class="tc-result-line items-center">
-                            <div class="tc-detail blue ">Förderung</div>
+                            <div class="tc-detail blue ">Neuanlagenförderung</div>
                             <div class="tc-detail-values">
                                 <div class="w-full flex justify-start">
                                     <div class="flex items-center w-full pr-8 ">
@@ -60,22 +90,29 @@
                             </div>
                         </div>
 
-                        <div class="tc-result-line">
+                        <div class="tc-result-line {{strpos($productCode, '_dz')===false ? "" : "!hidden"}}">
                             <div class="tc-detail blue">Verbrauchskosten</div>
                             <div class="tc-detail-values">
-                                <span id="usage1">{{$energyUsage}}</span> kWh ×
-                                <span id="workingPrice1" class="tc-strong">{!!$tariff['workingPriceBruttoHtml']!!}</span> Cent / kWh =
-                                <span id="workingTotal1" class="tc-strong">{!!$tariff['totalWorkingPriceHtml']!!}</span> Euro im Jahr
+                                <span >{{$data['usage']}}</span> kWh ×
+                                <span class="tc-strong">{!!$tariff['wp']!!}</span> Cent / kWh =
+                                <span class="tc-strong">{!!$tariff['wpTotal']!!}</span> Euro im Jahr
                             </div>
                         </div>
-                       {{--  <div class="tc-result-line">
-                            <div class="tc-detail blue">Verbrauchskosten NT</div>
+                        <div class="tc-result-line {{strpos($productCode, '_dz')==true ? "" : "!hidden"}}">
+                            <div class="tc-detail blue">Verbrauchskosten</div>
                             <div class="tc-detail-values">
-                                <span id="usage1">{{$energyUsage}}</span> kWh ×
-                                <span id="workingPrice1" class="tc-strong">{!!$tariff['workingPriceBruttoNTHtml']!!}</span> Cent / kWh =
-                                <span id="workingTotal1" class="tc-strong">{!!$tariff['totalWorkingPriceHtml']!!}</span> Euro im Jahr
+                                <div>
+                                    <span class="font-bold">HT:</span>
+                                    <span>{{$tariff['usageHT']}}</span> 
+                                    <span>kWh × {!!$tariff['wp']!!} = {!!$tariff['wpHTTotal']!!} Euro im Jahr</span>
+                                </div>
+                                <div>
+                                    <span class="font-bold">NT:</span>
+                                    <span>{{$tariff['usageNT']}}</span> 
+                                    <span>kWh × {!!$tariff['wpNT']!!} = {!!$tariff['wpNTTotal']!!} Euro im Jahr</span>
+                                </div>
                             </div>
-                        </div> --}}
+                        </div>
                         
                         <div class="tc-result-line">
                             <div class="tc-detail blue">Laufzeit</div>
@@ -84,28 +121,58 @@
                         <div class="tc-result-line">
                             <div class="tc-detail blue">Abschlag &amp; Jahresenergiekosten</div>
                             <div class="tc-detail-values">
-                                <span id="abschlag1" class="tc-strong">{!!$tariff['abschlagHtml']!!}</span>
+                                <span id="abschlag1" class="tc-strong">{!!$tariff['abschlag']!!}</span>
                                 Euro pro Monat /
-                                <span id="total1" class="tc-strong">{!!$tariff['totalPriceBruttoHtml']!!}</span> Euro im Jahr</div>
+                                <span id="total1" class="tc-strong">{!!$tariff['total']!!}</span> Euro im Jahr</div>
                         </div>
                     </div>
-                    <input type="hidden" name="zip" id="zip" value="{{$tariff['zip']}}">
-                    <input type="hidden" name="usage" id="usage" value="{{$tariff['usage']}}">
-                    <input type="hidden" name="tariff" id="tariff" value="{{$tariff['code']}}">
+                    <input type="hidden" name="zip" id="zip" value="{{$data['zip']}}">
+                    <input type="hidden" name="usage" id="usage" value="{{$data['usage']}}">
+                    <input type="hidden" name="tariff" id="tariff" value="{{$productCode}}">
                     <button class="btn-primary-odd">Jetzt bestellen</button>
                 </div>
             </div>    
+            </div>
             </form>
         </div>
         @endforeach
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
 
 
 
-        function calculateTariff(){
-            console.log("hllo");
+        function selectTariff(el){
+            var wrapper = el.closest('.content-wrapper');
+            var base = wrapper.attr('base');
+            var ff = wrapper.find('input[name=ff]:checked').val();
+            var ezdz = wrapper.find('input[name=ez_dz]:checked').val();
+            
+            if (ff==""){
+                $('.float').prop('checked', true);
+                $('.fix').prop('checked', false);
+            }
+            else{
+                $('.float').prop('checked', false);
+                $('.fix').prop('checked', true);
+            }
+            if (ezdz==""){
+                $('.ez').prop('checked', true);
+                $('.dz').prop('checked', false);
+            }
+            else{
+                $('.dz').prop('checked', true);
+                $('.ez').prop('checked', false);
+            }
+            
+            var selected  =  base+ezdz+ff;
+            console.log('wrapper:' + wrapper);
+            console.log('ff:' + ff);
+            console.log('ez_dz:' + ezdz);
+            console.log('div tariff selected :' + '#result_'+selected);
+            $('.tariff-result').addClass('tarif-hidden');
+            console.log('try to change:'+ '#result_'+selected);
+            $('#result_'+selected).removeClass('tarif-hidden');
             /*
             $('#result').hide();
             $('#doing-stuff').show()

@@ -30,7 +30,9 @@ html{
     @apply text-[#0ac];
 }
 
-
+.tarif-hidden{
+    @apply !hidden
+}
 
 .nav-item{
     line-height:1.5;

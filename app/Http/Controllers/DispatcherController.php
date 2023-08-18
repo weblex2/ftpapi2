@@ -8,9 +8,11 @@ use App\Http\Controllers\API\PowerCloudRestController;
 use Route;
 use App\Models\CustomerOrders;
 use App\Http\Controllers\EMailController;
+use App\Http\Traits\HtmlFormatTrait;
 
 class DispatcherController extends Controller
 {
+    use HtmlFormatTrait;
     #const BASEURL = 'aws.noppenberger.net/api/';
     const BASEURL = 'http://127.0.0.1:8000/api/';
 
@@ -68,11 +70,10 @@ class DispatcherController extends Controller
     }
 
     public function getTarifHtml($client, $zip, $usage){
-        #$zip = $request->zip;
-        #$usage = $request->usage;
-        #$x = $request->all();
-        $tariffs = file_get_contents("http://tc.noppenberger.net?zip=". $zip."&usage=".$usage);
-        $tariffs = json_decode($tariffs, 1);
+        
+        
+        
+        /*
         $tariff1 = '24_ftp_kirche_bayern';
         $tariff2 = '24_ftp_kirche_bayern_fp';
         $tariff3 = '24_ftp_kirche_bayern_nacht';
@@ -80,32 +81,119 @@ class DispatcherController extends Controller
         $data  = [];    
         foreach($tariffs as $i => $row) {
             if ($i!="24_ftp_kirche_bayern_ns"){
-                $workingPriceBrutto = number_format(round($tariffs[$i]['workingPriceBrutto'],2),2,'.','');
+                $usageHT = round($usage*60/100,2);
+                $usageNT = round($usage*40/100,2);
+                $workingPriceBruttoHT = number_format(round($tariffs[$i]['workingPriceBrutto'],2),2,'.','');
                 $workingPriceBruttoNT = number_format(round($tariffs[$i]['workingPriceNT'],2),2,'.','');
-                $basePriceBrutto = number_format(round(($tariffs[$i]['basePriceBrutto']+ $tariffs[$i]['meterChargeBrutto'])/12 ,2),2,'.','');
-                $workingPriceTotal = number_format(round($workingPriceBrutto * $usage/100, 2),2,'.','');
-                $totalPriceBrutto = number_format($workingPriceTotal + $basePriceBrutto*12,2,'.','');
-                $totalWorkingPrice = number_format($workingPriceTotal,2,'.','');
+                $basePriceBrutto      = number_format(round(($tariffs[$i]['basePriceBrutto']+ $tariffs[$i]['meterChargeBrutto'])/12 ,2),2,'.','');
+                
+                $workingPriceTotal    = number_format(round($workingPriceBruttoHT * $usage/100, 2),2,'.','');
+                $workingPriceTotalHT  = number_format(round($workingPriceBruttoHT * $usageHT/100, 2),2,'.','');
+                $workingPriceTotalNT  = number_format(round($workingPriceBruttoNT * $usageNT/100, 2),2,'.','');
+                
+                $totalPriceBrutto     = number_format($workingPriceTotal + $basePriceBrutto*12,2,'.','');
+                $totalPriceBruttoHT   = number_format($workingPriceTotalHT + $basePriceBrutto*12,2,'.','');
+                $totalPriceBruttoNT   = number_format($workingPriceTotalHT + $basePriceBrutto*12,2,'.','');
+
                 $abschlag = number_format(round($totalPriceBrutto/12, 2),2,'.','');
+                
+                $workingPriceTotalBruttoHT  = number_format(round($workingPriceBruttoHT   * $usageHT/100, 2),2,'.','');
+                $workingPriceTotalBruttoNT  = number_format(round($workingPriceBruttoNT * $usageNT/100, 2),2,'.','');
                 $data[$i]['basePriceBrutto'] = $basePriceBrutto;
-                $data[$i]['workingPriceBrutto'] = $workingPriceBrutto;
+                $data[$i]['workingPriceBrutto'] = $workingPriceBruttoHT;
                 $data[$i]['workingPriceBruttoNT'] = $workingPriceBruttoNT;
-                $data[$i]['totalWorkingPrice'] = $totalWorkingPrice;
+                $data[$i]['totalWorkingPrice'] = $workingPriceTotal;
                 $data[$i]['totalPriceBrutto'] = $totalPriceBrutto;
                 $data[$i]['abschlag'] = $abschlag;
-                $data[$i]['pstring'] = $basePriceBrutto."|".$workingPriceBrutto."|".$workingPriceTotal."|".$totalPriceBrutto."|".$abschlag;
+                $data[$i]['pstring'] = $basePriceBrutto."|".$workingPriceBruttoHT."|".$workingPriceTotal."|".$totalPriceBrutto."|".$abschlag;
                 $data[$i]['basePriceBruttoHtml'] = explode(".",$basePriceBrutto)[0]."<sup>".explode(".",$basePriceBrutto)[1]."</sup>";
-                $data[$i]['workingPriceBruttoHtml'] = explode(".",$workingPriceBrutto)[0]."<sup>".explode(".",$workingPriceBrutto)[1]."</sup>";
-                $data[$i]['workingPriceBruttoNTHtml'] = explode(".",$workingPriceBruttoNT)[0]."<sup>".explode(".",$workingPriceBruttoNT)[1]."</sup>";
-                $data[$i]['totalWorkingPriceHtml'] = explode(".",$totalWorkingPrice)[0]."<sup>".explode(".",$totalWorkingPrice)[1]."</sup>";
+                $data[$i]['workingPriceBruttoHtml'] = explode(".",$workingPriceBruttoHT)[0]."<sup>".explode(".",$workingPriceBruttoHT)[1]."</sup>";
+                $data[$i]['workingPriceBruttoHtmlHT'] = explode(".",$workingPriceBruttoHT)[0]."<sup>".explode(".",$workingPriceBruttoHT)[1]."</sup>";
+                $data[$i]['workingPriceBruttoHtmlNT'] = explode(".",$workingPriceBruttoNT)[0]."<sup>".explode(".",$workingPriceBruttoNT)[1]."</sup>";
+                $data[$i]['totalWorkingPriceHtml'] = explode(".",$workingPriceTotal)[0]."<sup>".explode(".",$workingPriceTotal)[1]."</sup>";
+                $data[$i]['totalWorkingPriceHtmlHT'] = explode(".",$workingPriceTotalHT)[0]."<sup>".explode(".",$workingPriceTotalHT)[1]."</sup>";
+                $data[$i]['totalWorkingPriceHtmlNT'] = explode(".",$workingPriceTotalNT)[0]."<sup>".explode(".",$workingPriceTotalNT)[1]."</sup>";
                 $data[$i]['totalPriceBruttoHtml'] = explode(".",$totalPriceBrutto)[0]."<sup>".explode(".",$totalPriceBrutto)[1]."</sup>";
                 $data[$i]['abschlagHtml'] = explode(".",$abschlag)[0]."<sup>".explode(".",$abschlag)[1]."</sup>";
                 $data[$i]['code'] = $i;
                 $data[$i]['name'] = $tariffs[$i]['productName'];
                 $data[$i]['zip'] = $zip;
                 $data[$i]['usage'] = $usage;
+                $data[$i]['usageHT'] = $usageHT;
+                $data[$i]['usageNT'] = $usageNT;
             }
         }
+        */
+        $tariffs = file_get_contents("http://tc.noppenberger.net?zip=". $zip."&usage=".$usage);
+        #$tariffs = '{"24_ftp_kirche_bayern_dz_nacht_fp":{"productName":"RV Kirche Bayern (Doppeltarifz\u00e4hler mit Nachtspeicher) Festpreis","workingPriceBrutto":26.9476,"workingPriceNT":20.595,"workingPriceNetto":22.645,"basePriceBrutto":120.96,"basePriceNetto":101.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_ns_fp":{"productName":"RV Kirche Bayern (Nachtspeicher) Festpreis","workingPriceBrutto":22.4018,"workingPriceNT":0,"workingPriceNetto":18.825,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":560.05,"usagePriceNetto":470.63,"meterChargeBrutto":22.61},"24_ftp_kirche_bayern_dz_fp":{"productName":"RV Kirche Bayern (Doppeltarifz\u00e4hler) Festpreis","workingPriceBrutto":26.9476,"workingPriceNT":20.595,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_ns":{"productName":" RV Kirche Bayern (Nachtspeicher)","workingPriceBrutto":22.4018,"workingPriceNT":0,"workingPriceNetto":18.825,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":560.05,"usagePriceNetto":470.63,"meterChargeBrutto":22.61},"24_ftp_kirche_bayern_dz_nacht":{"productName":" RV Kirche Bayern (Doppeltarifz\u00e4hler mit Nachtspeicher)","workingPriceBrutto":26.9476,"workingPriceNT":20.595,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_dz":{"productName":"RV Kirche Bayern (Doppeltarifz\u00e4hler)","workingPriceBrutto":26.9476,"workingPriceNT":20.595,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_nacht":{"productName":"RV Kirche Bayern (Nachtspeicher)","workingPriceBrutto":26.9476,"workingPriceNT":0,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_fp":{"productName":"RV Kirche Bayern (Festpreis)","workingPriceBrutto":26.9476,"workingPriceNT":0,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern":{"productName":"RV Kirche Bayern (Floating-Preis)","workingPriceBrutto":26.9476,"workingPriceNT":0,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71}}';    
+        $tariffs = json_decode($tariffs, 1);
+        
+        foreach ($tariffs as $key => $tariff){
+            $usageHT    = round($usage*60/100,2);
+            $usageNT    = round($usage*40/100,2);
+            $basePrice  = round($tariff['basePriceBrutto']/12 + $tariff['meterChargeBrutto']/12,2);
+            $wpTotal    = round($tariff['workingPriceBrutto'],2)*$usage/100;
+            $wpHTTotal  = round($tariff['workingPriceBrutto'],2)*$usageHT/100;
+            $wpNTTotal  = round($tariff['workingPriceNT'],2)*$usageNT/100;
+            $total      = round($basePrice*12 + $wpTotal,2);
+            $totalHTNT  = round($basePrice*12 + +$wpHTTotal + $wpNTTotal,2);
+            $tariffs[$key]['usageHT'] = $usageHT;
+            $tariffs[$key]['usageNT'] = $usageNT;
+            $tariffs[$key]['bp'] = $this->formatPrice($basePrice); 
+            $tariffs[$key]['wp'] = $this->formatPrice($tariff['workingPriceBrutto']); 
+            $tariffs[$key]['wp'] = $this->formatPrice($tariff['workingPriceBrutto']);
+            $tariffs[$key]['wpNT'] = $this->formatPrice($tariff['workingPriceNT']);
+            $tariffs[$key]['wpTotal'] = $this->formatPrice($wpTotal);
+            $tariffs[$key]['wpHTTotal'] = $this->formatPrice($wpHTTotal);
+            $tariffs[$key]['wpNTTotal'] = $this->formatPrice($wpNTTotal);
+            $tariffs[$key]['total'] = $this->formatPrice($total);
+            $tariffs[$key]['totalHTNT'] = $this->formatPrice($totalHTNT);
+            $tariffs[$key]['abschlag'] = $this->formatPrice($total/12);
+        }
+
+        //dump($tariffs);
+        
+        $data['zip'] = $zip;
+        $data['usage'] = $usage;
+        $data['tariffs'] = $tariffs;
+
+        
+        
+        /*
+        $base = "24_ftp_kirche_bayern";
+        $tariff['float_EZ'] = $base;
+        $tariff['float_DZ'] = $base."_dz";
+        $tariff['fix_EZ']   = $base."_fp";
+        $tariff['fix_DZ']   = $base."_dz_fp";
+
+        $tariffs[$base]['zip'] = $zip;
+        $tariffs[$base]['name'] = $base;
+        $tariffs[$base]['code'] = $base;
+        $tariffs[$base]['usage'] = $usage;
+        $tariffs[$base]['usageHT'] = $usage*60/100;
+        $tariffs[$base]['usageNT'] = $usage*40/100;
+        // price // EZ/DZ / FIX/FLOAT
+        // normal Tariff float
+        $tariffs[$base]['wp_ez_float'] = round($data[$tariff['float_EZ']]['workingPriceBrutto'],2);
+        $tariffs[$base]['bp_ez_float'] = round($data[$tariff['float_EZ']]['basePriceBrutto'],2);
+
+        // normal Tariff fix
+        $tariffs[$base]['wp_ez_fix'] = round($data[$tariff['fix_EZ']]['workingPriceBrutto'],2);
+        $tariffs[$base]['bp_ez_fix'] = round($data[$tariff['fix_EZ']]['basePriceBrutto'],2);
+        
+        //dz tariff float
+        $tariffs[$base]['wp_dz_float'] = round($data[$tariff['float_DZ']]['workingPriceBrutto'],2);
+        $tariffs[$base]['bp_dz_float'] = round($data[$tariff['float_DZ']]['basePriceBrutto'],2);
+
+        //dz tariff fix
+        $tariffs[$base]['wp_dz_fix'] = round($data[$tariff['fix_DZ']]['workingPriceBrutto'],2);
+        $tariffs[$base]['bp_dz_fix'] = round($data[$tariff['fix_DZ']]['basePriceBrutto'],2);
+
+        // dz NT price
+        $tariffs[$base]['wpNT_dz_float'] = round($data[$tariff['float_DZ']]['workingPriceNT'],2);
+        $tariffs[$base]['wpNT_dz_fix'] = round($data[$tariff['fix_DZ']]['workingPriceNT'],2);
+        dump($tariffs);
+        */
         $html = view('components.web.tariffCalculator', ['data' => $data, 'energyUsage' => $usage]);
         return $html;
     }
@@ -163,9 +251,6 @@ class DispatcherController extends Controller
     }
 
     public function checkoutSuccess(){
-        #$email  = new EMailController();
-        #$email->sendMail();
-        
         $client = $this->getClient();
         return view('clients.'.$client.'.checkoutsuccess');
     }
