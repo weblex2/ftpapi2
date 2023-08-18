@@ -137,11 +137,7 @@
         </div>
         @endforeach
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
-
-
-
         function selectTariff(el){
             var wrapper = el.closest('.content-wrapper');
             var base = wrapper.attr('base');
