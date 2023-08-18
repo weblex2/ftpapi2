@@ -109,6 +109,40 @@
     </div> --}}
 
     <script>
+
+function selectTariff(el){
+            var wrapper = el.closest('.content-wrapper');
+            var base = wrapper.attr('base');
+            var ff = wrapper.find('input[name=ff]:checked').val();
+            var ezdz = wrapper.find('input[name=ez_dz]:checked').val();
+            
+            if (ff==""){
+                $('.float').prop('checked', true);
+                $('.fix').prop('checked', false);
+            }
+            else{
+                $('.float').prop('checked', false);
+                $('.fix').prop('checked', true);
+            }
+            if (ezdz==""){
+                $('.ez').prop('checked', true);
+                $('.dz').prop('checked', false);
+            }
+            else{
+                $('.dz').prop('checked', true);
+                $('.ez').prop('checked', false);
+            }
+            
+            var selected  =  base+ezdz+ff;
+            console.log('wrapper:' + wrapper);
+            console.log('ff:' + ff);
+            console.log('ez_dz:' + ezdz);
+            console.log('div tariff selected :' + '#result_'+selected);
+            $('.tariff-result').addClass('tarif-hidden');
+            console.log('try to change:'+ '#result_'+selected);
+            $('#result_'+selected).removeClass('tarif-hidden');
+        });    
+
         function calc() {
             //e.preventDefault();
             var zip = $('#calc_zip').val();
