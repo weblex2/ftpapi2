@@ -21,7 +21,7 @@
                 }
             @endphp
             <div class="content-wrapper">
-            <div id="result_{{$productCode}}" base="24_ftp_kirche_bayern" class="{{$hiddenTarif}} tariff-result content-wrapper {{$class= $i%2==0 ? "content-even" : "content-even";}}">
+            <div id="result_{{$productCode}}" base="24_ftp_kirche_bayern" class="{{$hiddenTarif}} tariff-result content-wrapper {{$class= $i%2==0 ? "content-odd" : "content-odd";}}">
                 <div class="content">
                 <form method="GET" action="/client/freising/registrierung">
                     <div class="tariff-details {{$tariff['productName']}}">
