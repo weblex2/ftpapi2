@@ -21,7 +21,7 @@
                 }
             @endphp
             <div class="content-wrapper">
-            <div id="result_{{$productCode}}" base="24_ftp_kirche_bayern" class="{{$hiddenTarif}} tariff-result content-wrapper {{$class= $i%2==0 ? "content-even" : "content-odd";}}">
+            <div id="result_{{$productCode}}" base="24_ftp_kirche_bayern" class="{{$hiddenTarif}} tariff-result content-wrapper {{$class= $i%2==0 ? "content-even" : "content-even";}}">
                 <div class="content">
                 <form method="GET" action="/client/freising/registrierung">
                     <div class="tariff-details {{$tariff['productName']}}">
@@ -138,6 +138,7 @@
         @endforeach
     </div>
     <script>
+        /*
         function selectTariff(el){
             var wrapper = el.closest('.content-wrapper');
             var base = wrapper.attr('base');
