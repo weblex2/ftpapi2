@@ -141,7 +141,7 @@ function selectTariff(el){
             $('.tariff-result').addClass('tarif-hidden');
             console.log('try to change:'+ '#result_'+selected);
             $('#result_'+selected).removeClass('tarif-hidden');
-        });    
+        };    
 
         function calc() {
             //e.preventDefault();
