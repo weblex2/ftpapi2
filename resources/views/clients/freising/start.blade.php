@@ -137,10 +137,13 @@ function selectTariff(el){
             console.log('wrapper:' + wrapper);
             console.log('ff:' + ff);
             console.log('ez_dz:' + ezdz);
+            console.log('try to change:'+ '#result_'+selected);
             console.log('div tariff selected :' + '#result_'+selected);
             $('.tariff-result').addClass('tarif-hidden');
-            console.log('try to change:'+ '#result_'+selected);
-            $('#result_'+selected).removeClass('tarif-hidden');
+            $('#result_'+selected).removeClass('tarif-hidden', function(){});
+            
+           
+           
         };    
 
         function calc() {
