@@ -139,12 +139,25 @@ function selectTariff(el){
             console.log('ez_dz:' + ezdz);
             console.log('try to change:'+ '#result_'+selected);
             console.log('div tariff selected :' + '#result_'+selected);
+            disableScrolling();
             $('.tariff-result').addClass('tarif-hidden');
-            $('#result_'+selected).removeClass('tarif-hidden', function(){});
-            
-           
+            $('#result_'+selected).removeClass('tarif-hidden');
+            enableScrolling();
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $('#result_'+selected).offset().top
+            }, 0);
            
         };    
+
+        function disableScrolling(){
+            var x=window.scrollX;
+            var y=window.scrollY;
+            window.onscroll=function(){window.scrollTo(x, y);};
+        }
+
+        function enableScrolling(){
+            window.onscroll=function(){};
+        }
 
         function calc() {
             //e.preventDefault();
