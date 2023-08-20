@@ -127,7 +127,7 @@ class DispatcherController extends Controller
 
         $showTariffs[0] =  
         $tariffs = file_get_contents("http://tc.noppenberger.net?zip=". $zip."&usage=".$usage);
-        dump($tariffs);
+        //dump($tariffs);
         $tariffs = json_decode($tariffs, 1);
         
         foreach ($tariffs as $key => $tariff){
