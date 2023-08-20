@@ -1,7 +1,9 @@
 @extends('layouts.freisinglayout')
 @section('title', 'Garantiert reine Energie')
 @section('content')
-
+<div class="hidden absolute z-10 top-0 left-0 w-full h-full bg-black bg-opacity-50">
+    xxx
+</div>
 <div class="w-full content-blue">
     <div class="flex items-center">
         <div><img src="{{asset('img/kirche/Hand3.png')}}"></div>
@@ -249,7 +251,7 @@
                 <input type="hidden" name="customerSpecification" id="customerSpecification" value="desired_date">
                 
                 <div class="form-line justify-end">
-                    <input type="submit"  class="btn-primary-odd mt-5 mr-10" value="Weiter"></input>
+                    <input type="submit" class="btn-primary-odd mt-5 mr-10" value="Weiter"></input>
                 </div>
 
             </form>
@@ -260,7 +262,11 @@
 </div>
 <script type="text/javascript">
 
-    
+    function submitForm(e){
+       e.preventDefault();   
+       alert("Submit");  
+    }
+
 $(document).ready(function(){
 
     document.querySelectorAll("#sample-form input").forEach(function(element) {
