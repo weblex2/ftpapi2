@@ -124,8 +124,9 @@ class DispatcherController extends Controller
             }
         }
         */
+
+        $showTariffs[0] =  
         $tariffs = file_get_contents("http://tc.noppenberger.net?zip=". $zip."&usage=".$usage);
-        #$tariffs = '{"24_ftp_kirche_bayern_dz_nacht_fp":{"productName":"RV Kirche Bayern (Doppeltarifz\u00e4hler mit Nachtspeicher) Festpreis","workingPriceBrutto":26.9476,"workingPriceNT":20.595,"workingPriceNetto":22.645,"basePriceBrutto":120.96,"basePriceNetto":101.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_ns_fp":{"productName":"RV Kirche Bayern (Nachtspeicher) Festpreis","workingPriceBrutto":22.4018,"workingPriceNT":0,"workingPriceNetto":18.825,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":560.05,"usagePriceNetto":470.63,"meterChargeBrutto":22.61},"24_ftp_kirche_bayern_dz_fp":{"productName":"RV Kirche Bayern (Doppeltarifz\u00e4hler) Festpreis","workingPriceBrutto":26.9476,"workingPriceNT":20.595,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_ns":{"productName":" RV Kirche Bayern (Nachtspeicher)","workingPriceBrutto":22.4018,"workingPriceNT":0,"workingPriceNetto":18.825,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":560.05,"usagePriceNetto":470.63,"meterChargeBrutto":22.61},"24_ftp_kirche_bayern_dz_nacht":{"productName":" RV Kirche Bayern (Doppeltarifz\u00e4hler mit Nachtspeicher)","workingPriceBrutto":26.9476,"workingPriceNT":20.595,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_dz":{"productName":"RV Kirche Bayern (Doppeltarifz\u00e4hler)","workingPriceBrutto":26.9476,"workingPriceNT":20.595,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_nacht":{"productName":"RV Kirche Bayern (Nachtspeicher)","workingPriceBrutto":26.9476,"workingPriceNT":0,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern_fp":{"productName":"RV Kirche Bayern (Festpreis)","workingPriceBrutto":26.9476,"workingPriceNT":0,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71},"24_ftp_kirche_bayern":{"productName":"RV Kirche Bayern (Floating-Preis)","workingPriceBrutto":26.9476,"workingPriceNT":0,"workingPriceNetto":22.645,"basePriceBrutto":119.77,"basePriceNetto":100.65,"usagePriceBrutto":673.69,"usagePriceNetto":566.13,"meterChargeBrutto":10.71}}';    
         $tariffs = json_decode($tariffs, 1);
         
         foreach ($tariffs as $key => $tariff){
@@ -134,15 +135,18 @@ class DispatcherController extends Controller
             $basePrice  = round($tariff['basePriceBrutto']/12 + $tariff['meterChargeBrutto']/12,2);
             $wpTotal    = round($tariff['workingPriceBrutto'],2)*$usage/100;
             $wpHTTotal  = round($tariff['workingPriceBrutto'],2)*$usageHT/100;
-            $wpNTTotal  = round($tariff['workingPriceNT'],2)*$usageNT/100;
+            $wpNTTotal  = round($tariff['workingPriceNTBrutto'],2)*$usageNT/100;
             $total      = round($basePrice*12 + $wpTotal,2);
             $totalHTNT  = round($basePrice*12 + +$wpHTTotal + $wpNTTotal,2);
+            if ($tariff['workingPriceNTBrutto']!="0"){
+                $total = $totalHTNT;
+            }
             $tariffs[$key]['usageHT'] = $usageHT;
             $tariffs[$key]['usageNT'] = $usageNT;
             $tariffs[$key]['bp'] = $this->formatPrice($basePrice); 
             $tariffs[$key]['wp'] = $this->formatPrice($tariff['workingPriceBrutto']); 
             $tariffs[$key]['wp'] = $this->formatPrice($tariff['workingPriceBrutto']);
-            $tariffs[$key]['wpNT'] = $this->formatPrice($tariff['workingPriceNT']);
+            $tariffs[$key]['wpNT'] = $this->formatPrice($tariff['workingPriceNTBrutto']);
             $tariffs[$key]['wpTotal'] = $this->formatPrice($wpTotal);
             $tariffs[$key]['wpHTTotal'] = $this->formatPrice($wpHTTotal);
             $tariffs[$key]['wpNTTotal'] = $this->formatPrice($wpNTTotal);
