@@ -84,8 +84,8 @@
 <div id="copyright" class="content-wrapper bg-black">
     <div class="content">
             <div class="lg:flex mb-2 text-xs">
-                <div><a href="/impressum" target="_blank">Impressum</a> &nbsp; | &nbsp;</div>
-                <div><a href="/datenschutz" target="_blank">Datenschutz</a> &nbsp; | &nbsp;</div>
+                <div><a href="https://www.fairtradepower.de/impressum/" target="_blank">Impressum</a> &nbsp; | &nbsp;</div>
+                <div><a href="https://www.fairtradepower.de/datenschutz/" target="_blank">Datenschutz</a> &nbsp; | &nbsp;</div>
                 <div><a href="{{route('kircheagbslp')}}" target="_blank">AGB SLP</a> &nbsp; | &nbsp;</div>
                 <div><a href="{{route('kircheagbrlm')}}" target="_blank">AGB RLM</a> &nbsp;  &nbsp;</div>
             </div>
