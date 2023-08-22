@@ -7,7 +7,7 @@
 <div class="w-full content-blue">
     <div class="flex items-center">
         <div><img src="{{asset('img/kirche/Hand3.png')}}"></div>
-        <div class="w-7/8 p-12 text-5xl">Echter Ökostrom für die Katholische Kirche in Bayern</div>
+        <div class="w-7/8 p-12 text-5xl">Echter Ökostrom für die Evangelische Kirche in Bayern</div>
     </div>
 </div>
 
@@ -211,7 +211,7 @@
             Name der Einrichtung:<br/>
             <input type="text" placeholder="optional" name="extendedData[GP_ZO][BISTUM_LANDESKIRCHE]">
             </div>
-         </div>   
+         </div>
          <div class="form-line">
             <div>
                 Gebäudekategorie:<br/>
@@ -240,7 +240,7 @@
             </div>
 
          </div>
-         
+
                 <input type="hidden" name="business" id="business" value="0">
                 <input type="hidden" name="usage" id="usage" value="2000">
                 <input type="hidden" name="extendedData[GSL][gsl_abgabe]" value="0.2">
@@ -249,7 +249,7 @@
                 <input type="hidden" name="productCode" id="productCode" value="{{$_GET['tariff']}}">
                 <input type="hidden" name="energy" id="energy" value="electricity">
                 <input type="hidden" name="customerSpecification" id="customerSpecification" value="desired_date">
-                
+
                 <div class="form-line justify-end">
                     <input type="submit" class="btn-primary-odd mt-5 mr-10" value="Weiter"></input>
                 </div>
@@ -263,8 +263,8 @@
 <script type="text/javascript">
 
     function submitForm(e){
-       e.preventDefault();   
-       alert("Submit");  
+       e.preventDefault();
+       alert("Submit");
     }
 
 $(document).ready(function(){
@@ -279,7 +279,7 @@ $(document).ready(function(){
         });
     });
 
-    
+
     $('#billingZip').change(function(){
         updateBillingCities();
     });
@@ -288,27 +288,27 @@ $(document).ready(function(){
     $('#customerHasTerminated').change(function(){
         if ($(this).is(':checked')) {
           $('#cb_asap').hide();
-          $('#customerSpecification').val("terminated_in_person");      
+          $('#customerSpecification').val("terminated_in_person");
           $('#desiredDate').val("").prop('readonly', true);
-        }  
+        }
         else {
           $('#cb_asap').show();
-          $('#customerSpecification').val("desired_date");  
-          $('#desiredDate').prop('readonly', false);  
-        }    
+          $('#customerSpecification').val("desired_date");
+          $('#desiredDate').prop('readonly', false);
+        }
     });
 
     $('#desiredDateAsSoonAsPossible').change(function(){
         if ($(this).is(':checked')) {
-          $('#customerHasTerminated').attr('readonly', true);   
-          $('#customerSpecification').val("earliest_possible_date");      
+          $('#customerHasTerminated').attr('readonly', true);
+          $('#customerSpecification').val("earliest_possible_date");
           $('#desiredDate').val("").prop('readonly', true);
-        }  
+        }
         else {
-          $('#customerHasTerminated').attr('readonly', false);  
-          $('#customerSpecification').val("desired_date");  
-          $('#desiredDate').prop('readonly', false);  
-        }    
+          $('#customerHasTerminated').attr('readonly', false);
+          $('#customerSpecification').val("desired_date");
+          $('#desiredDate').prop('readonly', false);
+        }
     });
 
     $('#billingAlternativeAddress').change(function(){
@@ -331,9 +331,9 @@ $(document).ready(function(){
     })
 
     $(document).on("keypress", function(e) {
-        
+
             if (e.ctrlKey && e.keyCode == 17) { // cntrl + q
-                e.preventDefault(); 
+                e.preventDefault();
                 $('input:radio[name="salutation"]').filter('[value="1"]').attr('checked', true);
                 $('[name="surname"]').val('API Test AN');
                 $('[name="firstName"]').val('Do not confirm!!!');
@@ -357,7 +357,7 @@ $(document).ready(function(){
                 $('[name="phoneHome"]').val('1111111');
                 $('[name="desiredDate"]').val('01.01.2030');
                 $('[name="iban"]').val('DE02120300000000202051');
-                
+
             }
         });
         /*
