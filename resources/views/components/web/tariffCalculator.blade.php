@@ -1,8 +1,8 @@
 <div>
     <!-- I begin to speak only when I am certain what I will say is not better left unsaid. - Cato the Younger -->
     <div id="result-wrapper" class=" relative m-20">
-        
-    </div>    
+
+    </div>
     @php
         $i=0;
     @endphp
@@ -11,7 +11,7 @@
                 //dump($data);
             @endphp
             @foreach ($data['tariffs'] as $productCode => $tariff)
-            @php 
+            @php
                 $i++;
                 if (strpos($productCode, '_fp')==false && strpos($productCode, '_dz')==false && strpos($productCode, '_ns')==false && strpos($productCode, '_nacht')==false){
                     $hiddenTarif="";
@@ -23,7 +23,7 @@
             <div class="content-wrapper">
             <div id="result_{{$productCode}}" base="24_ftp_kirche_bayern" class="{{$hiddenTarif}} tariff-result content-wrapper {{$class= $i%2==0 ? "content-odd" : "content-odd";}}">
                 <div class="content">
-                <form method="GET" action="/client/freising/registrierung">
+                <form method="GET" action="/client/{{$client}}/registrierung">
                     <div class="tariff-details {{$tariff['productName']}}">
                         <div class="tc-result-line justify-start items-center text-left">
                             <div class="w-3/4 text-[#0ac]"><h2>{{$tariff['productName']}}</h2></div>
@@ -50,9 +50,9 @@
                                 <input class="dz" type="radio" name="ez_dz" value="_dz" {{strpos($productCode, '_dz')==true ? "checked" : ""}} onclick="selectTariff($(this))">
                                 <label for="billingSalutation1" class="ml-2 text-sm font-medium text-black">Zweizählertarif</label>
                             </div>
-                        </div>    
+                        </div>
 
-                        
+
 
                         <div class="tc-result-line">
                             <div class="tc-detail blue">Grundgebühr</div>
@@ -85,7 +85,7 @@
                                     <div class="flex items-center w-full pr-8 ">
                                         Förderung mit 0<sup>20</sup> &nbsp;netto / 0<sup>24</sup> &nbsp;brutto Cent / kWh
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -103,17 +103,17 @@
                             <div class="tc-detail-values">
                                 <div>
                                     <span class="font-bold">HT:</span>
-                                    <span>{{$tariff['usageHT']}}</span> 
+                                    <span>{{$tariff['usageHT']}}</span>
                                     <span>kWh × {!!$tariff['wp']!!} = {!!$tariff['wpHTTotal']!!} Euro im Jahr</span>
                                 </div>
                                 <div>
                                     <span class="font-bold">NT:</span>
-                                    <span>{{$tariff['usageNT']}}</span> 
+                                    <span>{{$tariff['usageNT']}}</span>
                                     <span>kWh × {!!$tariff['wpNT']!!} = {!!$tariff['wpNTTotal']!!} Euro im Jahr</span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="tc-result-line">
                             <div class="tc-detail blue">Laufzeit</div>
                             <div class="tc-detail-values">Mindestlaufzeit: 1 Monat</div>
@@ -131,11 +131,11 @@
                     <input type="hidden" name="tariff" id="tariff" value="{{$productCode}}">
                     <button class="btn-primary-odd">Jetzt bestellen</button>
                 </div>
-            </div>    
+            </div>
             </div>
             </form>
         </div>
         @endforeach
     </div>
-        
+
 </div>

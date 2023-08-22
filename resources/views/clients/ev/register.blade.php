@@ -5,9 +5,10 @@
     xxx
 </div>
 <div class="w-full content-blue">
-    <div class="flex items-center">
+    <div class="lg:flex items-center">
         <div><img src="{{asset('img/kirche/Hand3.png')}}"></div>
-        <div class="w-7/8 p-12 text-5xl">Echter Ökostrom für die Evangelische Kirche in Bayern</div>
+        <div class="w-7/8 p-12 text-5xl text-left">Echter Ökostrom</div>
+        <div class="text-2xl mt-5">für die Evangelische Kirche in Bayern</div>
     </div>
 </div>
 

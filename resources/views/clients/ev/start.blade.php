@@ -109,7 +109,7 @@
     </div> --}}
 
     <script>
-
+    var client = '<?php echo $client; ?>';
 function selectTariff(el){
             var wrapper = el.closest('.content-wrapper');
             var base = wrapper.attr('base');
@@ -168,7 +168,7 @@ function selectTariff(el){
             }
             $('#doing-stuff').show();
             $('#calculator').hide();
-            axios.get('/client/freising/getTarifHtml/'+zip+"/"+usage)
+            axios.get('/client/'+client+'/getTarifHtml/'+zip+"/"+usage)
                 .then(response => {
                     console.log(response);
                     $('#calculator').html(response.data);

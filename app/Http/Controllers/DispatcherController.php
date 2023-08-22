@@ -38,7 +38,7 @@ class DispatcherController extends Controller
     }
 
     public function register($client, Request $request){
-        
+
         $req = $request->all();
         $req['zip'] = isset($req['zip']) ? $req['zip'] : "";
         $req['usage'] = isset($req['usage']) ? $req['usage'] : "2000";
@@ -70,15 +70,12 @@ class DispatcherController extends Controller
     }
 
     public function getTarifHtml($client, $zip, $usage){
-        
-        
-        
         /*
         $tariff1 = '24_ftp_kirche_bayern';
         $tariff2 = '24_ftp_kirche_bayern_fp';
         $tariff3 = '24_ftp_kirche_bayern_nacht';
         $tariff_student = '24_ftp_kirche_bayern_nacht';
-        $data  = [];    
+        $data  = [];
         foreach($tariffs as $i => $row) {
             if ($i!="24_ftp_kirche_bayern_ns"){
                 $usageHT = round($usage*60/100,2);
@@ -86,17 +83,17 @@ class DispatcherController extends Controller
                 $workingPriceBruttoHT = number_format(round($tariffs[$i]['workingPriceBrutto'],2),2,'.','');
                 $workingPriceBruttoNT = number_format(round($tariffs[$i]['workingPriceNT'],2),2,'.','');
                 $basePriceBrutto      = number_format(round(($tariffs[$i]['basePriceBrutto']+ $tariffs[$i]['meterChargeBrutto'])/12 ,2),2,'.','');
-                
+
                 $workingPriceTotal    = number_format(round($workingPriceBruttoHT * $usage/100, 2),2,'.','');
                 $workingPriceTotalHT  = number_format(round($workingPriceBruttoHT * $usageHT/100, 2),2,'.','');
                 $workingPriceTotalNT  = number_format(round($workingPriceBruttoNT * $usageNT/100, 2),2,'.','');
-                
+
                 $totalPriceBrutto     = number_format($workingPriceTotal + $basePriceBrutto*12,2,'.','');
                 $totalPriceBruttoHT   = number_format($workingPriceTotalHT + $basePriceBrutto*12,2,'.','');
                 $totalPriceBruttoNT   = number_format($workingPriceTotalHT + $basePriceBrutto*12,2,'.','');
 
                 $abschlag = number_format(round($totalPriceBrutto/12, 2),2,'.','');
-                
+
                 $workingPriceTotalBruttoHT  = number_format(round($workingPriceBruttoHT   * $usageHT/100, 2),2,'.','');
                 $workingPriceTotalBruttoNT  = number_format(round($workingPriceBruttoNT * $usageNT/100, 2),2,'.','');
                 $data[$i]['basePriceBrutto'] = $basePriceBrutto;
@@ -125,11 +122,11 @@ class DispatcherController extends Controller
         }
         */
 
-        $showTariffs[0] =  
+        //$showTariffs[0] =
         $tariffs = file_get_contents("http://tc.noppenberger.net?zip=". $zip."&usage=".$usage);
         //dump($tariffs);
         $tariffs = json_decode($tariffs, 1);
-        
+
         foreach ($tariffs as $key => $tariff){
             $usageHT    = round($usage*60/100,2);
             $usageNT    = round($usage*40/100,2);
@@ -144,8 +141,8 @@ class DispatcherController extends Controller
             }
             $tariffs[$key]['usageHT'] = $usageHT;
             $tariffs[$key]['usageNT'] = $usageNT;
-            $tariffs[$key]['bp'] = $this->formatPrice($basePrice); 
-            $tariffs[$key]['wp'] = $this->formatPrice($tariff['workingPriceBrutto']); 
+            $tariffs[$key]['bp'] = $this->formatPrice($basePrice);
+            $tariffs[$key]['wp'] = $this->formatPrice($tariff['workingPriceBrutto']);
             $tariffs[$key]['wp'] = $this->formatPrice($tariff['workingPriceBrutto']);
             $tariffs[$key]['wpNT'] = $this->formatPrice($tariff['workingPriceNTBrutto']);
             $tariffs[$key]['wpTotal'] = $this->formatPrice($wpTotal);
@@ -155,15 +152,14 @@ class DispatcherController extends Controller
             $tariffs[$key]['totalHTNT'] = $this->formatPrice($totalHTNT);
             $tariffs[$key]['abschlag'] = $this->formatPrice($total/12);
         }
-
         //dump($tariffs);
-        
+
         $data['zip'] = $zip;
         $data['usage'] = $usage;
         $data['tariffs'] = $tariffs;
 
-        
-        
+
+
         /*
         $base = "24_ftp_kirche_bayern";
         $tariff['float_EZ'] = $base;
@@ -185,7 +181,7 @@ class DispatcherController extends Controller
         // normal Tariff fix
         $tariffs[$base]['wp_ez_fix'] = round($data[$tariff['fix_EZ']]['workingPriceBrutto'],2);
         $tariffs[$base]['bp_ez_fix'] = round($data[$tariff['fix_EZ']]['basePriceBrutto'],2);
-        
+
         //dz tariff float
         $tariffs[$base]['wp_dz_float'] = round($data[$tariff['float_DZ']]['workingPriceBrutto'],2);
         $tariffs[$base]['bp_dz_float'] = round($data[$tariff['float_DZ']]['basePriceBrutto'],2);
@@ -199,13 +195,13 @@ class DispatcherController extends Controller
         $tariffs[$base]['wpNT_dz_fix'] = round($data[$tariff['fix_DZ']]['workingPriceNT'],2);
         dump($tariffs);
         */
-        $html = view('components.web.tariffCalculator', ['data' => $data, 'energyUsage' => $usage]);
+        $html = view('components.web.tariffCalculator', ['data' => $data, 'energyUsage' => $usage, 'client'=> $client]);
         return $html;
     }
 
 
     public function submitForm(Request $request){
-        
+
         $data = $request->all();
         #dump($data);
         if (!isset($data['billingAlternativeAddress'])){
@@ -215,9 +211,9 @@ class DispatcherController extends Controller
             $data['campaignIdentifier']="KIRCHE";
         }
         $data['extendedData']['GSL']['gsl_abgabe'] = "0.2";
-       
+
         $data['extendedData'] = json_encode($data['extendedData']);
-       
+
         // Send Data to PowerCloud
         $pc = new PowerCloudRestController();
         $result = $pc->createOrder($data);
@@ -251,7 +247,7 @@ class DispatcherController extends Controller
         else{
             $success=false;
         }
-        return view('clients.freising.checkoutsuccess', compact('success')); 
+        return view('clients.freising.checkoutsuccess', compact('success'));
 
     }
 
@@ -269,7 +265,7 @@ class DispatcherController extends Controller
         $email  = new EMailController();
         $email->sendMail($mailData);
         return view($mailData['view'], compact('mailData'));
-    } 
+    }
     public function sendApiRequest($endpoint, $data, $token){
         $url= self::BASEURL.$endpoint;
         echo"<br>" .$url."<br>";
