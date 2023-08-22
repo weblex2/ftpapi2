@@ -21,7 +21,7 @@ use App\Http\Controllers\BackendController;
 Route::domain('test-kirchebayern.fairtradepower.de')->group(function () {
     Route::controller(DispatcherController::class)->group(function () {
         Route::get('/', function () {
-            return to_route('start', ['evangel']);
+            return to_route('start', ['ev']);
         });
     });
 });
@@ -29,7 +29,7 @@ Route::domain('test-kirchebayern.fairtradepower.de')->group(function () {
 Route::domain('antest.fairtradepower.de')->group(function () {
     Route::controller(DispatcherController::class)->group(function () {
         Route::get('/', function () {
-            return to_route('start', ['evangel']);
+            return to_route('start', ['ev']);
         });
     });
 });
