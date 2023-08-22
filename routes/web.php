@@ -23,7 +23,15 @@ Route::domain('test-kirchebayern.fairtradepower.de')->group(function () {
         Route::get('/', function () {
             return to_route('start', ['evangel']);
         });
-    });    
+    });
+});
+
+Route::domain('antest.fairtradepower.de')->group(function () {
+    Route::controller(DispatcherController::class)->group(function () {
+        Route::get('/', function () {
+            return to_route('start', ['evangel']);
+        });
+    });
 });
 
 Route::middleware([
@@ -85,7 +93,7 @@ Route::controller(DispatcherController::class)->group(function () {
     Route::post('/client/submitForm', 'submitForm')->name('submitForm');
     Route::get('/client/{client}/checkout/success', 'checkoutSuccess')->name('checkoutSuccess');
     Route::get('/client/{client}/getTarifHtml/{zip}/{usage}', 'getTarifHtml')->name('getTarifHtml');
-    
+
 
     //Nur für die Kirche
     Route::get('/client/{client}/registrierung/{zip?}/{usage?}', 'register')->name('registerclient');
